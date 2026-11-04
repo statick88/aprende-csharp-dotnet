@@ -1,8 +1,23 @@
 import { certificationPaths, filterUnits, parseLessonHash } from "./course-utils.mjs";
+import { makeProgressPanel, makeStateControl, makeAssessment } from "./study-ui.mjs";
 
 const app = document.querySelector("#app");
 const search = document.querySelector("#search");
 let course;
+const studyStates = new Map();
+const assessmentDrafts = new Map();
+
+function refreshStudyProgress() {
+  const units = allUnits().map(({ unit }) => unit);
+  for (const panel of document.querySelectorAll('.study-progress')) {
+    panel.replaceWith(makeProgressPanel(units, studyStates, lessonHref));
+  }
+  for (const control of document.querySelectorAll('.unit-study')) {
+    const value = studyStates.get(control.dataset.studyId) || 'pending';
+    control.dataset.state = value;
+    control.querySelector('select').value = value;
+  }
+}
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -116,7 +131,7 @@ function renderHome() {
     }
     catalogSection.append(catalog);
   }
-  app.append(makeNextSteps(), catalogSection);
+  app.append(makeProgressPanel(units.map(({ unit }) => unit), studyStates, lessonHref), makeNextSteps(), catalogSection);
 }
 
 function makeNextSteps() {
@@ -150,6 +165,7 @@ function makeSidebar(activeId) {
   const aside = element("aside", "lesson-sidebar");
   aside.setAttribute("aria-label", "Navegación de lecciones");
   aside.append(element("p", "eyebrow", "RECORRIDO"));
+  aside.append(makeProgressPanel(allUnits().map(({ unit }) => unit), studyStates, lessonHref));
   for (const module of studyModules()) {
     const heading = element("h2", "sidebar-module", module.title);
     const list = element("ul", "sidebar-list");
@@ -157,7 +173,7 @@ function makeSidebar(activeId) {
       const item = element("li");
       const unitLink = link(unit.title, lessonHref(unit.id));
       if (unit.id === activeId) unitLink.setAttribute("aria-current", "page");
-      item.append(unitLink);
+      item.append(unitLink, makeStateControl(unit, studyStates, refreshStudyProgress));
       list.append(item);
     }
     aside.append(heading, list);
@@ -240,6 +256,13 @@ function renderLesson(record) {
   }
   if (!review.querySelector("details")) review.append(element("p", undefined, "Consulta la fuente oficial para comprobar lo aprendido."));
   article.append(review);
+
+  article.append(makeAssessment(unit, assessmentDrafts));
+  const selfReview = element('section', 'self-review');
+  selfReview.append(element('h2', undefined, 'Registra tu autoevaluación'));
+  selfReview.append(element('p', undefined, 'Después de contrastar tus razones, decide qué necesitas reforzar. Leer o acertar opciones no marca esta unidad como comprendida.'));
+  selfReview.append(makeStateControl(unit, studyStates, refreshStudyProgress));
+  article.append(selfReview);
 
   const resources = element("section", "lesson-resources");
   resources.append(element("h2", undefined, "Recursos"), resourceLinkList(unit));

@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_FILES = ("index.html", "styles.css", "app.mjs", "course-utils.mjs")
+SITE_FILES = ("index.html", "styles.css", "app.mjs", "course-utils.mjs", "study-state.mjs", "study-ui.mjs")
 PROJECT = """<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -30,6 +30,22 @@ def load_course():
     for part in (1, 2):
         material = json.loads((ROOT / f"course/parte-{part:02}.json").read_text())
         assert material["schemaVersion"] == 1, "Versión de contenido no compatible"
+        assessment = json.loads((ROOT / f"course/evaluaciones-{part:02}.json").read_text())
+        assert assessment["schemaVersion"] == 1
+        expected_ids = [u["id"] for m in material["modules"] for u in m["units"]]
+        assert [u["id"] for u in assessment["units"]] == expected_ids
+        indexed = {u["id"]: u["questions"] for u in assessment["units"]}
+        for module in material["modules"]:
+            for unit in module["units"]:
+                questions = indexed[unit["id"]]
+                assert len(questions) == 2
+                assert len({q["id"] for q in questions}) == len(questions)
+                for question in questions:
+                    assert question["prompt"] and question["explanation"] and question["reasonPrompt"]
+                    assert len(question["options"]) == 3
+                    assert type(question["correctIndex"]) is int and 0 <= question["correctIndex"] < 3
+                    assert len(question["rubric"]) == 2
+                unit["assessment"] = questions
         modules.extend(material["modules"])
     expected = catalog["modules"]
     assert [m["id"] for m in modules] == [m["id"] for m in expected]
@@ -120,6 +136,15 @@ def guide_text(module, unit):
     lines.extend(["## Práctica", "", unit["practice"], "", "## Preguntas de repaso", ""])
     for item in unit["review"]:
         lines.extend(["### " + item["question"], "", item["answer"], ""])
+    lines.extend(["## Evaluación crítica", "", "Elija una opción y justifique la causa antes de consultar la retroalimentación. El puntaje de opciones no califica su explicación ni demuestra comprensión por sí solo.", ""])
+    for number, question in enumerate(unit["assessment"], 1):
+        lines.extend([f"### Escenario {number}: {question['prompt']}", ""])
+        if question.get("code"):
+            lines.extend(["```csharp", question["code"], "```", ""])
+        lines.extend([f"- {index + 1}. {option}" for index, option in enumerate(question["options"])])
+        lines.extend(["", "**Justifique:** " + question["reasonPrompt"], "", "<details>", "<summary>Contrastar mi razonamiento</summary>", "", f"Opción esperada: {question['correctIndex'] + 1}. {question['explanation']}", ""])
+        lines.extend([f"- {criterion}" for criterion in question["rubric"]])
+        lines.extend(["", "</details>", ""])
     lines.extend([
         "## Alcance de este repaso", "",
         "Estas preguntas son material propio, no respuestas de la evaluación oficial. El proyecto no otorga insignias ni envía progreso a Microsoft Learn o freeCodeCamp.", "",

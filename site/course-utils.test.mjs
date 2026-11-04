@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { certificationPaths, filterUnits, normalizeSearch, parseLessonHash } from "./course-utils.mjs";
+import { summarizeProgress, gradeChoices } from "./study-state.mjs";
 
 test("el recorrido distingue las seis rutas oficiales del contenido local", () => {
   assert.equal(certificationPaths.length, 6);
@@ -48,4 +49,41 @@ test("parseLessonHash admite ids codificados con barra y rechaza hashes ajenos",
   assert.equal(parseLessonHash("#/"), null);
   assert.equal(parseLessonHash("#/otra-ruta/archivos"), null);
   assert.equal(parseLessonHash("#/leccion/%E0%A4%A"), null);
+});
+
+const units = [{ id: "a", title: "Primera" }, { id: "b", title: "Segunda" }];
+
+test("el progreso inicia vacío, sin atribuir comprensión ni modificar estados", () => {
+  const states = new Map();
+  assert.deepEqual(summarizeProgress(units, states), {
+    total: 2, reviewed: 0, reinforce: 0, explain: 0, reinforcement: [],
+  });
+  assert.equal(states.size, 0);
+});
+
+test("la autoevaluación distingue refuerzo y comprensión y admite volver a pendiente", () => {
+  const states = new Map([["a", "reinforce"], ["b", "explain"], ["ajena", "explain"]]);
+  assert.deepEqual(summarizeProgress(units, states), {
+    total: 2, reviewed: 2, reinforce: 1, explain: 1, reinforcement: [units[0]],
+  });
+  states.set("a", "explain");
+  assert.equal(summarizeProgress(units, states).reinforcement.length, 0);
+  states.set("b", "pending");
+  assert.equal(summarizeProgress(units, states).reviewed, 1);
+});
+
+const questions = [
+  { id: "q1", correctIndex: 1, options: ["a", "b", "c"] },
+  { id: "q2", correctIndex: 0, options: ["a", "b", "c"] },
+];
+
+test("la revisión puntúa las decisiones, no las explicaciones ni el estado de aprendizaje", () => {
+  assert.deepEqual(gradeChoices(questions, { q1: "1", q2: "0" }), { correct: 2, total: 2, answered: 2 });
+  assert.deepEqual(gradeChoices(questions, { q1: "0", q2: "2" }), { correct: 0, total: 2, answered: 2 });
+  assert.deepEqual(gradeChoices(questions, {}), { correct: 0, total: 2, answered: 0 });
+});
+
+test("una opción vacía, fuera de rango o no numérica no cuenta como respuesta", () => {
+  assert.deepEqual(gradeChoices(questions, { q1: "", q2: null }), { correct: 0, total: 2, answered: 0 });
+  assert.deepEqual(gradeChoices(questions, { q1: "99", q2: "texto" }), { correct: 0, total: 2, answered: 0 });
 });

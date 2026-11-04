@@ -9,7 +9,7 @@ El material original no tenía una suite de pruebas. El sitio nuevo incorpora pr
 | Comprobación | Comando o evidencia | Alcance |
 |---|---|---|
 | Generación | `python3 -m unittest discover -s tests -v` | Un proyecto y guía por unidad; solución con carpetas propias; recursos y ZIP completos; salida pública limitada |
-| Interfaz, helpers | `node --test site/course-utils.test.mjs` | Búsqueda con tildes/mayúsculas, filtrado y rutas hash |
+| Interfaz, helpers | `node --test site/course-utils.test.mjs` | Búsqueda, rutas, autoevaluación reversible y puntuación sin calificación de explicaciones |
 | JavaScript | `node --check site/app.mjs` | Sintaxis del programa de la interfaz |
 | Proyectos de repaso | `dotnet build aprende-csharp-dotnet.slnx` | Compila las 67 unidades con ejemplos comentados intencionalmente |
 | Ejemplos de las guías | Extracción aislada de los 36 bloques C# y `dotnet build` | Comprueba que sean programas completos compilables; no implica haber probado cada entrada interactiva |
@@ -30,10 +30,11 @@ dotnet build aprende-csharp-dotnet.slnx
 
 ## Evidencia observada
 
-- Dos tests Python y cuatro tests Node: aprobados. El cuarto comprueba las seis rutas oficiales y distingue disponibilidad local de avance oficial.
+- Dos tests Python y ocho tests Node: aprobados. Incluyen las seis rutas oficiales, la cobertura de 134 escenarios críticos, estados de autoevaluación y puntajes de opciones.
 - Solución nueva de 67 unidades: compilación correcta, sin advertencias.
 - 36 ejemplos C# extraídos en proyectos aislados: compilación correcta, sin advertencias.
 - Navegador de escritorio y móvil (375 px): búsqueda, estado vacío, preguntas desplegables, descargas completas, anterior/siguiente y recarga de lección comprobados.
+- `tests/browser-study-smoke.js`: opciones y justificaciones obligatorias, puntajes 0/2 y 2/2, retroalimentación, autoevaluación reversible, lista de refuerzo, borradores al navegar y reinicio al recargar. El puntaje no marca comprensión automáticamente.
 - Los archivos originales se conservan; su contenido fuente se compara con huellas locales tomadas antes de generar el curso.
 
 Los registros locales de compilación están en `.checks/build-unidades.log` y `.checks/build-ejemplos.log`. `.checks/` no se publica en Pages.

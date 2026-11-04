@@ -19,7 +19,15 @@ Abra <http://localhost:4173/>. No abra `site/index.html` directamente con `file:
 2. Abra una unidad y revise el objetivo y los conocimientos previos.
 3. Lea cada paso, prediga la salida y contraste con el ejemplo.
 4. Abra el proyecto local de la unidad y active **un solo ejemplo completo** en una copia de trabajo.
-5. Resuelva la práctica y las preguntas de repaso; vuelva a la fuente oficial para realizar su evaluación.
+5. Resuelva la práctica y los dos escenarios críticos de la unidad: elija una opción y justifique su decisión antes de revisar la retroalimentación.
+6. Registre su autoevaluación: **Por revisar**, **Necesito reforzar** o **Puedo explicarlo y aplicarlo**. Los temas por reforzar aparecerán en su próximo repaso.
+7. Vuelva a la fuente oficial para realizar su evaluación. El puntaje local comprueba opciones, no la calidad de sus explicaciones ni su elegibilidad para el examen.
+
+### Seguimiento temporal
+
+La portada y el lector comparten el seguimiento de las 67 unidades. Sus estados, respuestas y borradores se conservan al navegar dentro de la pestaña, pero **se reinician al recargar o cerrar la página**. No se guardan en una cuenta ni en el navegador de forma persistente. Visitar una lección, leer un texto o acertar opciones no marca automáticamente comprensión.
+
+Cada unidad incluye dos preguntas críticas propias: **134 escenarios** para predecir resultados, diagnosticar errores y justificar decisiones. La retroalimentación ofrece una explicación y criterios para contrastar su razonamiento. Si edita una respuesta después de revisarla, debe revisarla otra vez para actualizar el resultado.
 
 **El código comentado es intencional:** funciona como cuaderno de aprendizaje. Ejecutar una unidad sin editarla muestra una orientación, no ejecuta todos sus ejemplos ni certifica que la haya completado. En `Program.cs`, los ejemplos están fuera de la clase de orientación: reemplace el archivo por un solo ejemplo completo para probarlo, en vez de quitar todos los comentarios a la vez.
 
@@ -37,6 +45,8 @@ course/                         Contenido editable y catálogo oficial
   catalog.json                  Rutas, módulos y unidades
   parte-01.json                 Explicaciones, ejemplos y repaso
   parte-02.json
+  evaluaciones-01.json          Escenarios críticos y criterios de revisión
+  evaluaciones-02.json
 curso/                          Generado: un proyecto por unidad
   parte-02/archivos/
     02-open-close-files-safely-with-using/
@@ -71,7 +81,7 @@ python3 tools/build_course.py
 dotnet build aprende-csharp-dotnet.slnx
 ```
 
-Las pruebas nuevas verifican la generación del material, los recursos públicos, la búsqueda y las rutas. No son el examen de Microsoft Learn ni pruebas de todas las variantes que usted active. Los ejercicios originales no tenían una suite automatizada; su código se conserva para consultar y comparar.
+Las pruebas verifican la generación del material y sus 134 preguntas, los recursos públicos, la búsqueda, las rutas, el resumen de autoevaluaciones y el puntaje de opciones. No son el examen de Microsoft Learn ni pruebas de todas las variantes que usted active. Los ejercicios originales no tenían una suite automatizada; su código se conserva para consultar y comparar.
 
 Los proyectos originales `6-functions` y `8-files` contienen únicamente comentarios; su solución original no tiene un punto de entrada para esos ejecutables. Esto **no es un defecto del material de aprendizaje** y no se alteraron sus apuntes para forzar su ejecución.
 

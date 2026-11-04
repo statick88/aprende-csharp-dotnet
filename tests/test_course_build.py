@@ -47,6 +47,10 @@ class CourseBuildTests(unittest.TestCase):
             data = json.loads((output / "course.json").read_text())
             self.assertEqual(data["schemaVersion"], 1)
             self.assertEqual(len(data["modules"]), 9)
+            self.assertTrue((output / "study-state.mjs").is_file())
+            questions = [q for m in data["modules"] for u in m["units"] for q in u["assessment"]]
+            self.assertEqual(len(questions), 134)
+            self.assertTrue(all(len(q["options"]) == 3 and 0 <= q["correctIndex"] < 3 and len(q["rubric"]) == 2 for q in questions))
             for module in data["modules"]:
                 for unit in module["units"]:
                     for key in ["projectUrl", "guideUrl", "sourceCodeUrl"]:
@@ -54,6 +58,11 @@ class CourseBuildTests(unittest.TestCase):
                         self.assertFalse(resource.startswith("/"))
                         self.assertNotIn("..", resource.split("/"))
                         self.assertTrue((output / resource).is_file(), resource)
+                    guide = (output / unit["guideUrl"]).read_text()
+                    self.assertIn("## Evaluación crítica", guide)
+                    for question in unit["assessment"]:
+                        self.assertIn(question["prompt"], guide)
+                        self.assertIn(question["explanation"], guide)
                     self.assertTrue(unit["projectUrl"].endswith(".zip"))
                     with zipfile.ZipFile(output / unit["projectUrl"]) as archive:
                         self.assertEqual(set(archive.namelist()), {"Unidad.csproj", "Program.cs", "README.md"})
