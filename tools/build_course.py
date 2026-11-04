@@ -62,7 +62,9 @@ def load_course():
                 assert step["title"] and step["text"]
                 step.setdefault("code", "")
                 step.setdefault("expected", "")
-    return {"schemaVersion": 1, "title": catalog["title"], "modules": modules}
+    reference = json.loads((ROOT / "course/herramientas-dotnet.json").read_text())
+    assert reference["title"] and reference["intro"] and reference["sections"] and reference["sources"]
+    return {"schemaVersion": 1, "title": catalog["title"], "modules": modules, "toolsReference": reference}
 
 
 def relative_path(path):
@@ -153,6 +155,19 @@ def guide_text(module, unit):
 
 
 def materialize(course):
+    reference = course["toolsReference"]
+    guide = [f"# {reference['title']}", "", "[Volver al índice](../README.md)", "", reference["intro"], ""]
+    for section in reference["sections"]:
+        guide.extend([f"## {section['title']}", ""])
+        for item in section["items"]:
+            guide.extend([f"### {item['title']}", "", item["text"], ""])
+            if item.get("command"):
+                guide.extend(["```bash", item["command"], "```", ""])
+            if item.get("expected"):
+                guide.extend(["**Resultado esperado:** " + item["expected"], ""])
+    guide.extend(["## Fuentes oficiales", ""])
+    guide.extend([f"- [{source['title']}]({source['url']})" for source in reference["sources"]])
+    (ROOT / "docs/HERRAMIENTAS-DOTNET.md").write_text("\n".join(guide) + "\n")
     solution = ET.Element("Solution")
     for module in course["modules"]:
         for unit in module["units"]:

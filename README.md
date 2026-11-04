@@ -47,6 +47,7 @@ course/                         Contenido editable y catálogo oficial
   parte-02.json
   evaluaciones-01.json          Escenarios críticos y criterios de revisión
   evaluaciones-02.json
+  herramientas-dotnet.json      Comandos, SDK y configuración de VS Code
 curso/                          Generado: un proyecto por unidad
   parte-02/archivos/
     02-open-close-files-safely-with-using/
@@ -85,6 +86,7 @@ Las pruebas verifican la generación del material y sus 134 preguntas, los recur
 
 Los proyectos originales `6-functions` y `8-files` contienen únicamente comentarios; su solución original no tiene un punto de entrada para esos ejecutables. Esto **no es un defecto del material de aprendizaje** y no se alteraron sus apuntes para forzar su ejecución.
 
+- [Comandos dotnet y configuración de VS Code](docs/HERRAMIENTAS-DOTNET.md): también disponibles en **Herramientas .NET** dentro del sitio.
 - [Preparar GitHub Pages](docs/GITHUB-PAGES.md)
 - [Ruta de certificación y avance observado](docs/RUTA-CERTIFICACION.md)
 - [Pruebas y alcance de la evidencia](docs/PRUEBAS.md)

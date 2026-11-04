@@ -47,6 +47,13 @@ class CourseBuildTests(unittest.TestCase):
             data = json.loads((output / "course.json").read_text())
             self.assertEqual(data["schemaVersion"], 1)
             self.assertEqual(len(data["modules"]), 9)
+            reference = data["toolsReference"]
+            self.assertEqual(reference["title"], "Herramientas .NET y Visual Studio Code")
+            commands = [item["command"] for section in reference["sections"] for item in section["items"] if item.get("command")]
+            self.assertIn("dotnet --info", commands)
+            self.assertIn("code --install-extension ms-dotnettools.csdevkit", commands)
+            self.assertTrue(any(command.startswith("dotnet build") for command in commands))
+            self.assertTrue(any(command.startswith("dotnet run") for command in commands))
             self.assertTrue((output / "study-state.mjs").is_file())
             questions = [q for m in data["modules"] for u in m["units"] for q in u["assessment"]]
             self.assertEqual(len(questions), 134)

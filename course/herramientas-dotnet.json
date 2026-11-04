@@ -1,0 +1,61 @@
+{
+  "title": "Herramientas .NET y Visual Studio Code",
+  "intro": "Referencia complementaria para preparar su entorno y repasar la línea de comandos. .NET no es un plugin: el SDK crea y compila proyectos; el runtime ejecuta aplicaciones; las extensiones C# y C# Dev Kit integran esas herramientas en VS Code. Esta guía no agrega una insignia ni cambia las 67 unidades del curso.",
+  "sections": [
+    {
+      "id": "entorno",
+      "title": "1. Compruebe el SDK y el entorno",
+      "items": [
+        { "title": "Instale el SDK, no solo el runtime", "text": "Instale Visual Studio Code y el SDK de .NET 10 para su sistema operativo desde las fuentes oficiales. El curso usa net10.0. No basta con instalar la extensión del editor ni el runtime. Los comandos de esta guía son para practicar; el sitio no instala programas ni ejecuta comandos en su equipo." },
+        { "title": "Diagnóstico completo", "command": "dotnet --info", "text": "Muestra SDK, runtimes, sistema operativo y arquitectura. Úselo al investigar problemas del entorno.", "expected": "Debe aparecer un SDK compatible con net10.0. Si dotnet no se reconoce, revise la instalación y PATH antes de cambiar código." },
+        { "title": "SDK seleccionado", "command": "dotnet --version", "text": "Muestra el SDK que usa el directorio actual. Un archivo global.json puede influir en la selección; no es la versión del lenguaje C# ni la lista de todos los SDK.", "expected": "En el entorno de esta revisión se observó 10.0.403; su equipo puede tener otro parche de .NET 10." },
+        { "title": "SDK disponibles", "command": "dotnet --list-sdks", "text": "Permite comprobar si realmente está instalado un SDK de .NET 10, incluso si hay varias versiones." },
+        { "title": "Runtimes disponibles", "command": "dotnet --list-runtimes", "text": "Lista los entornos de ejecución. Ver un runtime no demuestra que el SDK esté instalado." }
+      ]
+    },
+    {
+      "id": "vscode",
+      "title": "2. Configure C# en Visual Studio Code",
+      "items": [
+        { "title": "Abra la carpeta del curso", "command": "code .", "text": "Ejecute desde la raíz del repositorio. Si code no se reconoce, abra VS Code manualmente con File > Open Folder y configure su comando de terminal según el instalador de su sistema. Utilice únicamente espacios de trabajo de confianza." },
+        { "title": "Instale C# Dev Kit de Microsoft", "command": "code --install-extension ms-dotnettools.csdevkit", "text": "También puede buscar C# Dev Kit en Extensions (Ctrl+Shift+X en Windows/Linux; Cmd+Shift+X en macOS). Compruebe el publicador Microsoft y el identificador exacto. C# Dev Kit se apoya en la extensión C# para servicios del lenguaje y agrega explorador de soluciones, plantillas y pruebas. Puede solicitar inicio de sesión según su configuración y condiciones de licencia; consulte la fuente oficial.", "expected": "La extensión aparece habilitada. Esto no sustituye comprobar el SDK con dotnet --list-sdks." },
+        { "title": "Conozca la extensión C# básica", "command": "code --install-extension ms-dotnettools.csharp", "text": "Proporciona soporte del lenguaje, IntelliSense y depuración. C# Dev Kit la usa como base; si ya se instaló como dependencia no necesita instalarla otra vez. La CLI sigue siendo útil para compilar y ejecutar sin depender de la interfaz del editor." },
+        { "title": "Revise las extensiones instaladas", "command": "code --list-extensions --show-versions", "text": "Busque los identificadores ms-dotnettools.csdevkit y ms-dotnettools.csharp. Sus versiones son independientes del SDK y del TargetFramework del proyecto." },
+        { "title": "Genere la solución de aprendizaje", "command": "python3 tools/build_course.py", "text": "Este comando es del repositorio, no de .NET. Genera aprende-csharp-dotnet.slnx y los proyectos de las unidades. Seleccione esa solución en VS Code; curso_net.slnx conserva los apuntes originales comentados." },
+        { "title": "Ejecute y depure conscientemente", "text": "Abra una unidad generada y revise Program.cs. Ctrl+F5 ejecuta sin depuración y F5 permite depurar cuando el proyecto está seleccionado. Para practicar un ejemplo, copie un único bloque completo en un archivo de trabajo, coloque un punto de interrupción y avance paso a paso. No quite todos los comentarios a la vez ni confunda ejecutar el mensaje de orientación con completar la lección." }
+      ]
+    },
+    {
+      "id": "comandos",
+      "title": "3. Comandos dotnet para el trabajo diario",
+      "items": [
+        { "title": "Pida ayuda antes de memorizar opciones", "command": "dotnet --help\ndotnet new --help\ndotnet build --help", "text": "Cada comando dispone de ayuda. Compruebe nombres de opciones en el SDK que tenga instalado." },
+        { "title": "Cree una aplicación de práctica", "command": "dotnet new console -n MiPractica -o practicas/MiPractica", "text": "Ejecute desde una carpeta de trabajo elegida para practicar. Crea archivos y puede restaurar dependencias; no lo ejecute sobre una carpeta con trabajo que quiera conservar.", "expected": "Se crean MiPractica.csproj y Program.cs en practicas/MiPractica." },
+        { "title": "Restaure dependencias", "command": "dotnet restore practicas/MiPractica/MiPractica.csproj", "text": "Resuelve paquetes y referencias; puede necesitar conexión a NuGet. build y run suelen realizar una restauración implícita. No confunda restaurar con ejecutar el programa." },
+        { "title": "Compile sin ejecutar", "command": "dotnet build practicas/MiPractica/MiPractica.csproj", "text": "Comprueba el código y genera resultados en bin/ y obj/. Compilar no demuestra que todos los casos de uso sean correctos." },
+        { "title": "Ejecute una práctica concreta", "command": "dotnet run --project practicas/MiPractica/MiPractica.csproj", "text": "Seleccione explícitamente el proyecto cuando hay varios. --project no cambia automáticamente el directorio de trabajo de los archivos relativos.", "expected": "La plantilla de consola muestra Hello, World! si no se cambió su código." },
+        { "title": "Compile las unidades del curso", "command": "dotnet build aprende-csharp-dotnet.slnx", "text": "Primero genere esta solución con python3 tools/build_course.py. Agrupa los 67 proyectos independientes, sin activar los ejemplos comentados." },
+        { "title": "Ejecute la unidad de archivos", "command": "dotnet run --project curso/parte-02/archivos/02-open-close-files-safely-with-using/Unidad.csproj", "text": "Sin editar Program.cs, imprime la orientación de estudio. Practique sobre una copia: regenerar el curso reemplaza los archivos de cada unidad." },
+        { "title": "Ejecute pruebas .NET cuando existan", "command": "dotnet test RUTA_AL_PROYECTO_DE_PRUEBAS.csproj", "text": "RUTA_AL_PROYECTO_DE_PRUEBAS es un marcador que debe sustituir por un proyecto de pruebas real. El material C# original no tiene xUnit, NUnit o MSTest. Un resultado sin tests descubiertos no prueba su código. Las pruebas del sitio usan Python y Node, no dotnet test." },
+        { "title": "Limpie resultados de compilación", "command": "dotnet clean practicas/MiPractica/MiPractica.csproj", "text": "Limpia resultados de compilación del proyecto; no equivale a borrar sus fuentes o apuntes ni a desinstalar paquetes." },
+        { "title": "Prepare una salida de distribución", "command": "dotnet publish practicas/MiPractica/MiPractica.csproj -c Release -o salida/MiPractica", "text": "Genera archivos para distribuir la aplicación .NET. No los sube a Internet ni despliega GitHub Pages. Este sitio de repaso es estático y se publica mediante el workflow de Pages." }
+      ]
+    },
+    {
+      "id": "diagnostico",
+      "title": "4. Diagnóstico y lista de comprobación",
+      "items": [
+        { "title": "El editor no encuentra el SDK", "text": "Compare dotnet --info en la terminal externa y la terminal integrada. Reinicie VS Code después de instalar el SDK y revise arquitectura, PATH y global.json. No copie rutas de otro equipo ni instale SDK adicionales sin identificar qué versión pide el proyecto." },
+        { "title": "No aparecen autocompletado o proyectos", "text": "Compruebe la extensión habilitada, abra la carpeta y la solución correctas, espere la restauración y revise View > Output de C# / C# Dev Kit. Abrir un .cs suelto no siempre proporciona el mismo contexto que un proyecto .csproj." },
+        { "title": "Aparece CS5001 en los apuntes originales", "text": "Los ejemplos de 6-functions y 8-files están comentados por diseño. No existe un punto de entrada activo en esos ejecutables originales. Para estudiar por unidad use aprende-csharp-dotnet.slnx; no active todos los apuntes para eliminar el error." },
+        { "title": "Antes de dar el entorno por listo", "text": "Compruebe que puede identificar un SDK, abrir el proyecto en VS Code, compilarlo, ejecutarlo y detenerse en un punto de interrupción de un ejemplo activo. Explique qué hizo cada herramienta: instalar una extensión por sí solo no demuestra que el entorno esté completo." }
+      ]
+    }
+  ],
+  "sources": [
+    { "title": ".NET en Visual Studio Code", "url": "https://code.visualstudio.com/docs/languages/dotnet" },
+    { "title": "Primeros pasos con C# y C# Dev Kit", "url": "https://code.visualstudio.com/docs/csharp/get-started" },
+    { "title": "Referencia oficial de la CLI dotnet", "url": "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet" },
+    { "title": "Descarga del SDK de .NET", "url": "https://dotnet.microsoft.com/download" }
+  ]
+}

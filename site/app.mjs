@@ -131,7 +131,47 @@ function renderHome() {
     }
     catalogSection.append(catalog);
   }
-  app.append(makeProgressPanel(units.map(({ unit }) => unit), studyStates, lessonHref), makeNextSteps(), catalogSection);
+  const tools = element('section', 'tools-entry');
+  tools.append(element('h2', undefined, 'Tu caja de herramientas .NET'));
+  tools.append(element('p', undefined, 'Repasa los comandos dotnet y configura el SDK, C# y C# Dev Kit en Visual Studio Code. Es una guía complementaria, no una insignia adicional.'));
+  tools.append(link('Ver comandos y configuración de VS Code →', '#/herramientas-dotnet', 'secondary-cta'));
+  app.append(makeProgressPanel(units.map(({ unit }) => unit), studyStates, lessonHref), tools, makeNextSteps(), catalogSection);
+}
+
+function renderToolsReference() {
+  clearApp();
+  const reference = course.toolsReference;
+  const article = element('article', 'lesson tools-reference');
+  article.append(link('← Volver al recorrido', '#/catalogo', 'text-link'));
+  article.append(element('p', 'eyebrow', 'REFERENCIA COMPLEMENTARIA'));
+  article.append(element('h1', undefined, reference.title), element('p', undefined, reference.intro));
+  for (const group of reference.sections) {
+    const section = element('section');
+    section.append(element('h2', undefined, group.title));
+    for (const item of group.items) {
+      const block = element('section', 'step');
+      block.append(element('h3', undefined, item.title), element('p', undefined, item.text));
+      if (item.command) {
+        const pre = element('pre');
+        pre.append(element('code', undefined, item.command));
+        block.append(pre);
+      }
+      if (item.expected) block.append(element('p', 'expected', `Resultado esperado: ${item.expected}`));
+      section.append(block);
+    }
+    article.append(section);
+  }
+  const sources = element('section');
+  sources.append(element('h2', undefined, 'Fuentes oficiales'));
+  const list = element('ul');
+  for (const source of reference.sources) {
+    const item = element('li');
+    appendIf(item, externalLink(source.title, source.url));
+    list.append(item);
+  }
+  sources.append(list);
+  article.append(sources);
+  app.append(article);
 }
 
 function makeNextSteps() {
@@ -286,6 +326,11 @@ function renderNotFound() {
 
 function renderRoute() {
   if (!course) return;
+  if (window.location.hash === '#/herramientas-dotnet') {
+    renderToolsReference();
+    window.scrollTo(0, 0);
+    return;
+  }
   const id = parseLessonHash(window.location.hash);
   if (id) {
     const record = findUnit(id);
@@ -332,7 +377,7 @@ async function loadCourse() {
 
 search.addEventListener("input", () => {
   if (!course) return;
-  if (parseLessonHash(window.location.hash)) {
+  if (parseLessonHash(window.location.hash) || window.location.hash === '#/herramientas-dotnet') {
     window.location.hash = "#/catalogo";
   } else {
     renderHome();
