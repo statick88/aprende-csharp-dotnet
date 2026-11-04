@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/5-functions/" />
+  <Project Path="1-variables/1-variables.csproj" />
+  <Project Path="2-tipos-datos/2-tipos-datos.csproj" />
+  <Project Path="3-condiciones/3-condiciones.csproj" />
+  <Project Path="4-bucle/4-bucle.csproj" />
+  <Project Path="5-arrays-lists/5-arrays-lists.csproj" />
+  <Project Path="6-functions/6-functions.csproj" />
+  <Project Path="7-billing/7-billing.csproj" />
+  <Project Path="8-files/8-files.csproj" />
+</Solution>

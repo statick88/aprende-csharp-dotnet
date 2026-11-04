@@ -1,0 +1,19 @@
+# Generated .NET files
+**/bin/
+**/obj/
+
+# Generated course and static output (source: course/*.json)
+curso/
+aprende-csharp-dotnet.slnx
+_site/
+
+# Local verification, browser captures and Python cache
+.checks/
+.playwright-mcp/
+__pycache__/
+*.pyc
+
+# Never publish local private configuration
+.env
+.env.*
+secrets/
