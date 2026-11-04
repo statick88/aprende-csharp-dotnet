@@ -6,7 +6,13 @@ El sitio es estático. `.github/workflows/pages.yml` construye **solo `_site/`**
 
 ## Estado de esta entrega
 
-El workflow está preparado, pero **no se ha ejecutado en GitHub ni hay una URL pública confirmada**. Esta copia no tiene `origin` configurado. El nombre sugerido es `aprende-csharp-dotnet`; cambiar el nombre remoto no es necesario para usar el sitio.
+**Publicado y verificado:** <https://statick88.github.io/aprende-csharp-dotnet/>.
+
+El repositorio es público: [statick88/aprende-csharp-dotnet](https://github.com/statick88/aprende-csharp-dotnet), con rama `main` y remoto `origin`. La [ejecución 41930807808](https://github.com/statick88/aprende-csharp-dotnet/actions/runs/41930807808) terminó con build y deploy aprobados.
+
+Se ejecutaron los tres smoke de navegador contra la URL pública: recorrido y descargas, evaluaciones/seguimiento temporal y herramientas .NET/VS Code. Incluyen recarga, búsqueda y vista móvil de 375 px.
+
+La primera ejecución falló en Configure Pages porque el sitio todavía no estaba habilitado. Se habilitó Pages con GitHub Actions y se reejecutó una vez, sin cambiar el workflow ni ampliar permisos.
 
 ## Paso a paso en GitHub
 

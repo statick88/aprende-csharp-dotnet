@@ -1,5 +1,9 @@
 # Aprende C# y .NET
 
+**Sitio publicado:** <https://statick88.github.io/aprende-csharp-dotnet/>
+
+**Comandos y VS Code:** <https://statick88.github.io/aprende-csharp-dotnet/#/herramientas-dotnet>
+
 **Objetivo principal: prepararse para aprobar [Foundational C# with Microsoft](https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft/).** Un lugar para repasar a su ritmo, con teoría paso a paso, ejemplos comentados y un proyecto .NET independiente por unidad. La navegación está inspirada en aprendejavascript.dev y la identidad visual usa el morado de .NET. Material propio en español latino de Ecuador, sin afiliación a Microsoft.
 
 ## Abrir el sitio localmente
@@ -94,7 +98,7 @@ Los proyectos originales `6-functions` y `8-files` contienen únicamente comenta
 
 ## Identidad y referencias
 
-Nombre sugerido del repositorio: **`aprende-csharp-dotnet`**. El sitio no depende de ese nombre: los recursos son relativos y las lecciones usan rutas hash para funcionar bajo `/nombre-del-repositorio/` en GitHub Pages. No se ha renombrado ningún repositorio remoto ni publicado desde esta copia.
+Nombre sugerido del repositorio: **`aprende-csharp-dotnet`**. El sitio no depende de ese nombre: los recursos son relativos y las lecciones usan rutas hash para funcionar bajo `/nombre-del-repositorio/` en GitHub Pages. El código está publicado en [statick88/aprende-csharp-dotnet](https://github.com/statick88/aprende-csharp-dotnet), rama `main`. GitHub Pages está publicado en <https://statick88.github.io/aprende-csharp-dotnet/>. El [workflow de despliegue](https://github.com/statick88/aprende-csharp-dotnet/actions/runs/41930807808) completó build y deploy; se comprobaron navegación, evaluaciones, descargas, herramientas y vista móvil en la URL pública.
 
 - [Certificación en freeCodeCamp](https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft)
 - [Módulo oficial de archivos](https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/)

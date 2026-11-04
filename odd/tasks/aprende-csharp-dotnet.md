@@ -1,6 +1,6 @@
 # Aprende C# y .NET
-Objetivo: sitio estático de repaso y un proyecto .NET por unidad. Rama: feat/curso-por-unidad.
-Entrega local; GitHub Pages preparado, sin remoto/publicación. Verificación: Python unittest, dotnet build, navegador.
+Objetivo: sitio estático de repaso y un proyecto .NET por unidad. Rama: main (renombrada por instrucción del usuario).
+Entrega en producción: https://statick88.github.io/aprende-csharp-dotnet/. Verificación: Python/Node, Actions y navegador público.
 
 ## Specs
 - S1: "este es un repositorio de aprendizaje, es por ello que el codigo esta comentado".
@@ -18,6 +18,11 @@ Entrega local; GitHub Pages preparado, sin remoto/publicación. Verificación: P
 
 - S11: "el objetivo principal es aprobar esta certificacion: https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft/".
 
+- S12: "sube a producion".
+- S13: "crea el repositorio" (respuesta a crear uno público llamado aprende-csharp-dotnet).
+
+- S14: "agrega una seccion especial para los comandos dotnet y la configuracion de .Net como plugin en vscode git remote add origin https://github.com/statick88/aprende-csharp-dotnet.git\ngit branch -M main\ngit push -u origin main".
+
 ## Tasks
 - T1 | S1-S9 | inline | done | Catálogo oficial: 9 módulos y 67 unidades; tres láminas en design/aprende-csharp-dotnet; elegida 01-recorrido.html, alternativas 02 y 03. Contrato L9-L10.
 - T2 | S1-S6,S9 | delegated parallel | done | T2a/T2b: JSON, ids, URLs y orden comprobados; T2b recibió una corrección para ejemplos completos. T2c: 3 tests node y sintaxis pasan; navegador pendiente en T6. ASSESS sin candidato por archivos no rastreados; autoverificación. Commits pendientes de integración.
@@ -25,7 +30,10 @@ Entrega local; GitHub Pages preparado, sin remoto/publicación. Verificación: P
 - T4 | S4-S6,S9 | delegated | dropped | Absorbida como unidad independiente T2c; no se elimina el resultado.
 - T5 | S1-S4,S7-S11 | inline | done | Portada enfocada en certificación y recorrido de seis rutas; tests 2 Python/4 Node, 67 proyectos y 36 ejemplos compilables; originales intactos. Commits 80b7b22,73a1c70,7d807fb.
 - T6 | S1-S11 | inline + independent verify (item 5: workflow de despliegue) | done | Python 2/2 y Node 4/4; smoke raíz/subruta/móvil y objetivo de certificación PASS; 67 proyectos y 36 ejemplos compilan. Verificador independiente PASS para commit7d807fb. Smoke fijado en a391413. Sin aprobación nativa (ASSESS unassessable).
-- T7 | S7-S8 | inline | blocked | Espera URL del repositorio de GitHub de destino y confirmación de si usar uno existente o crear aprende-csharp-dotnet. No hay origin ni publicación remota.
+- T10 | S4,S14 | inline | done | Commit1815705: guía complementaria en sitio/Markdown; SDK vs runtime/C#DevKit, comandos, diagnóstico. RED KeyError toolsReference observado; 2Python/8Node y browser herramientas/regresión/móvil PASS.
+- T7 | S7-S8,S12-S14 | inline | done | job11 exit0: main publicada y rastrea origin/main en statick88/aprende-csharp-dotnet; HEAD1815705. Sin force ni cambios locales pendientes incluidos.
+- T8 | S7,S12 | inline | done | job15 exit0: reejecución41930807808 build15s/deploy11s PASS; Pages configurado con workflow sin ampliar permisos. Primera falla corregida al habilitar sitio.
+- T9 | S7,S12,S14 | inline | done | URL pública verificada: browser-smoke, browser-study-smoke y browser-tools-smoke PASS (9módulos,67unidades,134preguntas,navegación,ZIP,recarga,seguimiento,herramientas,móvil375px). README y guía Pages actualizados.
 
 ## Log
 L1: este es un repositorio de aprendizaje, es por ello que el codigo esta comentado, asi que necesito que cada proyecto se divida por cada seccion segun la insignia, documentando el paso a paso de lo que se debe ir conociendo para conseguir la certificacion https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft/create-and-run-simple-c-sharp-console-applications/read-and-write-files-in-c-sharp
@@ -59,3 +67,23 @@ L21: Commits: f744035 baseline original (1551 líneas, importación íntegra de 
 
 L22: Verificador independiente mw2o692p-6-j9mq: PASS de S7,S8 e interacciones S1-S3,S10,S11 sobre workflow 7d807fb; pruebas en git archive aislado 2 Python y 4 Node; 265 URLs relativas y 67 ZIP revisados, sin bloqueos. No se añadieron gates sugeridos no necesarios. Parent spot-check de los mismos tests PASS. Smoke final bajo /aprende-csharp-dotnet/ PASS: 9 módulos,67unidades,seisrutas,objetivocertificación,footereliminado,búsqueda,repaso,descargas,recarga,anterior/siguiente,móvil375px. Handoff 01-recorrido implementado con preview http://127.0.0.1:4173/.
 L23: Entrega local lista; no hay remoto origin, por lo que no se ejecutó Actions ni se publicó en Pages y no se renombró un repositorio remoto. T7 espera decisión concreta de destino. Contenido local actual: partes1-2; partes3-6 son enlaces de continuación y están pendientes de desarrollar, no se afirma preparación completa. Los ejemplos se compilaron, no se ejecutaron todas sus entradas.
+
+L24: sube a producion
+L25: crea el repositorio
+L26: Autorizada creación pública aprende-csharp-dotnet en la cuenta autenticada gh y despliegue Pages. Se verifica identidad sin leer/imprimir tokens, se publica únicamente HEAD confirmado (8aa76e7), preservando láminas02/03 y metadatoscanvas locales sin staging. No se sobrescribe ningún repositorio existente. Workflow de despliegue ya tiene verificación independiente PASS y no se cambia en esta entrega.
+
+L27: Verificación local previa a publicar: 2Python/8Node y build67unidades PASS. gh api user --jq .login falló con exit1 por conexión a api.github.com (job9), no por una creación ambigua. Diagnóstico alternativo: navegador https://github.com/new redirige a login sin sesión. No se leyó token ni contraseña, no se creó repositorio, no se configuró origin y no hubo push/deploy. T7 espera inicio de sesión humano en el navegador para retomar la creación ya autorizada. No se reintentó el comando fallido.
+
+L28: agrega una seccion especial para los comandos dotnet y la configuracion de .Net como plugin en vscode git remote add origin https://github.com/statick88/aprende-csharp-dotnet.git
+git branch -M main
+git push -u origin main
+L29: Sección complementaria Herramientas .NET (no insignia adicional ni cambio de las67unidades). Diferenciar SDK/runtime/C#DevKit. Fuentes oficiales code.visualstudio.com/docs/languages/dotnet, /docs/csharp/get-started y learn.microsoft.com/en-us/dotnet/core/tools/dotnet. No instalar extensiones/SDK en la máquina: solo explicar pasos. Cambios pequeños y dependientes entre contenido/interfaz/generador se implementan inline. Pronóstico ~300líneas, commit único con tests/guías; publicación después, sin force ni incluir láminas/capturas pendientes.
+
+L30: git ls-remote al destino indicado PASS exit0 vacío. Commit1815705 de herramientas verificado: 2Python/8Node, smoke herramientas y regresión/móvil PASS. origin agregado, rama renombrada main y push job11 exit0 (upstream origin/main). Pages API job12 exit0: build_type=workflow, html_url=https://statick88.github.io/aprende-csharp-dotnet/, status=null. Esto prueba configuración, no deploy exitoso. job13 observa workflow con gh run watch --exit-status; no se publica aún como verificado. NativeASSESS del commit1815705 devuelve unassessable por no rastreados, sin veredicto; plan autoverificación sin independiente.
+
+L31: job13 exit1: repo metadata confirma público,defaultbranchmain,URLGitHubcorrecta; workflow41930807808 ya terminó failure. Job14 ejecuta gh run view --log-failed con pipefail para obtener causa; no se relanza a ciegas. T8 sigue en progreso; T9 espera un despliegue aprobado. Plan revisado: herramientas ypushdone,deploysinverificar.
+
+L32: job14 logfailed confirma error en Configure Pages: Get Pages site NotFound (enablementfalse), anterior a habilitación Pages. No fallaron tests/build ni faltan archivos. La configuración ya habilitada corrige esa causa; se relanza una única vez run41930807808 mediante gh run rerun y watch --exit-status enjob15. No se cambia código, permisos ni workflow.
+
+L33: job15 exit0: reejecución41930807808 build15s/deploy11s PASS, tests/build/Pages/upload/deploy aprobados. Sitio https://statick88.github.io/aprende-csharp-dotnet/ responde y muestra títuloAprendeC#y.NET. Tres smoke de navegador ejecutados sobre producción PASS: recorrido9módulos/67unidades,búsqueda,ZIPyfuentes,anterior/siguiente,recarga; evaluación134preguntas,justificación,score,feedback,autoevaluación,estadoefímero; herramientasdotnet/VSCode,recarga,búsqueda. Todos incluyen móvil375px. README ydocs/GITHUB-PAGES actualizados con URLs y resultado, sin modificar workflow.
+L34: Entrega: repositorio público https://github.com/statick88/aprende-csharp-dotnet,main/origin configurados. No se incluyeron cambios locales pendientes de láminas02/03 ni metadatoscanvas. Verificación nativa del último código no disponible por no rastreados (sin aprobación nativa); comprobaciones funcionales yCI reales PASS. Riesgoitem5: publicación y configuración de Pages, mitigada por verificación independiente previa del workflow sin cambios, Actions y navegador público. Partes3-6 siguen pendientes de desarrollar como contenido local; producción no implica certificación obtenida.
