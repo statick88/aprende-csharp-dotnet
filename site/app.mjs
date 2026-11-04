@@ -1,16 +1,19 @@
 import { certificationPaths, filterUnits, parseLessonHash } from "./course-utils.mjs";
 import { makeProgressPanel, makeStateControl, makeAssessment } from "./study-ui.mjs";
+import { loadProgress, saveProgress } from "./study-state.mjs";
 
 const app = document.querySelector("#app");
 const search = document.querySelector("#search");
 let course;
 const studyStates = new Map();
 const assessmentDrafts = new Map();
+let progressStorageStatus = 'ready';
 
 function refreshStudyProgress() {
   const units = allUnits().map(({ unit }) => unit);
+  progressStorageStatus = saveProgress(studyStates, units) ? 'ready' : 'unavailable';
   for (const panel of document.querySelectorAll('.study-progress')) {
-    panel.replaceWith(makeProgressPanel(units, studyStates, lessonHref));
+    panel.replaceWith(makeProgressPanel(units, studyStates, lessonHref, progressStorageStatus));
   }
   for (const control of document.querySelectorAll('.unit-study')) {
     const value = studyStates.get(control.dataset.studyId) || 'pending';
@@ -135,7 +138,7 @@ function renderHome() {
   tools.append(element('h2', undefined, 'Tu caja de herramientas .NET'));
   tools.append(element('p', undefined, 'Repasa los comandos dotnet y configura el SDK, C# y C# Dev Kit en Visual Studio Code. Es una guía complementaria, no una insignia adicional.'));
   tools.append(link('Ver comandos y configuración de VS Code →', '#/herramientas-dotnet', 'secondary-cta'));
-  app.append(makeProgressPanel(units.map(({ unit }) => unit), studyStates, lessonHref), tools, makeNextSteps(), catalogSection);
+  app.append(makeProgressPanel(units.map(({ unit }) => unit), studyStates, lessonHref, progressStorageStatus), tools, makeNextSteps(), catalogSection);
 }
 
 function renderToolsReference() {
@@ -205,7 +208,7 @@ function makeSidebar(activeId) {
   const aside = element("aside", "lesson-sidebar");
   aside.setAttribute("aria-label", "Navegación de lecciones");
   aside.append(element("p", "eyebrow", "RECORRIDO"));
-  aside.append(makeProgressPanel(allUnits().map(({ unit }) => unit), studyStates, lessonHref));
+  aside.append(makeProgressPanel(allUnits().map(({ unit }) => unit), studyStates, lessonHref, progressStorageStatus));
   for (const module of studyModules()) {
     const heading = element("h2", "sidebar-module", module.title);
     const list = element("ul", "sidebar-list");
@@ -367,6 +370,10 @@ async function loadCourse() {
     const data = await response.json();
     if (data?.schemaVersion !== 1 || !Array.isArray(data.modules)) throw new Error("Formato de curso no compatible");
     course = data;
+    const restored = loadProgress(allUnits().map(({ unit }) => unit));
+    studyStates.clear();
+    for (const [id, state] of restored.states) studyStates.set(id, state);
+    progressStorageStatus = restored.status;
     document.title = course.title || "Aprende C# y .NET";
     renderRoute();
   } catch (error) {

@@ -27,9 +27,13 @@ Abra <http://localhost:4173/>. No abra `site/index.html` directamente con `file:
 6. Registre su autoevaluación: **Por revisar**, **Necesito reforzar** o **Puedo explicarlo y aplicarlo**. Los temas por reforzar aparecerán en su próximo repaso.
 7. Vuelva a la fuente oficial para realizar su evaluación. El puntaje local comprueba opciones, no la calidad de sus explicaciones ni su elegibilidad para el examen.
 
-### Seguimiento temporal
+### Progreso guardado en este navegador
 
-La portada y el lector comparten el seguimiento de las 67 unidades. Sus estados, respuestas y borradores se conservan al navegar dentro de la pestaña, pero **se reinician al recargar o cerrar la página**. No se guardan en una cuenta ni en el navegador de forma persistente. Visitar una lección, leer un texto o acertar opciones no marca automáticamente comprensión.
+La portada y el lector comparten las autoevaluaciones de las 67 unidades. Los estados **Por revisar**, **Necesito reforzar** y **Puedo explicarlo y aplicarlo** se guardan en `localStorage` y se recuperan al recargar o volver a abrir el sitio en el mismo navegador y perfil. Visitar una lección o acertar opciones no marca automáticamente comprensión.
+
+No hay sincronización con una cuenta, otro dispositivo, Microsoft Learn ni freeCodeCamp. Borrar los datos del sitio o usar ciertos modos privados puede eliminar el progreso. Cada origen tiene su propio almacenamiento: la vista local y el sitio de producción no comparten datos.
+
+Solo se guardan los estados por unidad: las respuestas escritas y los borradores siguen siendo temporales y se reinician al recargar. Si el navegador bloquea el almacenamiento o no queda espacio, el sitio muestra un aviso y permite seguir estudiando en memoria, sin prometer conservar los nuevos cambios. Los datos guardados se validan antes de recuperarlos.
 
 Cada unidad incluye dos preguntas críticas propias: **134 escenarios** para predecir resultados, diagnosticar errores y justificar decisiones. La retroalimentación ofrece una explicación y criterios para contrastar su razonamiento. Si edita una respuesta después de revisarla, debe revisarla otra vez para actualizar el resultado.
 

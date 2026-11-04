@@ -10,7 +10,7 @@ function node(tag, className, text) {
 }
 
 /** Muestra autoevaluaciones explícitas, nunca progreso de certificación. */
-export function makeProgressPanel(units, states, lessonHref) {
+export function makeProgressPanel(units, states, lessonHref, storageStatus = 'ready') {
   const summary = summarizeProgress(units, states);
   const panel = node("section", "study-progress");
   const titleId = `study-progress-${controlId++}`;
@@ -26,7 +26,12 @@ export function makeProgressPanel(units, states, lessonHref) {
   status.setAttribute("role", "status");
   status.setAttribute("aria-live", "polite");
   panel.append(title, progress, status);
-  panel.append(node("p", "study-note", "Autoevaluación temporal: se conserva al navegar en esta pestaña y se reinicia al recargar. No representa trofeos ni avance oficial."));
+  const notices = {
+    ready: 'Tu progreso se guarda en este navegador. No se sincroniza con tu cuenta ni representa avance oficial. Los borradores se reinician al recargar.',
+    unavailable: 'El navegador no permite guardar el progreso. Puedes seguir en esta pestaña, pero los cambios se perderán al recargar. No representa avance oficial.',
+    invalid: 'No se pudo recuperar un progreso válido. Las nuevas autoevaluaciones se guardarán en este navegador; no representan avance oficial.',
+  };
+  panel.append(node('p', 'study-note', notices[storageStatus] || notices.unavailable));
   panel.append(node("h3", undefined, "Tu próximo repaso"));
   if (!summary.reinforcement.length) {
     panel.append(node("p", "study-empty", "Todavía no has marcado temas por reforzar."));

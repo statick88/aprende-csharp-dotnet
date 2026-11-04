@@ -30,11 +30,12 @@ dotnet build aprende-csharp-dotnet.slnx
 
 ## Evidencia observada
 
-- Dos tests Python y ocho tests Node: aprobados. Incluyen las seis rutas oficiales, la cobertura de 134 escenarios críticos, estados de autoevaluación y puntajes de opciones.
+- Dos tests Python y once tests Node: aprobados. Incluyen las seis rutas oficiales, la cobertura de 134 escenarios críticos, estados de autoevaluación y puntajes de opciones.
 - Solución nueva de 67 unidades: compilación correcta, sin advertencias.
 - 36 ejemplos C# extraídos en proyectos aislados: compilación correcta, sin advertencias.
 - Navegador de escritorio y móvil (375 px): búsqueda, estado vacío, preguntas desplegables, descargas completas, anterior/siguiente y recarga de lección comprobados.
-- `tests/browser-study-smoke.js`: opciones y justificaciones obligatorias, puntajes 0/2 y 2/2, retroalimentación, autoevaluación reversible, lista de refuerzo, borradores al navegar y reinicio al recargar. El puntaje no marca comprensión automáticamente.
+- `tests/browser-study-smoke.js`: opciones y justificaciones obligatorias, puntajes 0/2 y 2/2, retroalimentación, autoevaluación reversible, lista de refuerzo y persistencia del progreso al recargar/reabrir. Las justificaciones no se almacenan y el puntaje no marca comprensión automáticamente. La prueba usa un contexto de navegador aislado.
+- `tests/browser-storage-smoke.js`: almacenamiento bloqueado, aviso visible y continuidad del seguimiento en memoria. Los tests Node cubren además datos inválidos y fallo por falta de espacio, sin tocar claves ajenas.
 - Los archivos originales se conservan; su contenido fuente se compara con huellas locales tomadas antes de generar el curso.
 
 Los registros locales de compilación están en `.checks/build-unidades.log` y `.checks/build-ejemplos.log`. `.checks/` no se publica en Pages.

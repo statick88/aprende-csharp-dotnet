@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { certificationPaths, filterUnits, normalizeSearch, parseLessonHash } from "./course-utils.mjs";
-import { summarizeProgress, gradeChoices } from "./study-state.mjs";
+import { summarizeProgress, gradeChoices, loadProgress, saveProgress, PROGRESS_STORAGE_KEY } from "./study-state.mjs";
 
 test("el recorrido distingue las seis rutas oficiales del contenido local", () => {
   assert.equal(certificationPaths.length, 6);
@@ -86,4 +86,38 @@ test("la revisión puntúa las decisiones, no las explicaciones ni el estado de 
 test("una opción vacía, fuera de rango o no numérica no cuenta como respuesta", () => {
   assert.deepEqual(gradeChoices(questions, { q1: "", q2: null }), { correct: 0, total: 2, answered: 0 });
   assert.deepEqual(gradeChoices(questions, { q1: "99", q2: "texto" }), { correct: 0, total: 2, answered: 0 });
+});
+
+
+test("las autoevaluaciones se guardan y recuperan sin modificar claves ajenas", () => {
+  const values = new Map([["otro-sitio", "conservar"]]);
+  const storage = { getItem: (key) => values.get(key) ?? null, setItem: (key, value) => values.set(key, value) };
+  const states = new Map([["a", "reinforce"], ["b", "explain"]]);
+  assert.equal(saveProgress(states, units, () => storage), true);
+  assert.deepEqual(loadProgress(units, () => storage), { states, status: "ready" });
+  assert.equal(values.get("otro-sitio"), "conservar");
+  assert.ok(values.has(PROGRESS_STORAGE_KEY));
+  states.set("a", "pending");
+  assert.equal(saveProgress(states, units, () => storage), true);
+  assert.equal(loadProgress(units, () => storage).states.get("a"), "pending");
+});
+
+test("solo se recuperan unidades conocidas y estados válidos", () => {
+  const raw = JSON.stringify({ version: 1, states: [["a", "reinforce"], ["ajena", "explain"], ["b", "falso"], null] });
+  const loaded = loadProgress(units, () => ({ getItem: () => raw }));
+  assert.deepEqual([...loaded.states], [["a", "reinforce"]]);
+  assert.equal(loaded.status, "ready");
+  const malformed = loadProgress(units, () => ({ getItem: () => "JSON roto" }));
+  assert.equal(malformed.states.size, 0);
+  assert.equal(malformed.status, "invalid");
+  const incompatible = loadProgress(units, () => ({ getItem: () => JSON.stringify({ version: 99, states: [] }) }));
+  assert.equal(incompatible.status, "invalid");
+});
+
+test("el almacenamiento bloqueado o sin espacio no interrumpe el seguimiento", () => {
+  const denied = () => { throw new Error("acceso bloqueado"); };
+  assert.deepEqual(loadProgress(units, denied), { states: new Map(), status: "unavailable" });
+  assert.equal(saveProgress(new Map([["a", "reinforce"]]), units, denied), false);
+  const full = () => ({ setItem: () => { throw new Error("sin espacio"); } });
+  assert.equal(saveProgress(new Map([["a", "reinforce"]]), units, full), false);
 });
