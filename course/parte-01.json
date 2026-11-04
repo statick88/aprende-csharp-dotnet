@@ -1,0 +1,1162 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "id": "primer-codigo",
+      "title": "Primer código en C#",
+      "description": "Fundamentos para leer, ejecutar y conversar con una aplicación de consola.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/",
+      "part": 1,
+      "units": [
+        {
+          "id": "primer-codigo/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/1-introduction",
+          "objective": "Reconocer una aplicación de consola y el ciclo escribir, ejecutar y observar.",
+          "prerequisites": [
+            "Ninguno; una consola disponible."
+          ],
+          "steps": [
+            {
+              "title": "Ubique el punto de partida",
+              "text": "Un programa de consola inicia en instrucciones de nivel superior. Se leen de arriba hacia abajo y Console.WriteLine muestra evidencia inmediata de cada instrucción.",
+              "code": ""
+            },
+            {
+              "title": "Ejecute con intención",
+              "text": "Cambie un mensaje, guarde y ejecute. Compare exactamente la salida con el texto escrito; esa comparación será su primera forma de depuración.",
+              "code": ""
+            }
+          ],
+          "practice": "Escriba dos mensajes que identifiquen su sesión. Salida esperada: dos líneas en el mismo orden en que fueron escritas.",
+          "review": [
+            {
+              "question": "¿Qué permite comprobar Console.WriteLine?",
+              "answer": "Que el programa alcanzó una instrucción y produjo texto visible en la consola."
+            },
+            {
+              "question": "¿Por qué conviene ejecutar tras un cambio pequeño?",
+              "answer": "Porque relaciona un cambio concreto con su efecto y acota los errores."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/02-display-console-output",
+          "title": "Mostrar información en consola",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/2-display-console-output",
+          "objective": "Distinguir Write de WriteLine y usar secuencias de escape básicas.",
+          "prerequisites": [
+            "Instrucciones de nivel superior",
+            "Consola"
+          ],
+          "steps": [
+            {
+              "title": "Elija el salto de línea",
+              "text": "Console.WriteLine termina la línea; Console.Write continúa en la misma. Use cada método según la forma legible que necesite en la salida.",
+              "code": "Console.Write(\"Curso: \");\nConsole.WriteLine(\"C#\");\nConsole.WriteLine(\"Línea uno\\nLínea dos\");",
+              "expected": "Curso: C# seguido de Línea uno y Línea dos en líneas separadas."
+            },
+            {
+              "title": "Lea caracteres especiales",
+              "text": "Dentro de una cadena, \\n representa un salto de línea. Las comillas dobles delimitan el texto, por lo que no deben confundirse con su contenido.",
+              "code": ""
+            }
+          ],
+          "practice": "Muestre `Nombre: Ana` usando Write y WriteLine, y luego dos líneas con una sola cadena. Salida esperada: tres líneas legibles.",
+          "review": [
+            {
+              "question": "¿Qué añade WriteLine al final?",
+              "answer": "Un salto de línea después del contenido."
+            },
+            {
+              "question": "¿Cuándo usaría \\n?",
+              "answer": "Cuando una sola cadena debe contener un salto de línea explícito."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/03-accept-user-input",
+          "title": "Recibir datos del usuario",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/3-accept-user-input",
+          "objective": "Leer texto de entrada estándar y tratar de forma segura el fin de entrada.",
+          "prerequisites": [
+            "Cadenas",
+            "Console.WriteLine"
+          ],
+          "steps": [
+            {
+              "title": "Pida antes de leer",
+              "text": "Console.ReadLine devuelve el texto hasta Enter. En una terminal sin entrada también puede devolver null; por ello conviene elegir un valor predeterminado seguro.",
+              "code": "Console.Write(\"Escriba su nombre: \");\nstring nombre = Console.ReadLine() ?? \"visitante\";\nConsole.WriteLine($\"Hola, {nombre}.\");"
+            },
+            {
+              "title": "Separe entrada y respuesta",
+              "text": "Guarde la respuesta en una variable con nombre claro. Después úsela para construir el mensaje; así puede revisar cada dato sin repetir la lectura.",
+              "code": ""
+            }
+          ],
+          "practice": "Ejecute y escriba `María`. Salida esperada: `Hola, María.`; con EOF, salida: `Hola, visitante.`.",
+          "review": [
+            {
+              "question": "¿Qué evento finaliza ReadLine normalmente?",
+              "answer": "La persona presiona Enter en la entrada estándar."
+            },
+            {
+              "question": "¿Por qué usar ?? \"visitante\"?",
+              "answer": "Evita propagar null cuando la entrada se cierra sin texto."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/04-manipulate-strings",
+          "title": "Manipular cadenas",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/4-manipulate-strings",
+          "objective": "Crear mensajes mediante concatenación e interpolación de cadenas.",
+          "prerequisites": [
+            "Variables string",
+            "Salida de consola"
+          ],
+          "steps": [
+            {
+              "title": "Combine texto",
+              "text": "El operador + une cadenas, pero una interpolación con $ coloca variables entre llaves y conserva la estructura visual del mensaje.",
+              "code": "string ciudad = \"Quito\";\nint altura = 2850;\nConsole.WriteLine(\"Ciudad: \" + ciudad);\nConsole.WriteLine($\"Altura aproximada: {altura} m\");"
+            },
+            {
+              "title": "Revise el resultado",
+              "text": "Las llaves solo adquieren significado dentro de una cadena interpolada. Fuera de ella son parte de la sintaxis de bloques, no un sustituto de texto.",
+              "code": ""
+            }
+          ],
+          "practice": "Declare su materia favorita y muestre `Materia: ...` con interpolación. Salida esperada: una línea con el valor elegido.",
+          "review": [
+            {
+              "question": "¿Qué prefijo habilita interpolación?",
+              "answer": "El signo $ antes de la comilla inicial."
+            },
+            {
+              "question": "¿Qué contiene una variable string?",
+              "answer": "Una secuencia de caracteres, como texto de un mensaje."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/05-exercise-welcome-message",
+          "title": "Práctica: saludo personalizado",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/5-exercise-welcome-message",
+          "objective": "Construir un saludo que combine entrada, variable y salida.",
+          "prerequisites": [
+            "ReadLine",
+            "Interpolación"
+          ],
+          "steps": [
+            {
+              "title": "Diseñe la conversación",
+              "text": "Primero indique qué debe escribir la persona. Después lea una sola respuesta y finalmente confirme el dato con un saludo completo.",
+              "code": "Console.Write(\"¿Cómo se llama? \");\nstring nombre = Console.ReadLine() ?? \"visitante\";\nConsole.WriteLine($\"Bienvenido al curso, {nombre}.\");"
+            },
+            {
+              "title": "Pruebe dos rutas",
+              "text": "Ensaye con un nombre y con EOF. La segunda ruta comprueba que el valor predeterminado comunica algo útil sin detener el programa.",
+              "code": ""
+            }
+          ],
+          "practice": "Cambie el saludo para nombrar una unidad del curso. Con `Luis`, salida esperada: un saludo que incluya Luis y la unidad.",
+          "review": [
+            {
+              "question": "¿Qué dato personal se conserva en nombre?",
+              "answer": "El texto leído en esta ejecución, antes de formar el saludo."
+            },
+            {
+              "question": "¿Cuál es el beneficio del valor predeterminado?",
+              "answer": "El programa mantiene una salida válida aunque no haya entrada."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/06-challenge-user-interaction",
+          "title": "Desafío: interacción con el usuario",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/6-challenge-user-interaction",
+          "objective": "Ordenar varias preguntas y resumir sus respuestas sin perder claridad.",
+          "prerequisites": [
+            "Entrada estándar",
+            "Interpolación",
+            "Variables"
+          ],
+          "steps": [
+            {
+              "title": "Mantenga una pregunta por variable",
+              "text": "Cada lectura representa un dato distinto. Use nombres como nombre y objetivo para evitar que una respuesta reemplace accidentalmente a otra.",
+              "code": "Console.Write(\"Nombre: \");\nstring nombre = Console.ReadLine() ?? \"visitante\";\nConsole.Write(\"Meta: \");\nstring meta = Console.ReadLine() ?? \"practicar\";\nConsole.WriteLine($\"{nombre}, su meta es {meta}.\");"
+            },
+            {
+              "title": "Respete el orden",
+              "text": "La consola es secuencial: prompt, lectura y confirmación. Si imprime el resumen antes de leer, mostrará valores incompletos o predeterminados.",
+              "code": ""
+            }
+          ],
+          "practice": "Añada una pregunta por ciudad. Con Ana, Quito y practicar, salida esperada: un resumen que contenga los tres datos.",
+          "review": [
+            {
+              "question": "¿Por qué no reutilizar una sola variable para todo?",
+              "answer": "Porque se pierde el primer dato antes de poder incluirlo en el resumen."
+            },
+            {
+              "question": "¿Qué determina el orden de los prompts?",
+              "answer": "El orden de las instrucciones ejecutadas por el programa."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/7-knowledge-check",
+          "objective": "Comprobar el modelo mental de salida, entrada y variables de texto.",
+          "prerequisites": [
+            "Contenido del módulo"
+          ],
+          "steps": [
+            {
+              "title": "Explique el recorrido",
+              "text": "Antes de responder, siga mentalmente un programa: imprime un prompt, recibe una línea, la guarda y muestra una respuesta interpolada.",
+              "code": ""
+            },
+            {
+              "title": "Detecte supuestos",
+              "text": "Pregunte qué ocurre sin entrada. Un programa introductorio robusto decide un valor seguro en vez de suponer que siempre habrá teclado.",
+              "code": ""
+            }
+          ],
+          "practice": "Escriba en papel el orden de prompt, lectura y saludo para una cafetería. Salida esperada: tres acciones ordenadas.",
+          "review": [
+            {
+              "question": "¿La consola recuerda una variable entre ejecuciones?",
+              "answer": "No; una nueva ejecución inicia de nuevo sus variables."
+            },
+            {
+              "question": "¿Qué debe comprobar al leer una salida?",
+              "answer": "El texto, los valores sustituidos y el orden de las líneas."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        },
+        {
+          "id": "primer-codigo/08-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/8-summary",
+          "objective": "Relacionar mensajes, entrada y cadenas en un programa pequeño completo.",
+          "prerequisites": [
+            "Salida",
+            "Entrada",
+            "Interpolación"
+          ],
+          "steps": [
+            {
+              "title": "Una receta reutilizable",
+              "text": "Para una interacción básica: informe qué espera, lea una línea con alternativa ante EOF, guarde el resultado y muestre una confirmación.",
+              "code": ""
+            },
+            {
+              "title": "Prepare el siguiente módulo",
+              "text": "Los mensajes también contienen valores literales y variables. En adelante distinguirá el tipo de cada valor antes de operar con él.",
+              "code": ""
+            }
+          ],
+          "practice": "Explique a otra persona cómo saludar usando una variable. Salida esperada: una explicación que mencione prompt, ReadLine y WriteLine.",
+          "review": [
+            {
+              "question": "¿Qué concepto conecta entrada y salida?",
+              "answer": "La variable, que conserva el dato leído para usarlo después."
+            },
+            {
+              "question": "¿Qué hace legible una interacción?",
+              "answer": "Prompts claros y una confirmación que incluya el dato recibido."
+            }
+          ],
+          "originals": [
+            "1-variables/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables y literales",
+      "description": "Valores, tipos y nombres que permiten representar información en C#.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/",
+      "part": 1,
+      "units": [
+        {
+          "id": "variables/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/1-introduction",
+          "objective": "Diferenciar un valor escrito directamente de un valor guardado en una variable.",
+          "prerequisites": [
+            "Salida de consola"
+          ],
+          "steps": [
+            {
+              "title": "Nombre y valor",
+              "text": "Un literal aparece directamente en el código; una variable tiene nombre, tipo y un valor que puede consultarse varias veces durante la ejecución.",
+              "code": ""
+            },
+            {
+              "title": "Elija tipos conscientemente",
+              "text": "C# necesita saber si trabaja con texto, número, carácter o booleano. El tipo define las operaciones válidas y evita interpretaciones ambiguas.",
+              "code": ""
+            }
+          ],
+          "practice": "Clasifique `\"hola\"`, `42` y `true`. Salida esperada: string, int y bool, respectivamente.",
+          "review": [
+            {
+              "question": "¿Qué es un literal?",
+              "answer": "Un valor escrito de forma directa en el código fuente."
+            },
+            {
+              "question": "¿Por qué una variable tiene tipo?",
+              "answer": "Para que el compilador conozca qué datos y operaciones admite."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/02-literal-values",
+          "title": "Valores literales",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/2-literal-values",
+          "objective": "Escribir literales string, char, int, decimal y bool con su sintaxis correcta.",
+          "prerequisites": [
+            "Tipos básicos"
+          ],
+          "steps": [
+            {
+              "title": "Observe delimitadores y sufijos",
+              "text": "string usa comillas dobles; char usa comillas simples y solo un carácter. Un decimal suele llevar el sufijo m para no confundirse con double.",
+              "code": "Console.WriteLine(\"texto\");\nConsole.WriteLine('A');\nConsole.WriteLine(42);\nConsole.WriteLine(19.95m);\nConsole.WriteLine(true);"
+            },
+            {
+              "title": "No mezcle significados",
+              "text": "`\"42\"` es texto y `42` es entero. Aunque se vean parecidos, el compilador permite operaciones diferentes sobre cada uno.",
+              "code": ""
+            }
+          ],
+          "practice": "Muestre un carácter, un precio decimal y un booleano. Salida esperada: tres líneas con `Q`, `2.50` y `False`.",
+          "review": [
+            {
+              "question": "¿Qué comillas usa char?",
+              "answer": "Comillas simples, porque representa un solo carácter."
+            },
+            {
+              "question": "¿Para qué sirve el sufijo m?",
+              "answer": "Indica que el literal numérico es decimal."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/03-declare-assign-variables",
+          "title": "Declarar y asignar variables",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/3-declare-assign-variables",
+          "objective": "Declarar, inicializar y reasignar variables compatibles con su tipo.",
+          "prerequisites": [
+            "Literales",
+            "Tipos básicos"
+          ],
+          "steps": [
+            {
+              "title": "Declare con intención",
+              "text": "La forma `tipo nombre = valor;` crea una variable e inicia su contenido. Un nombre descriptivo comunica qué representa el dato sin leer todo el programa.",
+              "code": "string estudiante = \"Ana\";\nint puntos = 10;\npuntos = 12;\nConsole.WriteLine($\"{estudiante}: {puntos}\");"
+            },
+            {
+              "title": "Respete el tipo",
+              "text": "Una variable int puede recibir otro entero, no una cadena. El error temprano del compilador protege la coherencia de los datos.",
+              "code": ""
+            }
+          ],
+          "practice": "Declare `curso` y `horas`, reasigne horas a 3. Salida esperada: una línea que muestre el curso y 3.",
+          "review": [
+            {
+              "question": "¿Qué ocurre al reasignar puntos?",
+              "answer": "Su valor anterior se reemplaza por el nuevo entero."
+            },
+            {
+              "question": "¿Por qué usar nombres descriptivos?",
+              "answer": "Facilitan comprender qué significa un valor al leer y mantener el código."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/04-use-var-keyword",
+          "title": "La palabra clave var",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/4-use-var-keyword",
+          "objective": "Usar var cuando el inicializador hace evidente el tipo inferido.",
+          "prerequisites": [
+            "Declaración de variables"
+          ],
+          "steps": [
+            {
+              "title": "Entienda la inferencia",
+              "text": "var no crea una variable sin tipo: el compilador infiere el tipo desde el valor inicial. Por eso debe inicializarse en la misma línea.",
+              "code": "var ciudad = \"Cuenca\";\nvar visitantes = 4;\nConsole.WriteLine($\"{ciudad}: {visitantes}\");"
+            },
+            {
+              "title": "Prefiera claridad",
+              "text": "Use var cuando el valor revela claramente su tipo. Para un cálculo complejo, escribir el tipo puede ayudar a quien estudia a reconocerlo.",
+              "code": ""
+            }
+          ],
+          "practice": "Declare con var una variable de precio decimal usando `8.50m`. Salida esperada: el precio impreso como 8.50.",
+          "review": [
+            {
+              "question": "¿var elimina el tipo de una variable?",
+              "answer": "No; el compilador infiere y fija un tipo durante la compilación."
+            },
+            {
+              "question": "¿Por qué var necesita inicializador?",
+              "answer": "Porque sin valor no hay información para inferir el tipo."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/05-exercise-literals-variables",
+          "title": "Práctica: literales y variables",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/5-exercise-literals-variables",
+          "objective": "Combinar literales de distintos tipos en una presentación breve y coherente.",
+          "prerequisites": [
+            "Literales",
+            "Variables",
+            "Interpolación"
+          ],
+          "steps": [
+            {
+              "title": "Modele datos simples",
+              "text": "Elija texto para nombres, int para una cantidad completa, decimal para moneda y bool para un estado. No todos los números representan el mismo concepto.",
+              "code": "string producto = \"Cuaderno\";\nint unidades = 3;\ndecimal precio = 2.50m;\nbool disponible = true;\nConsole.WriteLine($\"{producto}: {unidades}, ${precio}, disponible: {disponible}\");"
+            },
+            {
+              "title": "Compruebe cada tipo",
+              "text": "Al imprimir una línea integrada, revise que los valores conserven su significado. La interpolación no cambia el tipo; solo forma texto para mostrar.",
+              "code": ""
+            }
+          ],
+          "practice": "Modele un libro con título, páginas y precio. Salida esperada: una línea con los tres valores y precio decimal.",
+          "review": [
+            {
+              "question": "¿Por qué precio es decimal?",
+              "answer": "Porque representa un valor monetario con parte fraccionaria."
+            },
+            {
+              "question": "¿Qué tipo representa disponible?",
+              "answer": "bool, ya que solo expresa verdadero o falso."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/06-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/6-knowledge-check",
+          "objective": "Verificar la relación entre sintaxis de literales, tipos y reasignación.",
+          "prerequisites": [
+            "Contenido del módulo"
+          ],
+          "steps": [
+            {
+              "title": "Lea antes de ejecutar",
+              "text": "Identifique el tipo de cada literal y siga cada reasignación. Esta simulación mental permite anticipar una salida antes de pedirla al programa.",
+              "code": ""
+            },
+            {
+              "title": "Justifique elecciones",
+              "text": "No memorice solo signos. Explique por qué un precio requiere decimal o por qué una condición necesita bool; esa razón guía futuras decisiones.",
+              "code": ""
+            }
+          ],
+          "practice": "Prediga el valor final de `int x = 2; x = 5;`. Salida esperada: x contiene 5.",
+          "review": [
+            {
+              "question": "¿Puede asignar `\"cinco\"` a un int?",
+              "answer": "No, es una cadena y no coincide con el tipo entero."
+            },
+            {
+              "question": "¿Qué aporta una predicción de salida?",
+              "answer": "Comprueba si se comprende el flujo de valores antes de ejecutar."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "variables/07-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/7-summary",
+          "objective": "Preparar valores tipados para usarlos en cálculos y decisiones posteriores.",
+          "prerequisites": [
+            "Literales",
+            "Variables",
+            "var"
+          ],
+          "steps": [
+            {
+              "title": "Conserve un inventario mental",
+              "text": "Texto, carácter, entero, decimal y booleano responden a necesidades distintas. Declarar el tipo correcto hace que las operaciones posteriores sean predecibles.",
+              "code": ""
+            },
+            {
+              "title": "Conecte con operaciones",
+              "text": "Los valores ya no solo se muestran: pronto se sumarán, dividirán y compararán. La precisión del tipo elegido afecta directamente esos resultados.",
+              "code": ""
+            }
+          ],
+          "practice": "Liste una variable int y una decimal que usaría en una factura. Salida esperada: cantidad como int y precio como decimal.",
+          "review": [
+            {
+              "question": "¿Qué combinación crea una variable?",
+              "answer": "Un tipo o var, un nombre, y normalmente un valor inicial compatible."
+            },
+            {
+              "question": "¿Cuál es la diferencia entre literal y variable?",
+              "answer": "El literal está escrito directamente; la variable guarda un valor bajo un nombre."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operaciones",
+      "title": "Operaciones con números",
+      "description": "Cálculos, prioridad, precisión y conversiones para resolver problemas cotidianos.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/",
+      "part": 1,
+      "units": [
+        {
+          "id": "operaciones/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/1-introduction",
+          "objective": "Relacionar los tipos numéricos con cálculos verificables de consola.",
+          "prerequisites": [
+            "int",
+            "decimal",
+            "Variables"
+          ],
+          "steps": [
+            {
+              "title": "El cálculo tiene tipo",
+              "text": "Antes de operar, decida si necesita enteros completos o fracciones. El resultado depende tanto de los operandos como del operador que se escriba.",
+              "code": ""
+            },
+            {
+              "title": "Compruebe con ejemplos pequeños",
+              "text": "Use números conocidos para detectar una división truncada o una prioridad inesperada. Un ejemplo determinista hace visible la regla aplicada.",
+              "code": ""
+            }
+          ],
+          "practice": "Calcule 7 más 5 y escriba el resultado esperado. Salida esperada: 12.",
+          "review": [
+            {
+              "question": "¿Por qué importa el tipo antes de dividir?",
+              "answer": "Porque int y decimal producen resultados distintos cuando existe fracción."
+            },
+            {
+              "question": "¿Cómo valida un cálculo?",
+              "answer": "Con valores pequeños cuyo resultado pueda verificar manualmente."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/02-numeric-data-types",
+          "title": "Tipos numéricos",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/2-numeric-data-types",
+          "objective": "Comparar división entera y decimal con operandos explícitos.",
+          "prerequisites": [
+            "int",
+            "decimal"
+          ],
+          "steps": [
+            {
+              "title": "Observe la división entera",
+              "text": "Dos int descartan la parte fraccionaria: 7 / 2 es 3. Para conservarla, use decimal y el sufijo m en los literales.",
+              "code": "int enteros = 7 / 2;\ndecimal decimales = 7m / 2m;\nConsole.WriteLine(enteros);\nConsole.WriteLine(decimales);"
+            },
+            {
+              "title": "Modele el dominio",
+              "text": "Use int para contadores y decimal para dinero o medidas que requieren precisión decimal. Elegir el tipo después del error suele ser más costoso.",
+              "code": ""
+            }
+          ],
+          "practice": "Divida 9 entre 2 como int y como decimal. Salida esperada: 4 y 4.5 en líneas separadas.",
+          "review": [
+            {
+              "question": "¿Por qué 7 / 2 produce 3 con int?",
+              "answer": "La división entera conserva solo la parte completa del cociente."
+            },
+            {
+              "question": "¿Qué indica 2m?",
+              "answer": "Que el literal 2 es de tipo decimal."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/03-perform-math-operations",
+          "title": "Operaciones matemáticas",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/3-perform-math-operations",
+          "objective": "Aplicar operadores, prioridad y asignación compuesta de forma controlada.",
+          "prerequisites": [
+            "Variables numéricas"
+          ],
+          "steps": [
+            {
+              "title": "Respete la prioridad",
+              "text": "Multiplicación y división se resuelven antes que suma y resta. Los paréntesis expresan una intención distinta y hacen el cálculo más fácil de revisar.",
+              "code": "int normal = 2 + 3 * 4;\nint agrupado = (2 + 3) * 4;\nConsole.WriteLine($\"{normal}, {agrupado}\");"
+            },
+            {
+              "title": "Actualice con claridad",
+              "text": "`total += 2` equivale a sumar dos al valor actual. Es útil para acumulados cuando el nombre de la variable ya comunica qué representa.",
+              "code": ""
+            }
+          ],
+          "practice": "Inicie puntos en 10 y use `+= 5`. Salida esperada: 15.",
+          "review": [
+            {
+              "question": "¿Cuál es el valor de 2 + 3 * 4?",
+              "answer": "14, porque la multiplicación se evalúa antes."
+            },
+            {
+              "question": "¿Qué cambia al usar paréntesis?",
+              "answer": "Se fuerza el cálculo interno antes de las demás operaciones."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/04-convert-data-types",
+          "title": "Convertir tipos de datos",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/4-convert-data-types",
+          "objective": "Convertir texto numérico de manera explícita y distinguir conversiones con pérdida.",
+          "prerequisites": [
+            "string",
+            "int",
+            "decimal"
+          ],
+          "steps": [
+            {
+              "title": "Convierta texto válido",
+              "text": "int.Parse transforma una cadena numérica conocida en int. Si el texto puede ser incierto, valide antes; Parse informa un error cuando el formato no corresponde.",
+              "code": "string texto = \"28\";\nint edad = int.Parse(texto);\nConsole.WriteLine(edad + 1);"
+            },
+            {
+              "title": "Reconozca pérdida",
+              "text": "Convertir decimal a int elimina la parte fraccionaria. Esa decisión debe ser deliberada, especialmente cuando el dato representa dinero o una medida.",
+              "code": "decimal precio = 19.99m;\nint entero = (int)precio;\nConsole.WriteLine(entero);"
+            }
+          ],
+          "practice": "Convierta `\"12\"` a int y sume 8. Salida esperada: 20.",
+          "review": [
+            {
+              "question": "¿Qué necesita int.Parse para funcionar?",
+              "answer": "Una cadena con formato válido para un entero."
+            },
+            {
+              "question": "¿Qué resulta de convertir 19.99m a int?",
+              "answer": "19; se descarta la fracción."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/05-exercise-calculator",
+          "title": "Práctica: calculadora de propinas",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/5-exercise-calculator",
+          "objective": "Calcular una propina y un total usando decimal y formato de dos decimales.",
+          "prerequisites": [
+            "decimal",
+            "Multiplicación",
+            "Interpolación"
+          ],
+          "steps": [
+            {
+              "title": "Mantenga el dinero en decimal",
+              "text": "Una cuenta y una tasa de propina necesitan fracciones exactas en base diez. Exprese la tasa como decimal y calcule sobre el importe.",
+              "code": "decimal cuenta = 25.00m;\ndecimal tasa = 0.15m;\ndecimal propina = cuenta * tasa;\nConsole.WriteLine($\"Propina: ${propina:F2}\");\nConsole.WriteLine($\"Total: ${cuenta + propina:F2}\");"
+            },
+            {
+              "title": "Formatee al presentar",
+              "text": "`F2` afecta la visualización con dos decimales, no el valor guardado. Calcule primero y formatee solo al mostrar al usuario.",
+              "code": ""
+            }
+          ],
+          "practice": "Cambie cuenta a 40 y tasa a 0.10. Salida esperada: propina $4.00 y total $44.00.",
+          "review": [
+            {
+              "question": "¿Por qué usar decimal en una propina?",
+              "answer": "Para representar importes monetarios y sus fracciones decimales."
+            },
+            {
+              "question": "¿Qué hace F2?",
+              "answer": "Muestra el número con dos posiciones decimales."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/06-challenge-temperature-conversion",
+          "title": "Desafío: Fahrenheit a Celsius",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/6-challenge-temperature-conversion",
+          "objective": "Aplicar una fórmula con decimal, paréntesis y salida formateada.",
+          "prerequisites": [
+            "decimal",
+            "Precedencia"
+          ],
+          "steps": [
+            {
+              "title": "Traduzca la fórmula",
+              "text": "Celsius se obtiene con `(fahrenheit - 32) * 5 / 9`. Los paréntesis aseguran que la resta ocurra antes de multiplicar y dividir.",
+              "code": "decimal fahrenheit = 68m;\ndecimal celsius = (fahrenheit - 32m) * 5m / 9m;\nConsole.WriteLine($\"{fahrenheit:F1} °F = {celsius:F1} °C\");"
+            },
+            {
+              "title": "Pruebe un punto conocido",
+              "text": "Use 32 °F para verificar que el resultado sea 0 °C. Los casos conocidos son una comprobación mejor que confiar solo en la fórmula escrita.",
+              "code": ""
+            }
+          ],
+          "practice": "Cambie Fahrenheit a 32. Salida esperada: `32.0 °F = 0.0 °C`.",
+          "review": [
+            {
+              "question": "¿Por qué hay paréntesis en la fórmula?",
+              "answer": "Para restar 32 antes de las operaciones de escala."
+            },
+            {
+              "question": "¿Qué tipo evita división entera aquí?",
+              "answer": "decimal, usando literales con sufijo m."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/7-knowledge-check",
+          "objective": "Predecir resultados numéricos y detectar el tipo apropiado en cada cálculo.",
+          "prerequisites": [
+            "Contenido del módulo"
+          ],
+          "steps": [
+            {
+              "title": "Trace operaciones",
+              "text": "Anote los tipos junto a los valores y resuelva primero los paréntesis. Luego compruebe si la división conserva o descarta una fracción.",
+              "code": ""
+            },
+            {
+              "title": "Explique conversiones",
+              "text": "Una conversión no es decoración: cambia cómo se interpreta el dato. Describa qué se gana o se pierde antes de escribirla.",
+              "code": ""
+            }
+          ],
+          "practice": "Prediga `5 / 2` y `5m / 2m`. Salida esperada: 2 y 2.5.",
+          "review": [
+            {
+              "question": "¿Qué operador obtiene el resto de una división?",
+              "answer": "%, útil por ejemplo para comprobar pares e impares."
+            },
+            {
+              "question": "¿Por qué no formatear antes de calcular?",
+              "answer": "Porque el formato produce texto de presentación, no una base numérica para operar."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        },
+        {
+          "id": "operaciones/08-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/8-summary",
+          "objective": "Sintetizar una estrategia segura para cálculos y conversiones iniciales.",
+          "prerequisites": [
+            "Tipos numéricos",
+            "Operadores",
+            "Conversiones"
+          ],
+          "steps": [
+            {
+              "title": "Secuencia de trabajo",
+              "text": "Elija el tipo, declare valores, escriba la fórmula con paréntesis cuando ayuden, y pruebe un caso cuyo resultado conozca antes de ampliar el programa.",
+              "code": ""
+            },
+            {
+              "title": "Conecte con decisiones",
+              "text": "Los cálculos suelen alimentar comparaciones: un total, una fecha o una temperatura permitirá elegir un camino con expresiones booleanas.",
+              "code": ""
+            }
+          ],
+          "practice": "Describa la ruta de cálculo para una propina. Salida esperada: importe decimal, tasa, producto y total.",
+          "review": [
+            {
+              "question": "¿Cuándo prefiere decimal a int?",
+              "answer": "Cuando se requieren fracciones, como precios, tasas o temperaturas."
+            },
+            {
+              "question": "¿Qué protege una prueba con valor conocido?",
+              "answer": "Ayuda a descubrir errores de fórmula, tipo o precedencia."
+            }
+          ],
+          "originals": [
+            "2-tipos-datos/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decisiones",
+      "title": "Lógica de decisiones",
+      "description": "Expresiones booleanas y rutas de programa para responder a reglas claras.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/",
+      "part": 1,
+      "units": [
+        {
+          "id": "decisiones/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/1-introduction",
+          "objective": "Comprender que una decisión selecciona una ruta según una condición booleana.",
+          "prerequisites": [
+            "bool",
+            "Variables",
+            "Operadores numéricos"
+          ],
+          "steps": [
+            {
+              "title": "Piense en preguntas",
+              "text": "Una expresión booleana responde true o false. La instrucción if usa esa respuesta para decidir si ejecuta un bloque de instrucciones.",
+              "code": ""
+            },
+            {
+              "title": "Separe regla y mensaje",
+              "text": "Primero formule la regla con datos objetivos; después determine qué mensaje corresponde a cada resultado. Esto evita decisiones basadas en texto ambiguo.",
+              "code": ""
+            }
+          ],
+          "practice": "Defina la pregunta `¿puntos es al menos 10?`. Salida esperada: una condición que pueda dar true o false.",
+          "review": [
+            {
+              "question": "¿Qué valores puede contener bool?",
+              "answer": "Solo true o false."
+            },
+            {
+              "question": "¿Qué hace una condición en un if?",
+              "answer": "Determina si su bloque asociado se ejecuta."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/02-evaluate-conditions-with-boolean-expressions",
+          "title": "Condiciones y expresiones booleanas",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/2-evaluate-conditions-with-boolean-expressions",
+          "objective": "Evaluar comparaciones con operadores relacionales y de igualdad.",
+          "prerequisites": [
+            "int",
+            "bool"
+          ],
+          "steps": [
+            {
+              "title": "Compare valores",
+              "text": "`>=`, `>`, `<`, `<=`, `==` y `!=` producen bool. Lea `==` como comparación; `=` asigna un valor y cumple otra función.",
+              "code": "int puntos = 17;\nbool gana = puntos >= 15;\nConsole.WriteLine(gana);"
+            },
+            {
+              "title": "Nombre el resultado",
+              "text": "Una variable booleana como gana documenta la intención de una regla. Así el if posterior se lee como una frase, no como un acertijo numérico.",
+              "code": ""
+            }
+          ],
+          "practice": "Compare edad 16 con 18 usando >=. Salida esperada: False.",
+          "review": [
+            {
+              "question": "¿Qué devuelve `4 != 5`?",
+              "answer": "true, porque los valores no son iguales."
+            },
+            {
+              "question": "¿Por qué `==` no es `=`?",
+              "answer": "El primero compara; el segundo almacena un valor en una variable."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/03-control-flow-with-if-else",
+          "title": "Controlar el flujo con if y else",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/3-control-flow-with-if-else",
+          "objective": "Organizar alternativas exclusivas con if, else if y else.",
+          "prerequisites": [
+            "Expresiones booleanas"
+          ],
+          "steps": [
+            {
+              "title": "Ordene de específico a general",
+              "text": "if evalúa en orden y ejecuta la primera condición verdadera de una cadena. Coloque casos más restrictivos antes de los rangos generales.",
+              "code": "int nota = 82;\nif (nota >= 90)\n    Console.WriteLine(\"Excelente\");\nelse if (nota >= 70)\n    Console.WriteLine(\"Aprobado\");\nelse\n    Console.WriteLine(\"Revise el tema\");"
+            },
+            {
+              "title": "Use else como cobertura",
+              "text": "El bloque else atiende la alternativa restante. No agrega una condición nueva: representa todos los casos que no cumplieron las anteriores.",
+              "code": ""
+            }
+          ],
+          "practice": "Pruebe nota 60. Salida esperada: `Revise el tema`.",
+          "review": [
+            {
+              "question": "¿Cuántas ramas de una cadena if/else if/else se ejecutan?",
+              "answer": "Como máximo una: la primera condición verdadera o el else final."
+            },
+            {
+              "question": "¿Por qué ordenar condiciones importa?",
+              "answer": "Una condición amplia anterior puede impedir alcanzar una más específica."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/04-combine-conditions-with-logical-operators",
+          "title": "Combinar condiciones",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/4-combine-conditions-with-logical-operators",
+          "objective": "Combinar reglas con &&, || y ! sin alterar su significado.",
+          "prerequisites": [
+            "bool",
+            "Comparaciones",
+            "if"
+          ],
+          "steps": [
+            {
+              "title": "Exprese requisitos",
+              "text": "&& exige que ambos lados sean verdaderos; || acepta al menos uno; ! invierte un booleano. Use paréntesis si mejoran la lectura de reglas mixtas.",
+              "code": "int edad = 20;\nbool tieneEntrada = true;\nif (edad >= 18 && tieneEntrada)\n    Console.WriteLine(\"Ingreso autorizado\");\nelse\n    Console.WriteLine(\"Ingreso no autorizado\");"
+            },
+            {
+              "title": "Revise casos límite",
+              "text": "Pruebe una condición verdadera y una falsa por separado. Las tablas de verdad sencillas permiten verificar la regla antes de mostrar un mensaje al usuario.",
+              "code": ""
+            }
+          ],
+          "practice": "Cambie tieneEntrada a false. Salida esperada: `Ingreso no autorizado`.",
+          "review": [
+            {
+              "question": "¿Cuándo && da true?",
+              "answer": "Solo cuando todas sus condiciones son true."
+            },
+            {
+              "question": "¿Qué hace !activo?",
+              "answer": "Produce el valor booleano opuesto de activo."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/05-exercise-dice-game",
+          "title": "Práctica: juego de dados",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/5-exercise-dice-game",
+          "objective": "Aplicar condiciones a valores de dados deterministas y asignar bonificaciones.",
+          "prerequisites": [
+            "if",
+            "&&",
+            "||",
+            "Suma"
+          ],
+          "steps": [
+            {
+              "title": "Use un caso repetible",
+              "text": "Para estudiar la regla, fije los dados en vez de generar aleatoriedad. Así puede verificar sin duda cuándo hay dos o tres valores iguales.",
+              "code": "int dado1 = 6, dado2 = 6, dado3 = 5;\nint total = dado1 + dado2 + dado3;\nif (dado1 == dado2 && dado2 == dado3) total += 6;\nelse if (dado1 == dado2 || dado1 == dado3 || dado2 == dado3) total += 2;\nConsole.WriteLine($\"Puntuación: {total}\");"
+            },
+            {
+              "title": "Priorice el premio mayor",
+              "text": "Tres iguales también satisfacen una comparación por pares. Por eso el caso de tres debe comprobarse primero y recibir su bonificación propia.",
+              "code": ""
+            }
+          ],
+          "practice": "Use 2, 2 y 2. Salida esperada: `Puntuación: 12`.",
+          "review": [
+            {
+              "question": "¿Por qué el caso de tres iguales va primero?",
+              "answer": "Para que no sea capturado antes por la regla de dos iguales."
+            },
+            {
+              "question": "¿Qué representa || entre comparaciones de pares?",
+              "answer": "Que basta cualquier par igual para aplicar la bonificación."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/06-challenge-subscription-renewal",
+          "title": "Desafío: renovación de suscripción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/6-challenge-subscription-renewal",
+          "objective": "Transformar rangos de días en mensajes y descuentos deterministas.",
+          "prerequisites": [
+            "if/else if/else",
+            "&&",
+            "Interpolación"
+          ],
+          "steps": [
+            {
+              "title": "Defina rangos sin aleatoriedad",
+              "text": "Un número fijo permite revisar cada regla: cero significa expiración, uno puede tener oferta especial, y otros rangos cambian el aviso.",
+              "code": "int diasRestantes = 3;\nint descuento = 0;\nif (diasRestantes == 0) Console.WriteLine(\"La suscripción expiró.\");\nelse if (diasRestantes == 1) { descuento = 20; Console.WriteLine(\"Expira mañana.\"); }\nelse if (diasRestantes <= 5) { descuento = 10; Console.WriteLine($\"Expira en {diasRestantes} días.\"); }\nelse Console.WriteLine(\"La suscripción sigue vigente.\");\nif (descuento > 0) Console.WriteLine($\"Descuento: {descuento}%\");"
+            },
+            {
+              "title": "Evite huecos",
+              "text": "Revise los límites 0, 1, 5 y 6. Cada valor posible debe llegar a un mensaje, aunque no tenga descuento.",
+              "code": ""
+            }
+          ],
+          "practice": "Use 1 día. Salida esperada: aviso de mañana y `Descuento: 20%`.",
+          "review": [
+            {
+              "question": "¿Qué evita revisar los límites de rango?",
+              "answer": "Que un valor quede sin mensaje o reciba una regla incorrecta."
+            },
+            {
+              "question": "¿Por qué descuento inicia en cero?",
+              "answer": "Representa de forma explícita que no hay oferta hasta que una regla la asigne."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/7-knowledge-check",
+          "objective": "Evaluar condiciones y rutas sin depender de respuestas externas.",
+          "prerequisites": [
+            "Contenido del módulo"
+          ],
+          "steps": [
+            {
+              "title": "Simule valores",
+              "text": "Asigne valores concretos a cada variable y recorra una condición a la vez. Anote cuál expresión da true y cuál bloque imprime texto.",
+              "code": ""
+            },
+            {
+              "title": "Busque solapamientos",
+              "text": "Cuando dos condiciones pueden ser verdaderas, el orden es parte de la regla. Reescriba rangos o cambie su posición para expresar prioridad.",
+              "code": ""
+            }
+          ],
+          "practice": "Con edad 17 y entrada true, prediga la regla de ingreso. Salida esperada: no autorizado.",
+          "review": [
+            {
+              "question": "¿Qué hace else si ningún if previo es true?",
+              "answer": "Ejecuta la ruta de respaldo definida para los casos restantes."
+            },
+            {
+              "question": "¿Qué prueba un caso límite?",
+              "answer": "El comportamiento justo en el inicio o final de un rango."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        },
+        {
+          "id": "decisiones/08-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/8-summary",
+          "objective": "Consolidar una forma de escribir decisiones legibles, completas y comprobables.",
+          "prerequisites": [
+            "bool",
+            "Comparaciones",
+            "Operadores lógicos"
+          ],
+          "steps": [
+            {
+              "title": "Escriba reglas como frases",
+              "text": "Nombre los datos y las condiciones para que el código pueda leerse: si tiene entrada y es mayor de edad, autorice. Esa claridad facilita corregir reglas.",
+              "code": ""
+            },
+            {
+              "title": "Pruebe cada camino",
+              "text": "No basta el caso feliz. Use valores que activen cada if, else if y else, incluidos límites, para demostrar que la cobertura es completa.",
+              "code": ""
+            }
+          ],
+          "practice": "Liste valores de prueba para días 0, 1, 5 y 6. Salida esperada: cuatro rutas de suscripción distintas o verificables.",
+          "review": [
+            {
+              "question": "¿Qué une varias condiciones obligatorias?",
+              "answer": "El operador &&."
+            },
+            {
+              "question": "¿Cuál es la estrategia para decisiones confiables?",
+              "answer": "Reglas claras, orden específico, cobertura con else y pruebas de límites."
+            }
+          ],
+          "originals": [
+            "3-condiciones/Program.cs"
+          ]
+        }
+      ]
+    }
+  ]
+}

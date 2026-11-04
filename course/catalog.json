@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "title": "Aprende C# y .NET",
+  "modules": [
+    {
+      "id": "primer-codigo",
+      "part": 1,
+      "title": "Primer código en C#",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/",
+      "units": [
+        {
+          "id": "primer-codigo/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/1-introduction"
+        },
+        {
+          "id": "primer-codigo/02-display-console-output",
+          "title": "Mostrar información en consola",
+          "officialTitle": "Display console output",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/2-display-console-output"
+        },
+        {
+          "id": "primer-codigo/03-accept-user-input",
+          "title": "Recibir datos del usuario",
+          "officialTitle": "Accept user input",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/3-accept-user-input"
+        },
+        {
+          "id": "primer-codigo/04-manipulate-strings",
+          "title": "Manipular cadenas",
+          "officialTitle": "Manipulate strings",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/4-manipulate-strings"
+        },
+        {
+          "id": "primer-codigo/05-exercise-welcome-message",
+          "title": "Práctica: saludo personalizado",
+          "officialTitle": "Exercise - Create a personalized greeting",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/5-exercise-welcome-message"
+        },
+        {
+          "id": "primer-codigo/06-challenge-user-interaction",
+          "title": "Desafío: interacción con el usuario",
+          "officialTitle": "Challenge - Create a program with user interaction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/6-challenge-user-interaction"
+        },
+        {
+          "id": "primer-codigo/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/7-knowledge-check"
+        },
+        {
+          "id": "primer-codigo/08-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/8-summary"
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "part": 1,
+      "title": "Variables y literales",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/",
+      "units": [
+        {
+          "id": "variables/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/1-introduction"
+        },
+        {
+          "id": "variables/02-literal-values",
+          "title": "Valores literales",
+          "officialTitle": "Work with literal values",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/2-literal-values"
+        },
+        {
+          "id": "variables/03-declare-assign-variables",
+          "title": "Declarar y asignar variables",
+          "officialTitle": "Declare and assign variables",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/3-declare-assign-variables"
+        },
+        {
+          "id": "variables/04-use-var-keyword",
+          "title": "La palabra clave var",
+          "officialTitle": "Use the var keyword",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/4-use-var-keyword"
+        },
+        {
+          "id": "variables/05-exercise-literals-variables",
+          "title": "Práctica: literales y variables",
+          "officialTitle": "Exercise - Work with literals and variables",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/5-exercise-literals-variables"
+        },
+        {
+          "id": "variables/06-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/6-knowledge-check"
+        },
+        {
+          "id": "variables/07-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-literals-variables/7-summary"
+        }
+      ]
+    },
+    {
+      "id": "operaciones",
+      "part": 1,
+      "title": "Operaciones con números",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/",
+      "units": [
+        {
+          "id": "operaciones/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/1-introduction"
+        },
+        {
+          "id": "operaciones/02-numeric-data-types",
+          "title": "Tipos numéricos",
+          "officialTitle": "Work with numeric data types",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/2-numeric-data-types"
+        },
+        {
+          "id": "operaciones/03-perform-math-operations",
+          "title": "Operaciones matemáticas",
+          "officialTitle": "Perform math operations",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/3-perform-math-operations"
+        },
+        {
+          "id": "operaciones/04-convert-data-types",
+          "title": "Convertir tipos de datos",
+          "officialTitle": "Convert data types",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/4-convert-data-types"
+        },
+        {
+          "id": "operaciones/05-exercise-calculator",
+          "title": "Práctica: calculadora de propinas",
+          "officialTitle": "Exercise - Build a tip calculator",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/5-exercise-calculator"
+        },
+        {
+          "id": "operaciones/06-challenge-temperature-conversion",
+          "title": "Desafío: Fahrenheit a Celsius",
+          "officialTitle": "Challenge - Convert Fahrenheit to Celsius",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/6-challenge-temperature-conversion"
+        },
+        {
+          "id": "operaciones/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/7-knowledge-check"
+        },
+        {
+          "id": "operaciones/08-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-basic-operations/8-summary"
+        }
+      ]
+    },
+    {
+      "id": "decisiones",
+      "part": 1,
+      "title": "Lógica de decisiones",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/",
+      "units": [
+        {
+          "id": "decisiones/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/1-introduction"
+        },
+        {
+          "id": "decisiones/02-evaluate-conditions-with-boolean-expressions",
+          "title": "Condiciones y expresiones booleanas",
+          "officialTitle": "Evaluate conditions with Boolean expressions",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/2-evaluate-conditions-with-boolean-expressions"
+        },
+        {
+          "id": "decisiones/03-control-flow-with-if-else",
+          "title": "Controlar el flujo con if y else",
+          "officialTitle": "Control code flow with if, else if, and else",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/3-control-flow-with-if-else"
+        },
+        {
+          "id": "decisiones/04-combine-conditions-with-logical-operators",
+          "title": "Combinar condiciones",
+          "officialTitle": "Combine conditions with logical operators",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/4-combine-conditions-with-logical-operators"
+        },
+        {
+          "id": "decisiones/05-exercise-dice-game",
+          "title": "Práctica: juego de dados",
+          "officialTitle": "Exercise - Build a dice game",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/5-exercise-dice-game"
+        },
+        {
+          "id": "decisiones/06-challenge-subscription-renewal",
+          "title": "Desafío: renovación de suscripción",
+          "officialTitle": "Challenge - Display a subscription renewal message",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/6-challenge-subscription-renewal"
+        },
+        {
+          "id": "decisiones/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/7-knowledge-check"
+        },
+        {
+          "id": "decisiones/08-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-if-elseif-else/8-summary"
+        }
+      ]
+    },
+    {
+      "id": "entorno",
+      "part": 2,
+      "title": "Configurar Visual Studio Code",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/",
+      "units": [
+        {
+          "id": "entorno/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/1-introduction"
+        },
+        {
+          "id": "entorno/02-exercise-download-install-visual-studio-code",
+          "title": "Instalar Visual Studio Code",
+          "officialTitle": "Exercise - Download and install Visual Studio Code",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/2-exercise-download-install-visual-studio-code"
+        },
+        {
+          "id": "entorno/03-examine-visual-studio-code-user-interface",
+          "title": "Conocer la interfaz",
+          "officialTitle": "Examine the Visual Studio Code user interface",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/3-examine-visual-studio-code-user-interface"
+        },
+        {
+          "id": "entorno/04-exercise-explore-visual-studio-code-user-interface",
+          "title": "Explorar la interfaz",
+          "officialTitle": "Exercise - Explore the Visual Studio Code user interface",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/4-exercise-explore-visual-studio-code-user-interface"
+        },
+        {
+          "id": "entorno/05-exercise-configure-visual-studio-code",
+          "title": "Configurar extensiones",
+          "officialTitle": "Exercise - Configure Visual Studio Code Extensions",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/5-exercise-configure-visual-studio-code"
+        },
+        {
+          "id": "entorno/06-exercise-install-dotnet",
+          "title": "Instalar el SDK de .NET",
+          "officialTitle": "Exercise - Install the .NET SDK",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/6-exercise-install-dotnet"
+        },
+        {
+          "id": "entorno/07-exercise-create-build-run-app",
+          "title": "Crear, compilar y ejecutar",
+          "officialTitle": "Exercise - Create, build, and run your application",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/7-exercise-create-build-run-app"
+        },
+        {
+          "id": "entorno/08-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/8-knowledge-check"
+        },
+        {
+          "id": "entorno/09-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/9-summary"
+        }
+      ]
+    },
+    {
+      "id": "bucles",
+      "part": 2,
+      "title": "Repetir acciones con bucles",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/",
+      "units": [
+        {
+          "id": "bucles/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/1-introduction"
+        },
+        {
+          "id": "bucles/02-choose-between-for-while-do-while-loops",
+          "title": "Elegir for, while y do-while",
+          "officialTitle": "Choose between for, while, and do-while loops",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/2-choose-between-for-while-do-while-loops"
+        },
+        {
+          "id": "bucles/03-controlling-loop-execution-with-break-continue",
+          "title": "Controlar break y continue",
+          "officialTitle": "Controlling loop execution with break and continue",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/3-controlling-loop-execution-with-break-continue"
+        },
+        {
+          "id": "bucles/04-exercise-guess-number",
+          "title": "Práctica: adivinar el número",
+          "officialTitle": "Exercise - Create a guess the number game",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/4-exercise-guess-number"
+        },
+        {
+          "id": "bucles/05-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/5-knowledge-check"
+        },
+        {
+          "id": "bucles/06-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/6-summary"
+        }
+      ]
+    },
+    {
+      "id": "colecciones",
+      "part": 2,
+      "title": "Arreglos y listas",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/",
+      "units": [
+        {
+          "id": "colecciones/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/1-introduction"
+        },
+        {
+          "id": "colecciones/02-store-manage-data-with-arrays",
+          "title": "Guardar datos en arreglos",
+          "officialTitle": "Store and manage data with arrays",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/2-store-manage-data-with-arrays"
+        },
+        {
+          "id": "colecciones/03-store-manage-data-with-lists",
+          "title": "Administrar datos con listas",
+          "officialTitle": "Store and manage data with lists",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/3-store-manage-data-with-lists"
+        },
+        {
+          "id": "colecciones/04-exercise-top-scores",
+          "title": "Práctica: clasificación Top 5",
+          "officialTitle": "Exercise - Create a Top 5 leaderboard",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/4-exercise-top-scores"
+        },
+        {
+          "id": "colecciones/05-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/5-knowledge-check"
+        },
+        {
+          "id": "colecciones/06-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/6-summary"
+        }
+      ]
+    },
+    {
+      "id": "metodos",
+      "part": 2,
+      "title": "Escribir código reutilizable",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/",
+      "units": [
+        {
+          "id": "metodos/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/1-introduction"
+        },
+        {
+          "id": "metodos/02-create-methods-with-parameters",
+          "title": "Métodos con parámetros",
+          "officialTitle": "Create methods with parameters",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/2-create-methods-with-parameters"
+        },
+        {
+          "id": "metodos/03-return-values-from-methods",
+          "title": "Devolver valores",
+          "officialTitle": "Return values from methods",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/3-return-values-from-methods"
+        },
+        {
+          "id": "metodos/04-manage-variable-scope",
+          "title": "Alcance de las variables",
+          "officialTitle": "Manage variable scope",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/4-manage-variable-scope"
+        },
+        {
+          "id": "metodos/05-organize-code-with-namespaces",
+          "title": "Espacios de nombres",
+          "officialTitle": "Organize code with namespaces",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/5-organize-code-with-namespaces"
+        },
+        {
+          "id": "metodos/06-exercise-create-billing-calculator",
+          "title": "Práctica: calculadora de facturación",
+          "officialTitle": "Exercise - Create a billing calculator",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/6-exercise-create-billing-calculator"
+        },
+        {
+          "id": "metodos/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/7-knowledge-check"
+        },
+        {
+          "id": "metodos/08-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/8-summary"
+        }
+      ]
+    },
+    {
+      "id": "archivos",
+      "part": 2,
+      "title": "Leer y escribir archivos",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/",
+      "units": [
+        {
+          "id": "archivos/01-introduction",
+          "title": "Introducción",
+          "officialTitle": "Introduction",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/1-introduction"
+        },
+        {
+          "id": "archivos/02-open-close-files-safely-with-using",
+          "title": "Abrir y cerrar con using",
+          "officialTitle": "Open and close files safely with using",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/2-open-close-files-safely-with-using"
+        },
+        {
+          "id": "archivos/03-read-data-from-files",
+          "title": "Leer datos de archivos",
+          "officialTitle": "Read data from files",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/3-read-data-from-files"
+        },
+        {
+          "id": "archivos/04-write-data-to-files",
+          "title": "Escribir y agregar contenido",
+          "officialTitle": "Write data to files",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/4-write-data-to-files"
+        },
+        {
+          "id": "archivos/05-exercise-log-file-viewer",
+          "title": "Práctica: visor de registros",
+          "officialTitle": "Exercise - Create a log file viewer",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/5-exercise-log-file-viewer"
+        },
+        {
+          "id": "archivos/06-knowledge-check",
+          "title": "Repaso del módulo",
+          "officialTitle": "Module assessment",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/6-knowledge-check"
+        },
+        {
+          "id": "archivos/07-summary",
+          "title": "Resumen",
+          "officialTitle": "Summary",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/7-summary"
+        }
+      ]
+    }
+  ]
+}
