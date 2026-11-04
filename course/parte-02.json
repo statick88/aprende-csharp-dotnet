@@ -1,0 +1,1390 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "id": "entorno",
+      "title": "Configurar Visual Studio Code",
+      "description": "Prepare un espacio local para escribir, compilar y observar programas de C# con herramientas separadas y verificables.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/",
+      "part": 2,
+      "units": [
+        {
+          "id": "entorno/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/1-introduction",
+          "objective": "Distinguir las herramientas necesarias antes de crear un proyecto.",
+          "prerequisites": [
+            "consola",
+            "programas de C#"
+          ],
+          "steps": [
+            {
+              "title": "Separe las responsabilidades",
+              "text": "El editor sirve para abrir, modificar y navegar archivos. El SDK de .NET crea proyectos, compila y ejecuta; el runtime únicamente ejecuta aplicaciones ya compiladas. Esta distinción ayuda a diagnosticar por qué un comando de creación puede no estar disponible.",
+              "code": ""
+            },
+            {
+              "title": "Planifique una comprobación",
+              "text": "Abra una terminal integrada o del sistema en una carpeta de práctica. Más adelante, `dotnet --info` mostrará información del entorno; úsela como evidencia local, sin publicar rutas personales ni credenciales.",
+              "code": "",
+              "expected": "Podrá nombrar editor, SDK y runtime como piezas diferentes."
+            }
+          ],
+          "practice": "Escriba una lista de tres tareas: editar, compilar y ejecutar. Junto a cada una anote la herramienta responsable. Resultado esperado: SDK para compilar y crear; runtime para ejecutar; editor para modificar.",
+          "review": [
+            {
+              "question": "¿Por qué el runtime no reemplaza al SDK al iniciar un proyecto?",
+              "answer": "Porque el runtime ejecuta binarios, mientras el SDK aporta compilador y plantillas."
+            },
+            {
+              "question": "¿Qué ventaja tiene usar una terminal?",
+              "answer": "Hace visibles los comandos y mensajes de compilación de forma reproducible."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/02-exercise-download-install-visual-studio-code",
+          "title": "Instalar Visual Studio Code",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/2-exercise-download-install-visual-studio-code",
+          "objective": "Reconocer qué debe comprobar después de instalar un editor, sin efectuar instalaciones desde este material.",
+          "prerequisites": [
+            "editor",
+            "sistema operativo"
+          ],
+          "steps": [
+            {
+              "title": "Elija el editor",
+              "text": "Visual Studio Code es un editor ligero. Descárguelo e instálelo por el procedimiento autorizado en su equipo; este repaso no modifica su sistema. Confirme que puede abrir una carpeta de trabajo y crear un archivo de texto.",
+              "code": ""
+            },
+            {
+              "title": "Abra carpetas, no archivos aislados",
+              "text": "Una carpeta reúne código, configuración y terminal. Use Archivo > Abrir carpeta para que el explorador represente el proyecto completo. Revise el nombre de la carpeta antes de crear archivos para no mezclar ejercicios.",
+              "code": "",
+              "expected": "El explorador muestra la carpeta elegida y sus archivos."
+            }
+          ],
+          "practice": "En un directorio de práctica autorizado, abra una carpeta vacía con el editor y cree una nota llamada objetivo.txt. Resultado esperado: el archivo aparece en el explorador; no se altera ningún proyecto original.",
+          "review": [
+            {
+              "question": "¿Por qué conviene abrir una carpeta?",
+              "answer": "Porque el editor puede mostrar y organizar todos los archivos relacionados."
+            },
+            {
+              "question": "¿Este curso instala el editor por usted?",
+              "answer": "No; explica la comprobación y usted decide el procedimiento local autorizado."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/03-examine-visual-studio-code-user-interface",
+          "title": "Conocer la interfaz",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/3-examine-visual-studio-code-user-interface",
+          "objective": "Ubicar las áreas de la interfaz útiles para estudiar C#.",
+          "prerequisites": [
+            "carpeta abierta en el editor"
+          ],
+          "steps": [
+            {
+              "title": "Recorra las zonas",
+              "text": "La barra de actividad cambia entre explorador, búsqueda y extensiones. El panel lateral muestra archivos; el editor central muestra el contenido. La barra inferior comunica el estado, pero los diagnósticos importantes también aparecen en Problemas y Terminal.",
+              "code": ""
+            },
+            {
+              "title": "Observe sin adivinar",
+              "text": "Abra un archivo y después la terminal integrada. Si aparece un error, lea primero su texto y la línea indicada. No corrija por intuición: compare el mensaje con el código y conserve un cambio pequeño por vez.",
+              "code": "",
+              "expected": "Puede alternar explorador, editor, problemas y terminal."
+            }
+          ],
+          "practice": "Abra cualquier archivo de práctica, localice el explorador, la búsqueda y la terminal, y anote para qué usaría cada área. Resultado esperado: tres usos concretos, uno por área.",
+          "review": [
+            {
+              "question": "¿Dónde busca archivos por nombre o contenido?",
+              "answer": "En la vista de búsqueda, que no sustituye al explorador de carpetas."
+            },
+            {
+              "question": "¿Qué aporta la terminal integrada?",
+              "answer": "Permite ejecutar comandos sin perder el contexto de la carpeta abierta."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/04-exercise-explore-visual-studio-code-user-interface",
+          "title": "Explorar la interfaz",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/4-exercise-explore-visual-studio-code-user-interface",
+          "objective": "Usar navegación básica para inspeccionar un archivo antes de compilar.",
+          "prerequisites": [
+            "interfaz del editor",
+            "archivos de texto"
+          ],
+          "steps": [
+            {
+              "title": "Navegue con intención",
+              "text": "Seleccione un archivo desde el explorador y use la búsqueda para hallar un identificador. La búsqueda muestra coincidencias, no garantiza que sean cambios correctos. Lea el contexto de cada resultado antes de editarlo.",
+              "code": ""
+            },
+            {
+              "title": "Controle el panel de problemas",
+              "text": "Los avisos distinguen archivo y ubicación. Un aviso no siempre bloquea la compilación, pero merece comprensión. Use el panel para volver al punto señalado y valide después con el comando de compilación.",
+              "code": "",
+              "expected": "La búsqueda lleva a una coincidencia y Problemas señala su ubicación."
+            }
+          ],
+          "practice": "En una copia de práctica, busque una palabra repetida y navegue a dos coincidencias sin reemplazarlas. Resultado esperado: puede indicar archivo y línea de cada resultado.",
+          "review": [
+            {
+              "question": "¿Buscar y reemplazar son la misma operación?",
+              "answer": "No; buscar inspecciona y reemplazar modifica, por lo que requiere una revisión adicional."
+            },
+            {
+              "question": "¿Un aviso equivale siempre a un error de compilación?",
+              "answer": "No; debe leer su severidad y confirmarlo al compilar."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/05-exercise-configure-visual-studio-code",
+          "title": "Configurar extensiones",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/5-exercise-configure-visual-studio-code",
+          "objective": "Evaluar extensiones como apoyo del editor sin instalarlas desde la lección.",
+          "prerequisites": [
+            "interfaz del editor",
+            "C# básico"
+          ],
+          "steps": [
+            {
+              "title": "Entienda el alcance",
+              "text": "Una extensión añade funciones al editor, como análisis de C# o depuración. No reemplaza al SDK: todavía necesita una herramienta de compilación compatible. Revise editor, autor y permisos antes de decidir una instalación en su propio equipo.",
+              "code": ""
+            },
+            {
+              "title": "Mantenga el entorno comprensible",
+              "text": "Instale solo extensiones necesarias según las reglas de su equipo. Si el análisis muestra sugerencias, léalas como ayuda, no como una orden. Una compilación exitosa sigue siendo la comprobación del programa.",
+              "code": "",
+              "expected": "Puede explicar qué aporta una extensión y qué sigue haciendo el SDK."
+            }
+          ],
+          "practice": "Abra la vista Extensiones y describa, sin instalar nada, qué información revisaría antes de usar una extensión de C#. Resultado esperado: propósito, editor/publicador y permisos o compatibilidad.",
+          "review": [
+            {
+              "question": "¿Una extensión compila por sí sola cualquier proyecto?",
+              "answer": "No; normalmente integra o mejora herramientas que dependen del entorno .NET."
+            },
+            {
+              "question": "¿Por qué limitar extensiones?",
+              "answer": "Reduce complejidad y facilita identificar el origen de un comportamiento."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/06-exercise-install-dotnet",
+          "title": "Instalar el SDK de .NET",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/6-exercise-install-dotnet",
+          "objective": "Verificar la disponibilidad local del SDK y diferenciarla del runtime.",
+          "prerequisites": [
+            "terminal",
+            "SDK y runtime"
+          ],
+          "steps": [
+            {
+              "title": "Compruebe la herramienta",
+              "text": "Tras una instalación autorizada, ejecute `dotnet --info` en su terminal. El resultado describe SDKs y runtimes disponibles. No copie rutas de su equipo a documentación pública: basta con confirmar que existe una versión de SDK utilizable.",
+              "code": "using System;\n\nConsole.WriteLine($\"Runtime: {Environment.Version}\");",
+              "expected": "Muestra una versión del runtime que ejecuta el ejemplo."
+            },
+            {
+              "title": "Interprete el resultado",
+              "text": "Si `dotnet` no se reconoce, cierre y abra la terminal según su sistema o revise la instalación autorizada. Si solo hay runtime, una aplicación existente puede correr, pero crear y compilar requiere SDK.",
+              "code": "",
+              "expected": "Diferencia claramente la versión mostrada por el programa de la lista detallada de `dotnet --info`."
+            }
+          ],
+          "practice": "Ejecute `dotnet --info` únicamente si su entorno ya tiene .NET configurado y anote si ve al menos un SDK. Resultado esperado: “SDK detectado” o una nota de que debe completar la configuración local.",
+          "review": [
+            {
+              "question": "¿Qué revela `Environment.Version`?",
+              "answer": "El runtime que está ejecutando ese programa, no necesariamente todos los SDK instalados."
+            },
+            {
+              "question": "¿Qué comando da información más completa?",
+              "answer": "`dotnet --info`, porque enumera detalles del host, SDKs y runtimes."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/07-exercise-create-build-run-app",
+          "title": "Crear, compilar y ejecutar",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/7-exercise-create-build-run-app",
+          "objective": "Relacionar creación, compilación y ejecución como etapas distintas.",
+          "prerequisites": [
+            "SDK",
+            "terminal",
+            "carpetas"
+          ],
+          "steps": [
+            {
+              "title": "Cree en una carpeta vacía",
+              "text": "El comando de plantilla crea la estructura inicial. Ejecútelo solo en un directorio de práctica que usted haya elegido; así evita incorporar archivos a material existente. Observe qué archivos aparecen antes de modificarlos.",
+              "code": ""
+            },
+            {
+              "title": "Compile antes de concluir",
+              "text": "Compilar traduce el código y señala errores. Ejecutar inicia la aplicación compilada. Aunque algunos comandos combinen ambas acciones, piense en ellas por separado para localizar si un problema está en código, compilación o tiempo de ejecución.",
+              "code": "",
+              "expected": "Una compilación correcta termina sin errores y la ejecución muestra el mensaje del programa."
+            }
+          ],
+          "practice": "En una carpeta nueva de práctica, cree una aplicación de consola, cambie su mensaje y ejecute `dotnet build` antes de `dotnet run`. Resultado esperado: build exitoso y el mensaje modificado en consola.",
+          "review": [
+            {
+              "question": "¿Por qué separar build y run durante el aprendizaje?",
+              "answer": "Porque permite distinguir errores de compilación de resultados al ejecutar."
+            },
+            {
+              "question": "¿Dónde debe crear ejercicios nuevos?",
+              "answer": "En una carpeta de práctica nueva, no dentro de apuntes originales sin intención."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/08-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/8-knowledge-check",
+          "objective": "Comprobar con preguntas propias la relación entre editor, SDK y terminal.",
+          "prerequisites": [
+            "editor",
+            "SDK",
+            "compilación"
+          ],
+          "steps": [
+            {
+              "title": "Recupere las ideas",
+              "text": "Antes de responder, explique en voz alta qué herramienta modifica archivos, cuál transforma código y cuál ejecuta una aplicación. Esta autoevaluación es propia y no comunica resultados ni representa una evaluación oficial.",
+              "code": ""
+            },
+            {
+              "title": "Use evidencia local",
+              "text": "Si tiene dudas, revise la vista de archivos o el resultado de `dotnet --info`. No memorice pantallas: la meta es elegir una comprobación que responda a una pregunta técnica concreta.",
+              "code": "",
+              "expected": "Puede justificar cada respuesta con una observación del entorno."
+            }
+          ],
+          "practice": "Redacte dos preguntas sobre su entorno y respóndalas con una evidencia observable. Resultado esperado: una pregunta sobre el editor y otra sobre el SDK, ambas con respuesta verificable.",
+          "review": [
+            {
+              "question": "¿Qué herramienta transforma C# en una aplicación compilada?",
+              "answer": "El SDK, mediante los comandos de compilación de .NET."
+            },
+            {
+              "question": "¿Qué no demuestra por sí solo abrir un archivo en el editor?",
+              "answer": "No demuestra que el SDK esté instalado ni que el código compile."
+            }
+          ],
+          "originals": []
+        },
+        {
+          "id": "entorno/09-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/install-configure-visual-studio-code/9-summary",
+          "objective": "Preparar un procedimiento breve y seguro para iniciar futuros ejercicios.",
+          "prerequisites": [
+            "módulo de entorno"
+          ],
+          "steps": [
+            {
+              "title": "Conserve una secuencia",
+              "text": "Abra una carpeta de práctica, edite un cambio pequeño, compile y luego ejecute. Consulte los diagnósticos cuando algo falle. Esta secuencia deja evidencia suficiente para aprender sin depender de una configuración misteriosa.",
+              "code": ""
+            },
+            {
+              "title": "Ajuste sin confundir roles",
+              "text": "El editor y extensiones mejoran la experiencia; SDK y runtime permiten construir o ejecutar. Actualice herramientas solo siguiendo la política de su equipo, y vuelva a validar con una aplicación sencilla.",
+              "code": "",
+              "expected": "Cuenta con una secuencia repetible: abrir, editar, compilar, ejecutar y observar."
+            }
+          ],
+          "practice": "Escriba una lista de inicio para su próxima sesión de C#: carpeta, editor, terminal, build y ejecución. Resultado esperado: cinco pasos ordenados que usted pueda repetir.",
+          "review": [
+            {
+              "question": "¿Qué paso sigue a una edición pequeña?",
+              "answer": "Compilar para verificar que el cambio conserva un programa válido."
+            },
+            {
+              "question": "¿Las extensiones son obligatorias para aprender C#?",
+              "answer": "No; son apoyo opcional, mientras que el SDK proporciona las herramientas de desarrollo."
+            }
+          ],
+          "originals": []
+        }
+      ]
+    },
+    {
+      "id": "bucles",
+      "title": "Repetir acciones con bucles",
+      "description": "Use repetición controlada para procesar datos y entradas sin crear ciclos infinitos.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/",
+      "part": 2,
+      "units": [
+        {
+          "id": "bucles/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/1-introduction",
+          "objective": "Reconocer cuándo una tarea requiere repetición controlada.",
+          "prerequisites": [
+            "variables",
+            "condiciones"
+          ],
+          "steps": [
+            {
+              "title": "Identifique el patrón",
+              "text": "Un bucle evita copiar la misma instrucción cuando cambia un contador, una colección o una entrada. Toda repetición necesita una condición de continuación o un límite visible; de otro modo puede no terminar.",
+              "code": ""
+            },
+            {
+              "title": "Piense en estado",
+              "text": "Antes de escribir código, señale qué cambia en cada vuelta y qué condición la detiene. Un contador que nunca cambia es una señal temprana de bucle infinito.",
+              "code": "",
+              "expected": "Puede describir la condición inicial, el cambio y la salida."
+            }
+          ],
+          "practice": "Describa un proceso que repita cinco saludos e identifique contador, límite y actualización. Resultado esperado: contador inicia en 1, aumenta y termina después de 5.",
+          "review": [
+            {
+              "question": "¿Qué evita que un bucle se repita para siempre?",
+              "answer": "Una condición de salida alcanzable junto con un estado que progresa."
+            },
+            {
+              "question": "¿Cuándo elegir repetición?",
+              "answer": "Cuando la misma operación se aplica a varias vueltas o elementos."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        },
+        {
+          "id": "bucles/02-choose-between-for-while-do-while-loops",
+          "title": "Elegir for, while y do-while",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/2-choose-between-for-while-do-while-loops",
+          "objective": "Escoger la estructura de repetición según la condición conocida.",
+          "prerequisites": [
+            "condiciones booleanas",
+            "variables"
+          ],
+          "steps": [
+            {
+              "title": "Compare las estructuras",
+              "text": "Use `for` cuando conoce contador, límite y avance. Use `while` cuando debe comprobar antes de entrar. `do-while` ejecuta el cuerpo al menos una vez, útil cuando primero debe pedir o mostrar algo.",
+              "code": "for (int intento = 1; intento <= 3; intento++)\n{\n    Console.WriteLine($\"Intento {intento}\");\n}",
+              "expected": "Intento 1, Intento 2 e Intento 3 en líneas separadas."
+            },
+            {
+              "title": "Evite entradas sin fin",
+              "text": "En un bucle interactivo, `Console.ReadLine()` puede devolver `null` al llegar al fin de entrada. Compruébelo y salga; así una redirección o una consola cerrada no causa una espera o error inesperado.",
+              "code": "",
+              "expected": "La estructura elegida corresponde a la información disponible antes de iniciar."
+            }
+          ],
+          "practice": "Escriba tres situaciones: una para `for`, una para `while` y una para `do-while`. Resultado esperado: cada caso explica por qué la condición se conoce antes o después de la primera vuelta.",
+          "review": [
+            {
+              "question": "¿Qué bucle garantiza una ejecución inicial?",
+              "answer": "`do-while`, porque evalúa la condición al final."
+            },
+            {
+              "question": "¿Por qué proteger ReadLine contra null?",
+              "answer": "Porque el flujo de entrada puede terminar y ya no entregar texto."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        },
+        {
+          "id": "bucles/03-controlling-loop-execution-with-break-continue",
+          "title": "Controlar break y continue",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/3-controlling-loop-execution-with-break-continue",
+          "objective": "Aplicar break y continue sin ocultar la condición principal.",
+          "prerequisites": [
+            "for",
+            "if"
+          ],
+          "steps": [
+            {
+              "title": "Salga con break",
+              "text": "`break` abandona el bucle actual inmediatamente. Úselo ante una condición excepcional o una búsqueda exitosa; mantenga la razón cerca de la instrucción para que quien lea el código entienda por qué termina.",
+              "code": "using System;\n\nfor (int numero = 1; numero <= 6; numero++)\n{\n    if (numero == 5)\n    {\n        Console.WriteLine(\"Se encontró 5\");\n        break;\n    }\n\n    if (numero % 2 == 0) continue;\n    Console.WriteLine(numero);\n}",
+              "expected": "1, 3 y Se encontró 5, cada uno en una línea."
+            },
+            {
+              "title": "Salte con continue",
+              "text": "`continue` omite el resto de la vuelta y pasa a la siguiente. Es apropiado para ignorar datos no deseados, pero una cadena de continuaciones dificulta leer el flujo. Prefiera condiciones claras y pequeñas.",
+              "code": "",
+              "expected": "Puede indicar qué vueltas se omiten y cuál condición finaliza el ciclo."
+            }
+          ],
+          "practice": "Recorra los números 1 a 6, omita los pares y termine al encontrar 5. Resultado esperado: imprime 1 y 3; al llegar a 5 termina sin procesar 6.",
+          "review": [
+            {
+              "question": "¿break termina todo el programa?",
+              "answer": "No; termina el bucle más cercano y el programa continúa después de él."
+            },
+            {
+              "question": "¿Qué hace continue?",
+              "answer": "Omite el resto de la iteración actual y evalúa la siguiente."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        },
+        {
+          "id": "bucles/04-exercise-guess-number",
+          "title": "Práctica: adivinar el número",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/4-exercise-guess-number",
+          "objective": "Diseñar un ciclo de intentos con entrada validada y salida clara.",
+          "prerequisites": [
+            "while",
+            "TryParse",
+            "condiciones"
+          ],
+          "steps": [
+            {
+              "title": "Fije una meta reproducible",
+              "text": "Para estudiar la lógica, use un número objetivo fijo. Solicite un intento, conviértalo con `int.TryParse` y dé una pista. Evite asumir que toda entrada contiene un número válido.",
+              "code": "using System;\n\nstring[] entradas = { \"3\", \"texto\", \"7\" };\nconst int objetivo = 7;\nforeach (string entrada in entradas)\n{\n    if (!int.TryParse(entrada, out int intento))\n    {\n        Console.WriteLine(\"Ingrese un número\");\n        continue;\n    }\n    if (intento == objetivo)\n    {\n        Console.WriteLine(\"¡Acertó!\");\n        break;\n    }\n    Console.WriteLine(\"Siga intentando\");\n}",
+              "expected": "Siga intentando, Ingrese un número y ¡Acertó!, cada uno en una línea."
+            },
+            {
+              "title": "Incluya salida por EOF",
+              "text": "Si la entrada termina, informe que no hay más datos y use `break`. El bucle también termina cuando el número coincide. Son dos rutas de salida deliberadas, no un bucle que espera indefinidamente.",
+              "code": "",
+              "expected": "Un intento inválido no detiene el programa y el fin de entrada sale con seguridad."
+            }
+          ],
+          "practice": "Implemente un juego con objetivo 7 y pruebe las entradas 3, texto y 7. Resultado esperado: pista para 3, aviso de formato para texto y mensaje de acierto para 7.",
+          "review": [
+            {
+              "question": "¿Por qué usar TryParse aquí?",
+              "answer": "Permite tratar texto inválido sin lanzar una excepción de conversión."
+            },
+            {
+              "question": "¿Qué dos salidas debe tener este bucle?",
+              "answer": "Acierto del objetivo y fin de la entrada interactiva."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        },
+        {
+          "id": "bucles/05-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/5-knowledge-check",
+          "objective": "Revisar decisiones sobre repetición con preguntas propias.",
+          "prerequisites": [
+            "for",
+            "while",
+            "break",
+            "continue"
+          ],
+          "steps": [
+            {
+              "title": "Trace una vuelta",
+              "text": "Elija un bucle y anote valor inicial, condición, cuerpo y actualización. Trazar dos vueltas revela con rapidez si el contador progresa y si el límite incluye o excluye el valor esperado.",
+              "code": ""
+            },
+            {
+              "title": "Justifique la elección",
+              "text": "No existe un bucle “mejor” sin contexto. Explique qué sabe antes de comenzar: cantidad fija, condición que depende de entrada o necesidad de una primera ejecución.",
+              "code": "",
+              "expected": "Puede predecir dos iteraciones sin ejecutar el programa."
+            }
+          ],
+          "practice": "Trace `for (int i = 0; i < 2; i++)` en papel. Resultado esperado: cuerpos con i=0 e i=1, y final con i=2.",
+          "review": [
+            {
+              "question": "¿Cuántas veces corre i < 2 desde cero?",
+              "answer": "Dos veces: con 0 y 1; al llegar a 2 la condición es falsa."
+            },
+            {
+              "question": "¿Qué evidencia que un while terminará?",
+              "answer": "Que su condición puede hacerse falsa mediante cambios observables del estado."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        },
+        {
+          "id": "bucles/06-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-repeat-actions-loops/6-summary",
+          "objective": "Consolidar un criterio de seguridad para bucles interactivos y contados.",
+          "prerequisites": [
+            "módulo de bucles"
+          ],
+          "steps": [
+            {
+              "title": "Revise antes de ejecutar",
+              "text": "Nombre el estado, la condición y la actualización. Agregue un límite cuando corresponde. Para entrada de consola, contemple texto inválido y fin de entrada; ambos son datos normales para un programa robusto.",
+              "code": ""
+            },
+            {
+              "title": "Mantenga el flujo legible",
+              "text": "Use `break` y `continue` con moderación y mensajes comprensibles. Una salida explícita permite que la persona usuaria y quien revisa el código sepan cuándo concluyó el proceso.",
+              "code": "",
+              "expected": "Puede elegir una estructura y explicar su salida sin ambigüedad."
+            }
+          ],
+          "practice": "Revise un bucle previo y escriba una frase para su condición de fin. Resultado esperado: la frase menciona una condición alcanzable o EOF, no solo “hasta que termine”.",
+          "review": [
+            {
+              "question": "¿Qué información revisa antes de iniciar un bucle?",
+              "answer": "Estado inicial, condición de continuación, cambio por vuelta y ruta de salida."
+            },
+            {
+              "question": "¿Por qué un mensaje de salida es útil?",
+              "answer": "Hace visible si el proceso terminó por éxito, límite o falta de entrada."
+            }
+          ],
+          "originals": [
+            "4-bucle/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones",
+      "title": "Arreglos y listas",
+      "description": "Organice grupos de datos, recórralos y elija una colección según cambie o no su tamaño.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/",
+      "part": 2,
+      "units": [
+        {
+          "id": "colecciones/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/1-introduction",
+          "objective": "Reconocer cuándo varios valores deben formar una colección.",
+          "prerequisites": [
+            "variables",
+            "bucles"
+          ],
+          "steps": [
+            {
+              "title": "Agrupe valores relacionados",
+              "text": "Una colección expresa que varios datos pertenecen al mismo conjunto: calificaciones, nombres o mensajes. En vez de declarar una variable por elemento, el programa puede recorrer una estructura y aplicar la misma operación a cada posición.",
+              "code": ""
+            },
+            {
+              "title": "Decida el tamaño",
+              "text": "Un arreglo tiene longitud fija al crearlo; una lista puede crecer o reducirse. Esta diferencia guía la elección antes de escribir código y evita copiar elementos entre variables sin necesidad.",
+              "code": "",
+              "expected": "Puede señalar un conjunto de datos y decidir si su tamaño cambia."
+            }
+          ],
+          "practice": "Anote tres nombres y diga si su cantidad será fija o variable durante el programa. Resultado esperado: justifica arreglo para cantidad fija o lista para datos que se agregan.",
+          "review": [
+            {
+              "question": "¿Qué expresa una colección?",
+              "answer": "Que varios valores se gestionan como un conjunto relacionado."
+            },
+            {
+              "question": "¿Un arreglo cambia de longitud?",
+              "answer": "No; sus posiciones existen con la longitud definida al crearlo."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        },
+        {
+          "id": "colecciones/02-store-manage-data-with-arrays",
+          "title": "Guardar datos en arreglos",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/2-store-manage-data-with-arrays",
+          "objective": "Crear, indexar y recorrer arreglos sin exceder sus límites.",
+          "prerequisites": [
+            "colecciones",
+            "for"
+          ],
+          "steps": [
+            {
+              "title": "Use índices válidos",
+              "text": "Los índices comienzan en cero y terminan en `Length - 1`. Lea `Length` en vez de escribir el tamaño como un número repetido; así el recorrido acompaña al arreglo si cambia su contenido inicial.",
+              "code": "string[] ciudades = { \"Quito\", \"Cuenca\", \"Loja\" };\nfor (int indice = 0; indice < ciudades.Length; indice++)\n{\n    Console.WriteLine(ciudades[indice]);\n}",
+              "expected": "Quito, Cuenca y Loja, cada una en su propia línea."
+            },
+            {
+              "title": "Evite el límite superior",
+              "text": "La condición `indice < ciudades.Length` excluye el índice que ya no existe. Usar `<=` intentaría acceder una posición posterior a la última y produciría un error en ejecución.",
+              "code": "",
+              "expected": "El bucle visita exactamente todos los elementos."
+            }
+          ],
+          "practice": "Cree un arreglo de cuatro productos y recórralo usando Length. Resultado esperado: cuatro líneas, en el mismo orden del arreglo.",
+          "review": [
+            {
+              "question": "¿Cuál es el primer índice?",
+              "answer": "Cero, incluso cuando el arreglo tiene varios elementos."
+            },
+            {
+              "question": "¿Por qué usar Length?",
+              "answer": "Evita depender de un límite manual que puede quedar desactualizado."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        },
+        {
+          "id": "colecciones/03-store-manage-data-with-lists",
+          "title": "Administrar datos con listas",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/3-store-manage-data-with-lists",
+          "objective": "Modificar una lista y observar cómo cambia su cantidad de elementos.",
+          "prerequisites": [
+            "arreglos",
+            "tipos genéricos"
+          ],
+          "steps": [
+            {
+              "title": "Use List<T>",
+              "text": "`List<string>` mantiene elementos del mismo tipo y ofrece `Add`, `Remove` y `Count`. Declare el tipo para que el compilador ayude a prevenir mezclar valores incompatibles en una misma lista.",
+              "code": "using System;\nusing System.Collections.Generic;\n\nvar tareas = new List<string> { \"Leer\", \"Practicar\" };\ntareas.Add(\"Revisar\");\nConsole.WriteLine($\"Tareas: {tareas.Count}\");\nConsole.WriteLine(tareas[2]);",
+              "expected": "Tareas: 3 y Revisar, cada uno en una línea."
+            },
+            {
+              "title": "No confunda Count y Length",
+              "text": "Las listas informan cantidad con `Count`; los arreglos usan `Length`. Tras agregar o quitar, consulte `Count` antes de recorrer la lista, porque su tamaño puede haber variado.",
+              "code": "",
+              "expected": "Puede agregar un elemento y explicar por qué Count aumenta."
+            }
+          ],
+          "practice": "Cree una lista con dos tareas, agregue una tercera y muestre Count. Resultado esperado: se imprime 3 y la lista conserva las tres tareas.",
+          "review": [
+            {
+              "question": "¿Qué operación agrega un elemento a una lista?",
+              "answer": "`Add`, siempre que el valor sea del tipo declarado."
+            },
+            {
+              "question": "¿Qué propiedad indica elementos de una lista?",
+              "answer": "`Count`, no `Length`."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        },
+        {
+          "id": "colecciones/04-exercise-top-scores",
+          "title": "Práctica: clasificación Top 5",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/4-exercise-top-scores",
+          "objective": "Mostrar hasta cinco resultados sin asumir que existen cinco.",
+          "prerequisites": [
+            "listas",
+            "Math.Min",
+            "for"
+          ],
+          "steps": [
+            {
+              "title": "Calcule un límite seguro",
+              "text": "Una clasificación puede contener menos de cinco registros. Calcule `Math.Min(5, puntajes.Count)` y recorra hasta ese límite. Así la intención “Top 5” se conserva sin acceder posiciones inexistentes en una lista pequeña.",
+              "code": "var puntajes = new List<int> { 90, 82, 75 };\nint limite = Math.Min(5, puntajes.Count);\nfor (int i = 0; i < limite; i++)\n{\n    Console.WriteLine($\"{i + 1}. {puntajes[i]}\");\n}",
+              "expected": "1. 90, 2. 82 y 3. 75; no intenta mostrar un cuarto lugar."
+            },
+            {
+              "title": "Explique el caso corto",
+              "text": "El límite no rellena datos ni anuncia un ranking completo: simplemente procesa lo disponible. Si no hay puntajes, el límite es cero y el bucle no entra; puede mostrar un mensaje específico fuera del bucle.",
+              "code": "",
+              "expected": "La condición funciona con cero, tres o más de cinco elementos."
+            }
+          ],
+          "practice": "Pruebe una lista de dos puntajes y otra de seis. Resultado esperado: muestra 2 en el primer caso y exactamente 5 en el segundo.",
+          "review": [
+            {
+              "question": "¿Por qué no recorrer siempre hasta 5?",
+              "answer": "Una lista menor no posee los índices restantes."
+            },
+            {
+              "question": "¿Qué devuelve Math.Min(5, 6)?",
+              "answer": "5, que mantiene el máximo solicitado."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        },
+        {
+          "id": "colecciones/05-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/5-knowledge-check",
+          "objective": "Comparar arreglos y listas mediante casos propios.",
+          "prerequisites": [
+            "arreglos",
+            "listas"
+          ],
+          "steps": [
+            {
+              "title": "Compare el cambio",
+              "text": "Para cada caso, pregunte si el número de elementos se conoce y permanece fijo. Un arreglo da una forma directa de recorrer posiciones definidas; una lista ofrece operaciones para modificar una colección durante la ejecución.",
+              "code": ""
+            },
+            {
+              "title": "Revise límites",
+              "text": "Todo acceso por índice requiere que el índice exista. Un bucle correcto usa `Length` o `Count` del objeto real, y una clasificación limitada calcula el menor límite disponible.",
+              "code": "",
+              "expected": "Puede defender una elección de colección y un límite de recorrido."
+            }
+          ],
+          "practice": "Clasifique estos casos: meses del año, lista de compras editable y Top 5 con dos participantes. Resultado esperado: arreglo, lista y límite seguro, respectivamente.",
+          "review": [
+            {
+              "question": "¿Qué colección se adapta a agregar compras?",
+              "answer": "Una lista, porque puede crecer con Add."
+            },
+            {
+              "question": "¿Qué ocurre si se usa un índice igual a Length?",
+              "answer": "Está fuera de rango porque el último índice es Length menos uno."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        },
+        {
+          "id": "colecciones/06-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-arrays-lists/6-summary",
+          "objective": "Aplicar una lista de comprobación al trabajar con conjuntos de datos.",
+          "prerequisites": [
+            "módulo de colecciones"
+          ],
+          "steps": [
+            {
+              "title": "Elija y nombre",
+              "text": "Defina el tipo de elemento, escoja arreglo o lista y use un nombre que revele qué reúne. Antes de indexar, identifique el origen del índice y el tamaño actual de la colección.",
+              "code": ""
+            },
+            {
+              "title": "Recorra con límites derivados",
+              "text": "Prefiera `Length`, `Count` y límites calculados a números repetidos. Esta práctica conserva el programa correcto cuando un conjunto queda vacío, contiene pocos datos o cambia durante su preparación.",
+              "code": "",
+              "expected": "Puede recorrer una colección sin exceder posiciones disponibles."
+            }
+          ],
+          "practice": "Escriba una regla personal para evitar índices fuera de rango. Resultado esperado: menciona comparar con Length o Count, no un número fijo.",
+          "review": [
+            {
+              "question": "¿Cuándo es apropiado un arreglo?",
+              "answer": "Cuando la cantidad de posiciones se conoce y no necesita cambiar."
+            },
+            {
+              "question": "¿Qué protege un límite calculado?",
+              "answer": "Protege accesos cuando hay menos elementos de los que se desea mostrar."
+            }
+          ],
+          "originals": [
+            "5-arrays-lists/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos",
+      "title": "Escribir código reutilizable",
+      "description": "Organice operaciones en métodos con entradas, resultados y alcances definidos.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/",
+      "part": 2,
+      "units": [
+        {
+          "id": "metodos/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/1-introduction",
+          "objective": "Identificar responsabilidades que merecen un método.",
+          "prerequisites": [
+            "variables",
+            "condiciones"
+          ],
+          "steps": [
+            {
+              "title": "Extraiga una acción",
+              "text": "Un método reúne instrucciones que realizan una tarea con un nombre. Si una operación se repite o su propósito puede expresarse como un verbo, separarla reduce duplicación y facilita probarla con entradas concretas.",
+              "code": ""
+            },
+            {
+              "title": "Conserve una responsabilidad",
+              "text": "Un método de cálculo no debería también pedir datos por consola ni escribir archivos. Separar entrada, cálculo y presentación permite cambiar una parte sin alterar todas las demás.",
+              "code": "",
+              "expected": "Puede nombrar una tarea pequeña que sería un método."
+            }
+          ],
+          "practice": "Divida “preparar factura” en leer datos, calcular total y mostrar total. Resultado esperado: tres responsabilidades diferentes.",
+          "review": [
+            {
+              "question": "¿Qué beneficio da un nombre de método?",
+              "answer": "Comunica la intención de un grupo de instrucciones."
+            },
+            {
+              "question": "¿Por qué evitar métodos con muchas tareas?",
+              "answer": "Son más difíciles de comprender, reutilizar y verificar."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/02-create-methods-with-parameters",
+          "title": "Métodos con parámetros",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/2-create-methods-with-parameters",
+          "objective": "Pasar datos a un método mediante parámetros con nombres claros.",
+          "prerequisites": [
+            "métodos",
+            "tipos"
+          ],
+          "steps": [
+            {
+              "title": "Declare la entrada",
+              "text": "Los parámetros son variables locales que reciben valores al llamar el método. El tipo define qué clase de dato acepta la operación; el nombre describe su papel, como `nombreCliente` o `subtotal`.",
+              "code": "using System;\n\nstatic void Saludar(string nombre)\n{\n    Console.WriteLine($\"Hola, {nombre}\");\n}\n\nSaludar(\"Ana\");\nSaludar(\"Luis\");",
+              "expected": "Hola, Ana y Hola, Luis, cada uno en una línea."
+            },
+            {
+              "title": "Pruebe distintos valores",
+              "text": "Llame el mismo método con valores diferentes para comprobar que no depende de una variable externa oculta. La reutilización aparece cuando la lógica permanece igual y solo cambian sus entradas.",
+              "code": "",
+              "expected": "Una llamada entrega argumentos en el orden y tipo esperados."
+            }
+          ],
+          "practice": "Cree un método que reciba un nombre y muestre un saludo; llámelo con Ana y Luis. Resultado esperado: dos saludos con los nombres respectivos.",
+          "review": [
+            {
+              "question": "¿Qué recibe un parámetro?",
+              "answer": "El valor del argumento proporcionado al invocar el método."
+            },
+            {
+              "question": "¿Por qué tipar parámetros?",
+              "answer": "Porque define los valores válidos y permite comprobaciones del compilador."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/03-return-values-from-methods",
+          "title": "Devolver valores",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/3-return-values-from-methods",
+          "objective": "Devolver resultados para que quien llama decida cómo presentarlos.",
+          "prerequisites": [
+            "métodos",
+            "decimal"
+          ],
+          "steps": [
+            {
+              "title": "Separe calcular y mostrar",
+              "text": "Un método que devuelve `decimal` puede calcular un total sin imprimirlo. La llamada guarda o presenta el resultado después. Esto permite reutilizar el cálculo en consola, una prueba o una interfaz distinta.",
+              "code": "using System;\n\nstatic decimal CalcularImporte(decimal precio, int cantidad)\n{\n    return precio * cantidad;\n}\n\ndecimal importe = CalcularImporte(2.50m, 4);\nConsole.WriteLine(importe);",
+              "expected": "10.00"
+            },
+            {
+              "title": "Garantice retorno",
+              "text": "Toda ruta de un método con tipo de retorno debe producir un valor compatible. Revise condiciones: si una rama retorna y otra no, el código no expresa un resultado completo.",
+              "code": "",
+              "expected": "El resultado puede asignarse a una variable para usarlo después."
+            }
+          ],
+          "practice": "Escriba una función que reciba precio y cantidad y devuelva su multiplicación decimal. Resultado esperado: con 2.50m y 4 devuelve 10.00m.",
+          "review": [
+            {
+              "question": "¿Quién decide cómo imprimir un valor retornado?",
+              "answer": "El código que llama al método."
+            },
+            {
+              "question": "¿Por qué es útil devolver en vez de imprimir?",
+              "answer": "Porque separa cálculo de presentación y facilita reutilizarlo."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/04-manage-variable-scope",
+          "title": "Alcance de las variables",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/4-manage-variable-scope",
+          "objective": "Distinguir variables locales, parámetros y datos visibles en cada bloque.",
+          "prerequisites": [
+            "métodos",
+            "bloques"
+          ],
+          "steps": [
+            {
+              "title": "Observe el límite",
+              "text": "Una variable declarada dentro de un método solo existe allí. Un parámetro también pertenece a esa llamada. Este alcance evita que operaciones separadas modifiquen por accidente un valor temporal de otra tarea.",
+              "code": "using System;\n\nstatic int Duplicar(int cantidad)\n{\n    int total = cantidad * 2;\n    return total;\n}\n\nConsole.WriteLine(Duplicar(6));",
+              "expected": "12"
+            },
+            {
+              "title": "Pase lo necesario",
+              "text": "Si un método requiere un dato, recíbalo como parámetro o devuélvalo como resultado. No dependa de nombres externos para evitar sorpresas y para que el método pueda entenderse aislado.",
+              "code": "",
+              "expected": "Puede explicar por qué una variable local no está disponible fuera de su método."
+            }
+          ],
+          "practice": "Marque el alcance de un parámetro `cantidad` y una variable local `total` en un método de cálculo. Resultado esperado: ambas terminan al terminar la llamada.",
+          "review": [
+            {
+              "question": "¿Puede otro método leer una local directamente?",
+              "answer": "No; debe recibirla o trabajar con un valor retornado."
+            },
+            {
+              "question": "¿Qué ventaja ofrece alcance reducido?",
+              "answer": "Disminuye acoplamiento y modificaciones accidentales."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/05-organize-code-with-namespaces",
+          "title": "Espacios de nombres",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/5-organize-code-with-namespaces",
+          "objective": "Entender cómo los espacios de nombres organizan tipos.",
+          "prerequisites": [
+            "clases",
+            "métodos"
+          ],
+          "steps": [
+            {
+              "title": "Nombre el contexto",
+              "text": "Un espacio de nombres agrupa tipos relacionados y reduce choques entre nombres iguales. `System` contiene tipos usados con frecuencia; una directiva `using` permite referirse a ellos sin escribir el nombre completo cada vez.",
+              "code": "using System;\n\nConsole.WriteLine(\"Console pertenece a System\");",
+              "expected": "Console pertenece a System"
+            },
+            {
+              "title": "No confunda using",
+              "text": "`using System;` es una directiva de espacio de nombres. `using` aplicado a un recurso garantiza su liberación. Comparten palabra, pero resuelven necesidades distintas y deben leerse según el contexto.",
+              "code": "",
+              "expected": "Puede distinguir directiva de namespace y administración de recursos."
+            }
+          ],
+          "practice": "Explique qué acorta `using System;` y qué no hace. Resultado esperado: permite nombres como Console; no crea ni cierra archivos.",
+          "review": [
+            {
+              "question": "¿Para qué sirve un namespace?",
+              "answer": "Para organizar tipos y evitar ambigüedades de nombres."
+            },
+            {
+              "question": "¿Una directiva using libera recursos?",
+              "answer": "No; eso corresponde a la construcción using de recursos."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/06-exercise-create-billing-calculator",
+          "title": "Práctica: calculadora de facturación",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/6-exercise-create-billing-calculator",
+          "objective": "Construir un cálculo reutilizable y comunicar supuestos didácticos.",
+          "prerequisites": [
+            "parámetros",
+            "retornos",
+            "decimal"
+          ],
+          "steps": [
+            {
+              "title": "Mantenga la regla explícita",
+              "text": "Use `decimal` para importes y reciba subtotal y tasa. `taxRate` es una constante didáctica de este ejemplo, no una afirmación sobre normativa ecuatoriana. El valor calculado conserva sus decimales; el redondeo de presentación es una decisión separada.",
+              "code": "/// <summary>Calcula un total didáctico sin representar una regla tributaria real.</summary>\nstatic decimal CalcularTotal(decimal subtotal, decimal taxRate)\n{\n    return subtotal * (1m + taxRate);\n}\n\nconst decimal taxRate = 0.12m;\ndecimal total = CalcularTotal(10.005m, taxRate);\nConsole.WriteLine($\"Mostrado: {total:F2}; valor: {total}\");",
+              "expected": "Mostrado: 11.21; valor: 11.20560"
+            },
+            {
+              "title": "Documente la intención",
+              "text": "La documentación XML explica propósito y límites de una ayuda reutilizable. No oculte la tasa en el método: al declararla cerca de la llamada, quien estudia puede variar el supuesto y observar el resultado.",
+              "code": "",
+              "expected": "El cálculo es decimal y el formato F2 solo afecta a la presentación."
+            }
+          ],
+          "practice": "Cambie el subtotal a 25m y conserve taxRate=0.12m como supuesto didáctico. Resultado esperado: valor decimal 28.00 y salida con dos decimales; no se presenta como impuesto legal.",
+          "review": [
+            {
+              "question": "¿Qué hace F2 al imprimir?",
+              "answer": "Formatea la representación con dos decimales; no cambia el valor decimal almacenado."
+            },
+            {
+              "question": "¿taxRate es una tasa oficial?",
+              "answer": "No; es un dato didáctico explícito para practicar cálculos."
+            }
+          ],
+          "originals": [
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/07-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/7-knowledge-check",
+          "objective": "Revisar diseño de métodos mediante preguntas propias.",
+          "prerequisites": [
+            "parámetros",
+            "retornos",
+            "alcance"
+          ],
+          "steps": [
+            {
+              "title": "Siga los datos",
+              "text": "Para revisar un método, identifique qué valores entran, qué variables se crean dentro y qué sale. Este recorrido aclara alcance y evita atribuir a un retorno el trabajo de imprimir o pedir datos.",
+              "code": ""
+            },
+            {
+              "title": "Pruebe casos pequeños",
+              "text": "Elija entradas que permitan calcular el resultado a mano. Los casos simples muestran si los parámetros se usan correctamente y si las unidades monetarias requieren decimal en lugar de tipos menos apropiados.",
+              "code": "",
+              "expected": "Puede describir entrada, proceso y retorno de un método."
+            }
+          ],
+          "practice": "Revise un método de multiplicación con 3m y 2m. Resultado esperado: identifica parámetros, retorno 6m y ausencia de variables accesibles fuera del método.",
+          "review": [
+            {
+              "question": "¿Qué debe hacer una función de cálculo bien separada?",
+              "answer": "Recibir datos y retornar un resultado, dejando la presentación a quien llama."
+            },
+            {
+              "question": "¿Qué aclara XML documentation?",
+              "answer": "El propósito y los límites de una ayuda pública o reutilizable."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        },
+        {
+          "id": "metodos/08-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-reusable-code/8-summary",
+          "objective": "Aplicar una guía breve para extraer código reutilizable.",
+          "prerequisites": [
+            "módulo de métodos"
+          ],
+          "steps": [
+            {
+              "title": "Nombre, reciba y devuelva",
+              "text": "Extraiga una tarea única, asigne un nombre descriptivo, declare parámetros mínimos y retorne el resultado si corresponde. Mantenga las variables temporales dentro del método para que su alcance sea fácil de verificar.",
+              "code": ""
+            },
+            {
+              "title": "Presente al borde",
+              "text": "Deje la consola en el código de interacción y los cálculos en ayudas. Para dinero, mantenga el valor decimal y formatee únicamente al mostrarlo; documente cualquier supuesto didáctico visible.",
+              "code": "",
+              "expected": "Puede convertir una operación repetida en un método con contrato claro."
+            }
+          ],
+          "practice": "Elija una operación repetida de un ejercicio anterior y escriba nombre, parámetros y retorno. Resultado esperado: contrato de una sola responsabilidad.",
+          "review": [
+            {
+              "question": "¿Qué reduce pasar datos por parámetros?",
+              "answer": "La dependencia de estado externo oculto."
+            },
+            {
+              "question": "¿Dónde debe ocurrir el redondeo de pantalla?",
+              "answer": "En la presentación, sin sustituir innecesariamente el valor decimal calculado."
+            }
+          ],
+          "originals": [
+            "6-functions/Program.cs",
+            "7-billing/Program.cs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos",
+      "title": "Leer y escribir archivos",
+      "description": "Procese archivos temporales de forma segura, delimitando creación, lectura, escritura y liberación de recursos.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/",
+      "part": 2,
+      "units": [
+        {
+          "id": "archivos/01-introduction",
+          "title": "Introducción",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/1-introduction",
+          "objective": "Reconocer que un archivo externo requiere rutas y manejo de errores deliberados.",
+          "prerequisites": [
+            "cadenas",
+            "métodos"
+          ],
+          "steps": [
+            {
+              "title": "Trate la ruta como dato",
+              "text": "Un archivo vive fuera de las variables del programa y puede faltar, estar ocupado o contener datos inesperados. Construya rutas con `Path.Combine` y valide el contexto antes de leer; no suponga que un nombre relativo apunta al lugar deseado.",
+              "code": ""
+            },
+            {
+              "title": "Proteja los apuntes",
+              "text": "Los ejemplos de este curso usan archivos temporales únicos. Nunca reutilizan ni sobrescriben notes.txt u otros materiales originales. Así se puede estudiar escritura sin convertir una demostración en una pérdida de datos.",
+              "code": "",
+              "expected": "Puede explicar por qué una ruta temporal es más segura para practicar."
+            }
+          ],
+          "practice": "Describa un archivo de prueba con nombre temporal y una ruta que no sea un archivo de apuntes. Resultado esperado: menciona Path.GetTempPath y un nombre único.",
+          "review": [
+            {
+              "question": "¿Por qué un archivo es distinto de una variable?",
+              "answer": "Porque persiste fuera del proceso y puede cambiar o faltar independientemente del programa."
+            },
+            {
+              "question": "¿Qué material no debe sobrescribir un ejemplo?",
+              "answer": "Apuntes originales como notes.txt o archivos existentes del repositorio."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/02-open-close-files-safely-with-using",
+          "title": "Abrir y cerrar con using",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/2-open-close-files-safely-with-using",
+          "objective": "Distinguir directiva using y using que libera recursos.",
+          "prerequisites": [
+            "namespace",
+            "archivos"
+          ],
+          "steps": [
+            {
+              "title": "Use el recurso con alcance",
+              "text": "`using (var writer = ...)` o `using var writer = ...` asegura que el recurso se desecha al terminar su alcance, incluso ante una excepción. Esta construcción no es la directiva `using System;`, que solo permite nombres abreviados.",
+              "code": "using System;\nusing System.IO;\n\nstring path = Path.Combine(Path.GetTempPath(), $\"curso-using-{Guid.NewGuid():N}.txt\");\ntry\n{\n    using (StreamWriter writer = File.CreateText(path))\n    {\n        writer.WriteLine(\"bloque using\");\n    }\n\n    {\n        using StreamReader reader = File.OpenText(path);\n        Console.WriteLine(reader.ReadLine());\n    }\n}\nfinally\n{\n    if (File.Exists(path)) File.Delete(path);\n}",
+              "expected": "bloque using"
+            },
+            {
+              "title": "Cierre por diseño",
+              "text": "Un escritor puede mantener un búfer; disponerlo libera el controlador y completa su trabajo. No dependa de que el proceso termine para cerrar archivos: delimite el uso al bloque más pequeño necesario.",
+              "code": "",
+              "expected": "Puede señalar cuál using administra un recurso y cuándo se libera."
+            }
+          ],
+          "practice": "Explique la diferencia entre `using System;` y `using var reader = ...;`. Resultado esperado: el primero importa un namespace; el segundo programa la disposición del lector.",
+          "review": [
+            {
+              "question": "¿Qué garantiza using de recurso?",
+              "answer": "Que Dispose se invoca al concluir el alcance, incluso si hay una excepción."
+            },
+            {
+              "question": "¿Qué hace una directiva using?",
+              "answer": "Hace accesibles tipos de un espacio de nombres sin nombre completo."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/03-read-data-from-files",
+          "title": "Leer datos de archivos",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/3-read-data-from-files",
+          "objective": "Leer contenido y separar la apertura del tratamiento de datos.",
+          "prerequisites": [
+            "using de recursos",
+            "cadenas"
+          ],
+          "steps": [
+            {
+              "title": "Lea según el propósito",
+              "text": "Para un archivo pequeño, `File.ReadAllLines` permite recorrer líneas; para contenido gradual, un lector procesa una línea a la vez. Elija una forma que haga visible si necesita todo el contenido o solo el registro actual.",
+              "code": "using System;\nusing System.IO;\n\nstring path = Path.Combine(Path.GetTempPath(), $\"curso-lectura-{Guid.NewGuid():N}.txt\");\ntry\n{\n    File.WriteAllLines(path, new[] { \"Quito\", \"\", \"Cuenca\" });\n    foreach (string linea in File.ReadLines(path))\n    {\n        if (!string.IsNullOrWhiteSpace(linea)) Console.WriteLine(linea);\n    }\n}\nfinally\n{\n    if (File.Exists(path)) File.Delete(path);\n}",
+              "expected": "Quito y Cuenca, cada uno en una línea."
+            },
+            {
+              "title": "Valide antes de interpretar",
+              "text": "Leer texto no lo convierte automáticamente en datos válidos. Revise formato, campos y líneas vacías antes de calcular. Un visor puede mostrar una línea desconocida sin asumir que representa una instrucción segura.",
+              "code": "",
+              "expected": "Puede describir la diferencia entre obtener texto y validar su significado."
+            }
+          ],
+          "practice": "Escriba una regla para ignorar líneas vacías al leer una lista. Resultado esperado: comprueba `string.IsNullOrWhiteSpace` antes de procesar.",
+          "review": [
+            {
+              "question": "¿Leer un archivo valida sus datos?",
+              "answer": "No; solo entrega texto que el programa debe revisar según su formato."
+            },
+            {
+              "question": "¿Cuándo conviene leer líneas?",
+              "answer": "Cuando cada registro se procesa o muestra por separado."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/04-write-data-to-files",
+          "title": "Escribir y agregar contenido",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/4-write-data-to-files",
+          "objective": "Escribir y agregar contenido sin dañar archivos existentes.",
+          "prerequisites": [
+            "rutas",
+            "using de recursos"
+          ],
+          "steps": [
+            {
+              "title": "Diferencie intención",
+              "text": "Escribir un archivo puede reemplazar contenido; agregar conserva lo anterior y añade al final. Antes de escoger una API, declare cuál comportamiento necesita. En práctica, cree un archivo temporal nuevo para no afectar documentos reales.",
+              "code": "using System;\nusing System.IO;\n\nstring path = Path.Combine(Path.GetTempPath(), $\"curso-escritura-{Guid.NewGuid():N}.txt\");\ntry\n{\n    File.WriteAllText(path, \"uno\" + Environment.NewLine);\n    File.AppendAllText(path, \"dos\" + Environment.NewLine);\n    Console.Write(File.ReadAllText(path));\n}\nfinally\n{\n    if (File.Exists(path)) File.Delete(path);\n}",
+              "expected": "uno y dos, cada uno en una línea."
+            },
+            {
+              "title": "Limpie el experimento",
+              "text": "Guarde la ruta única y elimínela en `finally`. El bloque finally se ejecuta tanto si la operación tiene éxito como si falla, por lo que evita dejar restos temporales tras una demostración.",
+              "code": "",
+              "expected": "Puede explicar cuándo usar agregar y por qué finalmente se limpia."
+            }
+          ],
+          "practice": "Diseñe una prueba que escriba “uno” y agregue “dos” a un archivo temporal. Resultado esperado: dos líneas en orden y eliminación del temporal al final.",
+          "review": [
+            {
+              "question": "¿Qué riesgo tiene escribir en una ruta existente?",
+              "answer": "Puede reemplazar contenido que se deseaba conservar."
+            },
+            {
+              "question": "¿Por qué usar finally para limpieza?",
+              "answer": "Porque cubre rutas de éxito y error de una misma operación."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/05-exercise-log-file-viewer",
+          "title": "Práctica: visor de registros",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/5-exercise-log-file-viewer",
+          "objective": "Crear un visor determinista que usa y elimina su propio archivo temporal.",
+          "prerequisites": [
+            "lectura de líneas",
+            "try/finally",
+            "Guid"
+          ],
+          "steps": [
+            {
+              "title": "Cree datos propios",
+              "text": "El visor genera una muestra pequeña en una ruta temporal única, no lee registros personales ni archivos del proyecto. `Guid.NewGuid()` evita colisiones, y `try/finally` conserva la limpieza si la lectura fallara.",
+              "code": "using System;\nusing System.IO;\n\nstring path = Path.Combine(Path.GetTempPath(), $\"curso-log-{Guid.NewGuid():N}.txt\");\ntry\n{\n    File.WriteAllLines(path, new[] { \"INFO inicio\", \"WARN espacio bajo\", \"INFO fin\" });\n    foreach (string line in File.ReadLines(path))\n    {\n        if (line.StartsWith(\"WARN \")) Console.WriteLine(line);\n    }\n}\nfinally\n{\n    if (File.Exists(path)) File.Delete(path);\n}",
+              "expected": "WARN espacio bajo"
+            },
+            {
+              "title": "Filtre de forma explícita",
+              "text": "El ejemplo muestra solamente la línea que empieza con WARN. Su resultado es determinista porque el programa escribe la muestra que luego lee. La limpieza no depende de que la salida esperada se alcance.",
+              "code": "",
+              "expected": "El temporal se elimina tanto después de imprimir como ante una excepción."
+            }
+          ],
+          "practice": "Cambie una línea INFO por WARN en la muestra y ejecute el programa. Resultado esperado: aparecen las dos líneas WARN y el archivo temporal ya no existe al terminar.",
+          "review": [
+            {
+              "question": "¿Por qué el visor no usa notes.txt?",
+              "answer": "Porque una demostración debe evitar modificar o depender de apuntes existentes."
+            },
+            {
+              "question": "¿Qué asegura el finally?",
+              "answer": "Que se intenta eliminar el archivo temporal en éxito o fallo."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/06-knowledge-check",
+          "title": "Repaso del módulo",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/6-knowledge-check",
+          "objective": "Revisar decisiones de ruta, disposición y limpieza con preguntas propias.",
+          "prerequisites": [
+            "using",
+            "lectura",
+            "escritura"
+          ],
+          "steps": [
+            {
+              "title": "Siga el ciclo de vida",
+              "text": "Para cada ejemplo, identifique ruta única, creación, uso, disposición y eliminación. Este orden hace evidente qué recurso se abre y quién es responsable de limpiarlo, sin asumir que el sistema lo hará de inmediato.",
+              "code": ""
+            },
+            {
+              "title": "Diferencie las dos palabras",
+              "text": "Una directiva using organiza referencias a tipos; la forma using de recurso administra objetos que deben liberarse. Distinguirlas evita atribuir a una importación de namespace un efecto sobre un archivo abierto.",
+              "code": "",
+              "expected": "Puede describir el ciclo de vida completo de un temporal."
+            }
+          ],
+          "practice": "Ordene estas acciones: eliminar, crear ruta, leer, escribir. Resultado esperado: crear ruta, escribir, leer, eliminar en finally.",
+          "review": [
+            {
+              "question": "¿Qué parte evita colisiones de temporales?",
+              "answer": "Un nombre con Guid dentro de la carpeta temporal."
+            },
+            {
+              "question": "¿Qué debe hacerse si File.Exists devuelve falso al limpiar?",
+              "answer": "No se elimina; la comprobación permite continuar de forma segura."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        },
+        {
+          "id": "archivos/07-summary",
+          "title": "Resumen",
+          "sourceUrl": "https://learn.microsoft.com/en-us/training/modules/csharp-read-write-files/7-summary",
+          "objective": "Aplicar prácticas seguras a futuros ejercicios de entrada y salida.",
+          "prerequisites": [
+            "módulo de archivos"
+          ],
+          "steps": [
+            {
+              "title": "Delimite el experimento",
+              "text": "Construya rutas con APIs de Path, use datos de muestra y elija lectura o escritura según el objetivo. Para ejercicios, prefiera un temporal único en lugar de una ruta de apuntes o un archivo que pueda pertenecer a otra persona.",
+              "code": ""
+            },
+            {
+              "title": "Libere y limpie",
+              "text": "Use `using` para recursos de archivo y `finally` para eliminar temporales. Compruebe previamente su existencia. Así el código comunica que los archivos tienen un ciclo de vida y deja el entorno como estaba.",
+              "code": "",
+              "expected": "Puede proponer un ejemplo que no deje archivos ni altere originales."
+            }
+          ],
+          "practice": "Escriba una lista de cuatro comprobaciones antes de probar escritura: ruta, unicidad, disposición y limpieza. Resultado esperado: incluye las cuatro y no menciona sobrescribir apuntes.",
+          "review": [
+            {
+              "question": "¿Qué ruta es adecuada para una demostración temporal?",
+              "answer": "Una combinación de Path.GetTempPath y un nombre único con Guid."
+            },
+            {
+              "question": "¿Cuál es la diferencia entre disposición y eliminación?",
+              "answer": "Disponer libera el recurso abierto; eliminar quita el archivo del sistema de archivos."
+            }
+          ],
+          "originals": [
+            "8-files/Program.cs"
+          ]
+        }
+      ]
+    }
+  ]
+}
