@@ -1,0 +1,28 @@
+{
+  "title": "Aprende C# y .NET",
+  "brief": "Sitio de repaso estático para GitHub Pages. Estructura inspirada en aprendejavascript.dev e identidad visual .NET. Un proyecto independiente por unidad, ejemplos comentados y español latino de Ecuador. Morado #512bd4 según dotnet/brand; tonos claros derivados para contraste sobre fondo oscuro. Fuentes de sistema, sin activos externos ni uso del logotipo oficial.",
+  "feature": "odd/tasks/aprende-csharp-dotnet.md",
+  "artboards": [
+    {
+      "file": "01-recorrido.html",
+      "title": "Recorrido por insignias",
+      "tradeoff": "La opción más cercana a la referencia: portada amplia e índice de lecciones en dos columnas.",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "02-lector.html",
+      "title": "Lector enfocado",
+      "tradeoff": "Prioriza el repaso de una unidad, con índice lateral; menor presencia de la portada.",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "03-cuaderno.html",
+      "title": "Cuaderno de repaso",
+      "tradeoff": "Prioriza el acceso directo al punto de estudio y la práctica, con una portada más compacta.",
+      "width": 1440,
+      "height": 1000
+    }
+  ]
+}

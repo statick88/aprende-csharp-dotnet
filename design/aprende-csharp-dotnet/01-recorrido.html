@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es-EC">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recorrido por insignias · Aprende C# y .NET</title>
+<style>
+:root {
+  color-scheme: dark;
+  --brand: #512bd4;
+  --accent: #bba5ff;
+  --bg: #0e0c15;
+  --panel: #181421;
+  --text: #f5f2ff;
+  --muted: #bbb5c9;
+  --line: #342b47;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+header { padding: 20px 6%; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 24px; }
+.mark { background: var(--brand); padding: 8px 12px; border-radius: 9px; font-weight: 800; }
+.search { color: var(--muted); padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px; margin-left: auto; }
+main { max-width: 1200px; margin: auto; padding: 28px; }
+.hero { padding: 72px 0; text-align: center; background: radial-gradient(ellipse at center, #21173b, transparent 65%); }
+.eyebrow { color: var(--accent); letter-spacing: .15em; font-size: 12px; text-transform: uppercase; }
+h1 { font-size: clamp(42px, 6vw, 78px); line-height: 1.1; letter-spacing: -.05em; margin: 18px 0; }
+h1 span { color: var(--accent); }
+p { color: var(--muted); }
+.cta { display: inline-block; background: var(--brand); color: white; padding: 14px 22px; border-radius: 9px; font-weight: 700; margin: 16px 0; }
+.catalog { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.module { border-top: 1px solid var(--line); padding-top: 20px; }
+h2 { font-size: 20px; } h3 { color: var(--accent); font-size: 17px; }
+ul { list-style: none; padding: 0; }
+li { border-bottom: 1px solid #201b2b; padding: 9px 0; color: var(--muted); }
+li a:hover { color: var(--text); }
+.badge { color: var(--accent); font-size: 12px; border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; }
+pre { padding: 24px; background: #100c1a; border: 1px solid var(--line); border-radius: 12px; overflow: auto; }
+.layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; }
+footer { color: var(--muted); border-top: 1px solid var(--line); padding: 26px; font-size: 13px; }
+@media(max-width:700px) { .catalog,.layout { grid-template-columns: 1fr; } .search { display:none; } .hero { padding:36px 0; } }
+@media(prefers-reduced-motion:reduce) { * { scroll-behavior:auto; } }
+</style>
+</head>
+<body id="inicio">
+<header><a href="#inicio"><span class="mark">.NET</span> <strong>Aprende C# y .NET</strong></a><span class="search">Buscar una lección…</span><a href="#leccion">Recorrido ↓</a></header>
+<main><section class="hero"><span class="eyebrow">C# · .NET · A TU RITMO</span><h1>Aprende C# y .NET<br><span>paso a paso.</span></h1><p>Prepárate para Foundational C# with Microsoft.<br>Teoría, ejemplos comentados, práctica y repaso.</p><a class="cta" href="#leccion">Empezar a repasar →</a><p>67 unidades · 9 módulos · Contenido propio en español</p></section><div class="catalog">
+<section class="module"><span class="badge">PARTE 1 · INSIGNIA</span><h2>01 · Primer código en C#</h2><ul><li><a href="#leccion">○ Introducción</a></li><li><a href="#leccion">○ Mostrar información en consola</a></li><li><a href="#leccion">○ Recibir datos del usuario</a></li><li><a href="#leccion">○ Manipular cadenas</a></li></ul></section>
+<section class="module"><span class="badge">PARTE 2 · INSIGNIA</span><h2>09 · Leer y escribir archivos</h2><ul><li><a href="#leccion">○ Introducción</a></li><li><a href="#leccion">○ Abrir y cerrar con using</a></li><li><a href="#leccion">○ Leer datos de archivos</a></li><li><a href="#leccion">○ Escribir y agregar contenido</a></li></ul></section></div></main>
+</body>
+</html>
