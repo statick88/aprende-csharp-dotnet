@@ -1,0 +1,1409 @@
+{
+  "schemaVersion": 1,
+  "units": [
+    {
+      "id": "entorno/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una compañera abre C# en un editor, pero `dotnet new` no funciona. ¿Qué decisión diagnostica mejor el problema?",
+          "code": "",
+          "options": [
+            "Reinstalar el editor, porque crea proyectos.",
+            "Comprobar que esté instalado el SDK de .NET, porque aporta plantillas y compilador.",
+            "Instalar solo el runtime, porque ejecuta cualquier comando dotnet."
+          ],
+          "correctIndex": 1,
+          "explanation": "Crear proyectos requiere el SDK, que incluye plantillas y compilador. El runtime es el distractor cercano: ejecuta aplicaciones ya compiladas, pero no sustituye al SDK.",
+          "reasonPrompt": "Justifique qué tarea realiza cada herramienta y cuál falta en el caso.",
+          "rubric": [
+            "Distingue editor, SDK y runtime.",
+            "Relaciona `dotnet new` con las plantillas del SDK."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Alguien afirma: «Si mi programa se ejecuta, no necesito SDK». ¿Qué corrección es más precisa?",
+          "code": "",
+          "options": [
+            "Puede ejecutar un binario con runtime, pero para crear o compilar necesita SDK.",
+            "Es cierto: el editor compila automáticamente sin SDK.",
+            "Es falso porque el runtime solo sirve para editar archivos."
+          ],
+          "correctIndex": 0,
+          "explanation": "El runtime puede ejecutar una aplicación existente; crear y compilar son responsabilidades del SDK. El distractor cercano confunde ejecutar con compilar.",
+          "reasonPrompt": "Explique por qué ejecutar y compilar son etapas distintas.",
+          "rubric": [
+            "Menciona la capacidad de ejecución del runtime.",
+            "Indica que el SDK es necesario para compilación o plantillas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/02-exercise-download-install-visual-studio-code",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Va a iniciar un ejercicio nuevo sin mezclarlo con apuntes. ¿Qué acción en el editor reduce mejor ese riesgo?",
+          "code": "",
+          "options": [
+            "Abrir solo Program.cs desde recientes.",
+            "Abrir la carpeta de práctica elegida y comprobar su nombre antes de crear archivos.",
+            "Crear archivos desde la búsqueda global."
+          ],
+          "correctIndex": 1,
+          "explanation": "Abrir la carpeta hace visible el contexto completo donde se crearán archivos. Abrir un archivo aislado es cercano, pero no confirma la carpeta que contiene el proyecto.",
+          "reasonPrompt": "Explique cómo la carpeta abierta ayuda a verificar el destino de un archivo nuevo.",
+          "rubric": [
+            "Nombra una carpeta de práctica concreta.",
+            "Relaciona el explorador con el contexto del proyecto."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Tras instalar el editor, ¿qué comprobación demuestra mejor que puede organizar un proyecto, no solo ver texto?",
+          "code": "",
+          "options": [
+            "Cambiar el tema visual.",
+            "Abrir una carpeta y verificar que el explorador muestra sus archivos.",
+            "Copiar una línea de código en un archivo aislado."
+          ],
+          "correctIndex": 1,
+          "explanation": "El explorador de una carpeta demuestra que el editor representa el conjunto de archivos del proyecto. Copiar texto prueba edición mínima, pero no organización de la carpeta.",
+          "reasonPrompt": "Describa la evidencia observable que buscaría en el explorador.",
+          "rubric": [
+            "Indica abrir una carpeta, no un archivo aislado.",
+            "Describe la visualización de archivos como evidencia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/03-examine-visual-studio-code-user-interface",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "La compilación señala un error en una línea. ¿Cuál es el siguiente paso más fiable?",
+          "code": "",
+          "options": [
+            "Leer el diagnóstico y navegar a la línea indicada antes de cambiar código.",
+            "Cambiar varias líneas parecidas hasta que desaparezca.",
+            "Cerrar el editor para limpiar el error."
+          ],
+          "correctIndex": 0,
+          "explanation": "El diagnóstico y su ubicación dan evidencia para investigar una causa concreta. Cambiar líneas parecidas es el distractor cercano, pero introduce cambios sin confirmar la causa.",
+          "reasonPrompt": "Explique qué datos del diagnóstico usaría antes de editar.",
+          "rubric": [
+            "Menciona mensaje y ubicación del diagnóstico.",
+            "Propone un cambio pequeño basado en evidencia."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Necesita ejecutar un comando sin perder la carpeta del proyecto. ¿Qué área de VS Code conviene usar?",
+          "code": "",
+          "options": [
+            "La barra de actividad.",
+            "La terminal integrada.",
+            "El minimapa del editor."
+          ],
+          "correctIndex": 1,
+          "explanation": "La terminal integrada ejecuta comandos manteniendo el contexto de la carpeta abierta. La barra de actividad permite cambiar vistas, pero no ejecuta comandos.",
+          "reasonPrompt": "Relacione la terminal con la carpeta sobre la que actuará el comando.",
+          "rubric": [
+            "Selecciona la terminal integrada.",
+            "Explica el valor del contexto de carpeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/04-exercise-explore-visual-studio-code-user-interface",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una búsqueda encuentra diez coincidencias de un nombre. Antes de reemplazar, ¿qué práctica evita una modificación equivocada?",
+          "code": "",
+          "options": [
+            "Reemplazar todas para ahorrar tiempo.",
+            "Leer el contexto de cada coincidencia relevante y decidir una por una.",
+            "Cerrar el panel Problemas."
+          ],
+          "correctIndex": 1,
+          "explanation": "La búsqueda localiza texto; revisar contexto confirma si cada aparición tiene el mismo significado. Reemplazar todo es cercano, pero supone una equivalencia que la búsqueda no demuestra.",
+          "reasonPrompt": "Explique por qué hallar una coincidencia no prueba que deba cambiarse.",
+          "rubric": [
+            "Distingue búsqueda de modificación.",
+            "Incluye revisión del contexto antes de reemplazar."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "El panel Problemas muestra un aviso. ¿Qué predicción es correcta?",
+          "code": "",
+          "options": [
+            "Siempre impedirá compilar.",
+            "Debe leerse su severidad; puede no bloquear la compilación.",
+            "Significa que el archivo se eliminó."
+          ],
+          "correctIndex": 1,
+          "explanation": "Un aviso puede comunicar algo revisable sin ser un error que bloquee build. El distractor cercano confunde todos los diagnósticos con errores de compilación.",
+          "reasonPrompt": "Indique qué comprobaría para saber si el aviso bloquea el programa.",
+          "rubric": [
+            "Menciona severidad o texto del diagnóstico.",
+            "Propone confirmar mediante compilación."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/05-exercise-configure-visual-studio-code",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una extensión ofrece análisis de C#, pero `dotnet build` no está disponible. ¿Qué conclusión es correcta?",
+          "code": "",
+          "options": [
+            "La extensión reemplaza al SDK si se reinicia el editor.",
+            "Hace falta un SDK compatible; la extensión apoya al editor, no reemplaza la compilación.",
+            "El runtime basta para compilar desde la extensión."
+          ],
+          "correctIndex": 1,
+          "explanation": "Las extensiones añaden funciones al editor, mientras el SDK proporciona herramientas de compilación. El distractor cercano atribuye a la extensión una capacidad que depende del entorno .NET.",
+          "reasonPrompt": "Explique la responsabilidad de la extensión y la del SDK.",
+          "rubric": [
+            "No atribuye compilación autónoma a la extensión.",
+            "Identifica al SDK como requisito de build."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Antes de usar una extensión en un equipo de trabajo, ¿qué decisión es más responsable?",
+          "code": "",
+          "options": [
+            "Instalar todas las sugeridas para tener más funciones.",
+            "Revisar propósito, publicador, permisos y compatibilidad antes de decidir.",
+            "Confiar solo en el ícono de la extensión."
+          ],
+          "correctIndex": 1,
+          "explanation": "Revisar procedencia, propósito y permisos permite una decisión informada. Instalar todas es cercano por comodidad, pero aumenta complejidad sin justificar necesidad.",
+          "reasonPrompt": "Mencione dos datos que revisaría y por qué importan.",
+          "rubric": [
+            "Incluye publicador y propósito o permisos.",
+            "Relaciona la decisión con necesidad y compatibilidad."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/06-exercise-install-dotnet",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "`Environment.Version` muestra una versión al ejecutar una app. ¿Qué puede afirmar con seguridad?",
+          "code": "",
+          "options": [
+            "Es el runtime que ejecuta esa app.",
+            "Enumera todos los SDK instalados.",
+            "Demuestra que puede crear proyectos nuevos."
+          ],
+          "correctIndex": 0,
+          "explanation": "Environment.Version informa el runtime de ese proceso. El distractor cercano confunde esa versión con el inventario de SDKs, que se consulta con `dotnet --info`.",
+          "reasonPrompt": "Compare la evidencia de Environment.Version y `dotnet --info`.",
+          "rubric": [
+            "Asocia Environment.Version con runtime.",
+            "Indica que `dotnet --info` da información más amplia."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "En una terminal, `dotnet` no se reconoce después de una instalación autorizada. ¿Qué comprobación prudente sigue?",
+          "code": "",
+          "options": [
+            "Modificar código C# para arreglar la terminal.",
+            "Abrir una terminal nueva y revisar la configuración o instalación autorizada.",
+            "Suponer que el editor compilará sin dotnet."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una nueva terminal puede cargar la configuración actualizada; luego corresponde revisar la instalación autorizada. Cambiar C# es un distractor cercano al problema visible, pero no afecta el comando del sistema.",
+          "reasonPrompt": "Explique por qué el problema está antes de compilar el código.",
+          "rubric": [
+            "Propone renovar la terminal o revisar instalación.",
+            "No confunde configuración de herramienta con código fuente."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/07-exercise-create-build-run-app",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Luego de cambiar un mensaje, `dotnet build` falla. ¿Qué inferencia evita diagnosticar mal la ejecución?",
+          "code": "",
+          "options": [
+            "Primero hay un error de compilación; aún no corresponde evaluar el resultado al ejecutar.",
+            "El runtime mostró un resultado incorrecto.",
+            "El editor dañó la carpeta necesariamente."
+          ],
+          "correctIndex": 0,
+          "explanation": "Build fallido impide obtener una compilación válida para evaluar el comportamiento en ejecución. El distractor cercano salta a runtime sin haber superado la etapa de compilación.",
+          "reasonPrompt": "Ordene creación, compilación y ejecución según la evidencia del caso.",
+          "rubric": [
+            "Ubica build antes de run.",
+            "Separa error de compilación de resultado en tiempo de ejecución."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Dónde debería ejecutar una plantilla para un ejercicio nuevo?",
+          "code": "",
+          "options": [
+            "En una carpeta de práctica nueva elegida por la persona estudiante.",
+            "Dentro de cualquier carpeta de apuntes para aprovechar archivos existentes.",
+            "En la carpeta del sistema que contiene el SDK."
+          ],
+          "correctIndex": 0,
+          "explanation": "Una carpeta de práctica nueva aísla los archivos que crea la plantilla. Los apuntes son el distractor cercano, pero mezclar allí la estructura generada dificulta preservar el material.",
+          "reasonPrompt": "Explique qué archivos espera que cree una plantilla y por qué conviene aislarlos.",
+          "rubric": [
+            "Menciona una carpeta de práctica nueva.",
+            "Relaciona aislamiento con evitar alterar apuntes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/08-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Para comprobar que una máquina puede transformar C# en una aplicación, ¿qué evidencia es decisiva?",
+          "code": "",
+          "options": [
+            "Que un archivo se abra en el editor.",
+            "Que `dotnet build` termine sin errores usando un SDK disponible.",
+            "Que exista una extensión con colores de sintaxis."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una compilación exitosa aporta evidencia directa de que SDK y código trabajan juntos. Abrir el archivo es cercano, pero solo prueba acceso del editor.",
+          "reasonPrompt": "Explique por qué la evidencia elegida prueba más que abrir un archivo.",
+          "rubric": [
+            "Menciona build sin errores.",
+            "Distingue edición de compilación."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una estudiante sabe que el runtime está instalado. ¿Qué pregunta adicional aclara si podrá iniciar un proyecto?",
+          "code": "",
+          "options": [
+            "¿Qué tema usa el editor?",
+            "¿Hay un SDK de .NET instalado y visible para `dotnet`?",
+            "¿Cuántos archivos tiene la carpeta?"
+          ],
+          "correctIndex": 1,
+          "explanation": "La presencia de un SDK determina si cuenta con plantillas y compilador para iniciar el proyecto. El runtime es cercano, pero no responde esa capacidad de desarrollo.",
+          "reasonPrompt": "Explique qué capacidad agrega el SDK sobre el runtime.",
+          "rubric": [
+            "Formula una comprobación de SDK.",
+            "Relaciona SDK con creación o compilación."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entorno/09-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un compañero propone esta secuencia: editar, ejecutar, revisar errores. ¿Qué ajuste da mejor evidencia del cambio?",
+          "code": "",
+          "options": [
+            "Editar, compilar, luego ejecutar y observar.",
+            "Ejecutar antes de editar para conservar el orden.",
+            "Instalar extensiones entre cada cambio."
+          ],
+          "correctIndex": 0,
+          "explanation": "Compilar después de editar verifica primero que el programa sea válido; luego run permite observar su comportamiento. Ejecutar antes de compilar es el distractor cercano, pero no valida el cambio nuevo.",
+          "reasonPrompt": "Explique qué tipo de problema separa cada etapa.",
+          "rubric": [
+            "Ordena editar, build y run.",
+            "Distingue compilación de ejecución."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Alguien concluye que una extensión es obligatoria para aprender C#. ¿Cómo diagnosticaría esa afirmación?",
+          "code": "",
+          "options": [
+            "Es correcta: sin extensión no existe C#.",
+            "Es incorrecta: es apoyo opcional; el SDK aporta las herramientas de desarrollo.",
+            "Es correcta solo si el runtime está instalado."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una extensión mejora la experiencia del editor, pero no es condición para el lenguaje ni reemplaza al SDK. El distractor cercano mezcla una ayuda de interfaz con la herramienta de desarrollo.",
+          "reasonPrompt": "Justifique qué función conserva el SDK aunque no use extensiones.",
+          "rubric": [
+            "Clasifica la extensión como opcional.",
+            "Identifica una función del SDK."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Debe mostrar cinco saludos numerados. ¿Qué diseño permite predecir que terminará?",
+          "code": "",
+          "options": [
+            "Un contador inicia en 1, aumenta en cada vuelta y la condición termina después de 5.",
+            "Un `while (true)` sin salida porque son pocos saludos.",
+            "Cinco copias de Console.WriteLine para evitar estado."
+          ],
+          "correctIndex": 0,
+          "explanation": "El contador, su actualización y un límite alcanzable definen una repetición finita. `while (true)` es el distractor cercano, pero no ofrece una salida por sí mismo.",
+          "reasonPrompt": "Identifique estado inicial, cambio por vuelta y condición final.",
+          "rubric": [
+            "Nombra contador y límite.",
+            "Explica cómo la actualización hace alcanzable la salida."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un bucle compara `intentos < 3`, pero `intentos` nunca cambia. ¿Qué resultado predice?",
+          "code": "",
+          "options": [
+            "Termina al tercer mensaje automáticamente.",
+            "Puede repetirse indefinidamente mientras la condición inicial sea verdadera.",
+            "El compilador siempre agrega el incremento faltante."
+          ],
+          "correctIndex": 1,
+          "explanation": "Si el estado de la condición no progresa, una condición verdadera puede seguir siéndolo. El distractor cercano supone una actualización implícita que C# no inserta.",
+          "reasonPrompt": "Explique qué valor debería cambiar para que la condición llegue a ser falsa.",
+          "rubric": [
+            "Relaciona condición con estado mutable.",
+            "Propone una actualización verificable."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/02-choose-between-for-while-do-while-loops",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un menú debe mostrarse una vez antes de decidir si la persona desea repetirlo. ¿Qué bucle expresa mejor esa necesidad?",
+          "code": "",
+          "options": [
+            "`for`, porque siempre tiene contador.",
+            "`while`, porque puede no ejecutarse nunca.",
+            "`do-while`, porque evalúa la condición después del primer cuerpo."
+          ],
+          "correctIndex": 2,
+          "explanation": "do-while garantiza una primera ejecución y recién después evalúa si continúa. while es el distractor cercano, pero evalúa antes y podría omitir el menú.",
+          "reasonPrompt": "Explique en qué instante se evalúa la condición en cada alternativa.",
+          "rubric": [
+            "Menciona la primera ejecución garantizada.",
+            "Compara evaluación antes y después del cuerpo."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un programa lee hasta recibir fin de entrada. ¿Qué caso debe tratar antes de procesar texto?",
+          "code": "",
+          "options": [
+            "Que `Console.ReadLine()` puede devolver `null`.",
+            "Que toda entrada se convierte sola a entero.",
+            "Que la consola siempre entrega una línea vacía al final."
+          ],
+          "correctIndex": 0,
+          "explanation": "ReadLine puede devolver null al terminar la entrada, por lo que se debe salir o manejarlo antes de usar el texto. Una línea vacía es cercana, pero es una cadena válida distinta de null.",
+          "reasonPrompt": "Describa una salida segura cuando no hay más entrada.",
+          "rubric": [
+            "Distingue null de cadena vacía.",
+            "Incluye una ruta de salida por fin de entrada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/03-controlling-loop-execution-with-break-continue",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "En un `for` de 1 a 6, se hace `continue` para pares y `break` cuando el número es 5 antes de imprimir. ¿Qué se imprime?",
+          "code": "",
+          "options": [
+            "1, 3 y 5.",
+            "1 y 3; al llegar a 5 termina el bucle.",
+            "1, 3 y 6."
+          ],
+          "correctIndex": 1,
+          "explanation": "continue omite 2 y 4; al evaluar 5, break sale antes de imprimir y 6 no se alcanza. El distractor cercano olvida que break ocurre antes de la impresión.",
+          "reasonPrompt": "Trace las vueltas 1 a 5 e indique el efecto de cada instrucción.",
+          "rubric": [
+            "Distingue omitir una vuelta de terminar el bucle.",
+            "Explica por qué 5 no se imprime."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Cuál es una afirmación correcta sobre `break` dentro de un bucle?",
+          "code": "",
+          "options": [
+            "Termina el programa completo.",
+            "Termina el bucle más cercano y continúa después de él.",
+            "Omite solo la instrucción siguiente."
+          ],
+          "correctIndex": 1,
+          "explanation": "break abandona el bucle actual y el flujo continúa tras ese bloque. El distractor cercano confunde terminar un bucle con finalizar el proceso.",
+          "reasonPrompt": "Indique dónde seguiría el flujo después de un break.",
+          "rubric": [
+            "Menciona el bucle más cercano.",
+            "Diferencia break de salida del programa."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/04-exercise-guess-number",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "En un juego con objetivo 7 llega la entrada `texto`. ¿Qué acción mantiene el juego robusto?",
+          "code": "",
+          "options": [
+            "Usar `int.TryParse`; avisar formato inválido y continuar.",
+            "Usar `int.Parse` sin condición para detener el juego.",
+            "Convertir texto inválido automáticamente en 7."
+          ],
+          "correctIndex": 0,
+          "explanation": "TryParse permite detectar una conversión fallida sin lanzar una excepción y continuar con otro intento. int.Parse es cercano, pero requiere manejar la excepción para mantener ese flujo.",
+          "reasonPrompt": "Explique qué valor indica TryParse y qué haría en cada resultado.",
+          "rubric": [
+            "Menciona validación sin excepción de conversión.",
+            "Mantiene el intento inválido separado del acierto."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Además del acierto, ¿qué salida debe prever un juego que usa Console.ReadLine?",
+          "code": "",
+          "options": [
+            "Solo tres intentos, aunque no sea un requisito.",
+            "Fin de entrada, porque puede no llegar otra línea.",
+            "Cambiar el objetivo después de cada error."
+          ],
+          "correctIndex": 1,
+          "explanation": "El fin de entrada es una ruta real cuando ReadLine devuelve null y evita esperar sin datos. Limitar a tres es cercano, pero agrega una regla distinta del problema.",
+          "reasonPrompt": "Explique cómo detectaría fin de entrada y qué mensaje daría.",
+          "rubric": [
+            "Incluye comprobación de null.",
+            "Describe una salida explícita y segura."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/05-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Cuántas veces ejecuta el cuerpo `for (int i = 0; i < 2; i++)`?",
+          "code": "",
+          "options": [
+            "Una, con i=0.",
+            "Dos, con i=0 e i=1.",
+            "Tres, con i=0, 1 y 2."
+          ],
+          "correctIndex": 1,
+          "explanation": "La condición admite 0 y 1; después del incremento i vale 2 y ya no cumple `< 2`. El distractor cercano incluye el límite como si la comparación fuera `<=`.",
+          "reasonPrompt": "Trace condición, cuerpo e incremento para cada valor de i.",
+          "rubric": [
+            "Enumera los valores que entran al cuerpo.",
+            "Explica por qué 2 queda excluido."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué evidencia permite defender que un `while` terminará?",
+          "code": "",
+          "options": [
+            "Que usa la palabra while.",
+            "Que existe un cambio observable que puede volver falsa su condición.",
+            "Que tiene varias instrucciones dentro."
+          ],
+          "correctIndex": 1,
+          "explanation": "La terminación depende de una condición alcanzable mediante cambios de estado. Tener varias instrucciones es cercano, pero ninguna garantiza modificar lo que la condición evalúa.",
+          "reasonPrompt": "Señale condición, estado y actualización de un ejemplo propio.",
+          "rubric": [
+            "Relaciona actualización con condición.",
+            "Muestra una ruta para que la condición sea falsa."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bucles/06-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un estudiante dice: «Mi bucle acaba cuando termine». ¿Qué dato falta para que la afirmación sea comprobable?",
+          "code": "",
+          "options": [
+            "El color de la consola.",
+            "Una condición de salida alcanzable y el estado que la hace cambiar.",
+            "Un segundo `continue`."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una salida verificable exige decir qué condición se alcanza y qué la modifica. Agregar continue es cercano al control de flujo, pero puede incluso ocultar el progreso.",
+          "reasonPrompt": "Reescriba la afirmación con una condición y un cambio concretos.",
+          "rubric": [
+            "Formula una condición específica.",
+            "Identifica el cambio que permite alcanzarla."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para procesar un número fijo de cinco elementos, ¿qué elección comunica mejor contador, límite y avance?",
+          "code": "",
+          "options": [
+            "`for` con inicialización, condición y actualización visibles.",
+            "`while (true)` con varias salidas ocultas.",
+            "Cinco bloques duplicados."
+          ],
+          "correctIndex": 0,
+          "explanation": "for concentra el control de una repetición contada y facilita revisarlo. while(true) es cercano porque puede funcionar, pero oculta la cantidad fija en salidas adicionales.",
+          "reasonPrompt": "Explique qué parte del for representa cada elemento del control.",
+          "rubric": [
+            "Identifica inicio, límite y avance.",
+            "Justifica la elección por una cantidad conocida."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Debe guardar los doce meses, cuya cantidad no cambiará. ¿Qué decisión es más adecuada?",
+          "code": "",
+          "options": [
+            "Un arreglo de longitud definida.",
+            "Una lista porque siempre puede crecer.",
+            "Una variable distinta por cada mes."
+          ],
+          "correctIndex": 0,
+          "explanation": "Un arreglo expresa una cantidad fija conocida y permite recorrer sus posiciones. Una lista es cercana y funcionaría, pero su capacidad de crecer no aporta al requisito fijo.",
+          "reasonPrompt": "Relacione la elección con la estabilidad de la cantidad de elementos.",
+          "rubric": [
+            "Reconoce tamaño fijo.",
+            "Explica por qué un arreglo encaja en ese caso."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una lista de compras recibirá elementos durante la ejecución. ¿Qué estructura facilita esa operación?",
+          "code": "",
+          "options": [
+            "Un arreglo cuyo Length se expande con Add.",
+            "Una `List<string>` para agregar elementos y consultar Count.",
+            "Una cadena única con comas."
+          ],
+          "correctIndex": 1,
+          "explanation": "List<T> ofrece Add y una cantidad variable expresada por Count. El distractor cercano confunde listas con arreglos: un arreglo no cambia su Length.",
+          "reasonPrompt": "Explique qué operación cambia la colección y qué propiedad observa el resultado.",
+          "rubric": [
+            "Nombra Add y Count.",
+            "Distingue lista de arreglo de longitud fija."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/02-store-manage-data-with-arrays",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Para recorrer `ciudades`, ¿qué condición evita acceder fuera de rango?",
+          "code": "",
+          "options": [
+            "`i <= ciudades.Length`",
+            "`i < ciudades.Length`",
+            "`i < ciudades.Length - 1`"
+          ],
+          "correctIndex": 1,
+          "explanation": "Los índices válidos van de 0 a Length - 1, así que `< Length` incluye todos sin excederlos. `<=` es el distractor cercano y prueba precisamente un índice inexistente.",
+          "reasonPrompt": "Indique el último índice válido y compárelo con Length.",
+          "rubric": [
+            "Menciona índice inicial cero.",
+            "Relaciona último índice con Length menos uno."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un arreglo tiene tres elementos. ¿Qué ocurre al acceder al índice 3?",
+          "code": "",
+          "options": [
+            "Devuelve el último elemento.",
+            "Produce un acceso fuera de rango.",
+            "Crea una cuarta posición vacía."
+          ],
+          "correctIndex": 1,
+          "explanation": "Con Length 3 los índices son 0, 1 y 2; el 3 no existe. El distractor cercano confunde Length con un índice válido final.",
+          "reasonPrompt": "Liste los índices válidos para justificar la predicción.",
+          "rubric": [
+            "Enumera 0 a 2.",
+            "Explica por qué Length no es un índice válido."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/03-store-manage-data-with-lists",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Después de agregar «Revisar» a una lista de dos tareas, ¿qué muestra `tareas.Count`?",
+          "code": "",
+          "options": [
+            "2",
+            "3",
+            "No compila porque List no puede crecer."
+          ],
+          "correctIndex": 1,
+          "explanation": "Add incorpora un elemento y Count refleja la cantidad actual: tres. El distractor cercano mantiene la cantidad inicial e ignora el cambio que realizó Add.",
+          "reasonPrompt": "Describa la lista antes y después de Add.",
+          "rubric": [
+            "Relaciona Add con aumento de Count.",
+            "No usa Length para una lista."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué acceso obtiene el elemento recién agregado como tercero en una lista?",
+          "code": "",
+          "options": [
+            "`tareas[3]`",
+            "`tareas[2]`",
+            "`tareas.LastIndex`"
+          ],
+          "correctIndex": 1,
+          "explanation": "Los índices empiezan en cero: el tercer elemento ocupa la posición 2. `tareas[3]` es el distractor cercano porque cuenta posiciones como si empezaran en uno.",
+          "reasonPrompt": "Convierta “tercer elemento” a su índice cero basado.",
+          "rubric": [
+            "Explica índice basado en cero.",
+            "Distingue posición humana de índice de código."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/04-exercise-top-scores",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Hay tres puntajes y se desea mostrar hasta cinco. ¿Qué límite debe usar el bucle?",
+          "code": "",
+          "options": [
+            "5",
+            "`Math.Min(5, puntajes.Count)`",
+            "`puntajes.Count + 5`"
+          ],
+          "correctIndex": 1,
+          "explanation": "Math.Min produce 3 cuando solo hay tres elementos y evita índices inexistentes. Usar 5 es el distractor cercano porque representa el máximo deseado, no lo disponible.",
+          "reasonPrompt": "Calcule el límite para tres y para seis puntajes.",
+          "rubric": [
+            "Obtiene 3 para una lista de tres.",
+            "Obtiene 5 para una lista de seis."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Si `puntajes.Count` es 0, ¿qué pasa con un `for` cuya condición es `i < Math.Min(5, puntajes.Count)`?",
+          "code": "",
+          "options": [
+            "El cuerpo no se ejecuta.",
+            "Intenta leer puntajes[0].",
+            "Muestra cinco ceros."
+          ],
+          "correctIndex": 0,
+          "explanation": "El límite es 0 y la condición inicial `0 < 0` es falsa, por lo que no hay acceso. El distractor cercano supone que el bucle entra antes de evaluar su condición.",
+          "reasonPrompt": "Evalúe la condición inicial con i=0 y límite=0.",
+          "rubric": [
+            "Calcula el límite cero.",
+            "Predice que no hay acceso por índice."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/05-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué decisión combina correctamente caso y estructura?",
+          "code": "",
+          "options": [
+            "Meses del año: List porque puede cambiar su número.",
+            "Lista de compras editable: List porque se agregan y quitan elementos.",
+            "Top 5 con dos participantes: recorrer de 0 a 4 sin límite."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una lista de compras cambia durante la ejecución y List ofrece operaciones para ello. Los meses son el distractor cercano, pero representan una cantidad fija más natural para arreglo.",
+          "reasonPrompt": "Explique la propiedad del caso que motiva la estructura elegida.",
+          "rubric": [
+            "Relaciona cambio de tamaño con List.",
+            "Reconoce que Top 5 necesita límite seguro."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una persona propone `for (int i=0; i <= items.Count; i++)` para una lista. ¿Qué corrección necesita?",
+          "code": "",
+          "options": [
+            "Cambiar `<=` por `<`.",
+            "Cambiar Count por Length y mantener `<=`.",
+            "Iniciar i en 1."
+          ],
+          "correctIndex": 0,
+          "explanation": "El último índice es Count - 1, por eso `< Count` es seguro. Cambiar a Length es cercano, pero Length no es la propiedad de List y el límite seguiría mal.",
+          "reasonPrompt": "Explique qué valor toma i en la vuelta inválida de la propuesta.",
+          "rubric": [
+            "Relaciona Count con último índice Count-1.",
+            "Propone `< Count`."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colecciones/06-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un resumen afirma: «Siempre recorra hasta 10, aunque la colección cambie». ¿Cuál es el diagnóstico?",
+          "code": "",
+          "options": [
+            "Es seguro si la colección es una lista.",
+            "Es riesgoso; el límite debe derivarse de Length, Count o un máximo calculado.",
+            "Es obligatorio para que foreach funcione."
+          ],
+          "correctIndex": 1,
+          "explanation": "Un número fijo puede exceder los elementos reales; el límite debe depender de la colección o del mínimo requerido. El distractor cercano confunde la capacidad variable de List con disponibilidad garantizada de diez elementos.",
+          "reasonPrompt": "Dé un caso concreto donde una colección tenga menos de diez elementos.",
+          "rubric": [
+            "Identifica riesgo de índice fuera de rango.",
+            "Propone un límite derivado de datos reales."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Debe guardar nombres conocidos al iniciar y nunca agregar ni quitar. ¿Qué elección explica mejor su intención?",
+          "code": "",
+          "options": [
+            "Arreglo, porque la cantidad de posiciones se mantiene fija.",
+            "Lista, porque Count se llama más corto.",
+            "Variables separadas, porque no se recorren."
+          ],
+          "correctIndex": 0,
+          "explanation": "El arreglo comunica que el conjunto tiene longitud fija y aún permite recorrerlo. List es cercano y viable técnicamente, pero su mutabilidad no aporta a la intención descrita.",
+          "reasonPrompt": "Explique qué requisito cambiaría para preferir una lista.",
+          "rubric": [
+            "Relaciona arreglo con tamaño estable.",
+            "Indica que agregados o eliminaciones motivarían List."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una rutina «preparar factura» lee consola, calcula y muestra resultado. ¿Qué refactor mejora su responsabilidad?",
+          "code": "",
+          "options": [
+            "Separar lectura, cálculo y presentación en tareas distinguibles.",
+            "Poner más Console.WriteLine dentro del cálculo.",
+            "Duplicar la rutina por cada cliente."
+          ],
+          "correctIndex": 0,
+          "explanation": "Separar responsabilidades permite cambiar o probar cálculo sin depender de la consola. Agregar impresiones es cercano a mostrar resultado, pero aumenta el acoplamiento.",
+          "reasonPrompt": "Nombre las tres responsabilidades y qué dato pasa entre ellas.",
+          "rubric": [
+            "Distingue entrada, cálculo y presentación.",
+            "Explica un beneficio de reducir acoplamiento."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué señal sugiere extraer instrucciones a un método?",
+          "code": "",
+          "options": [
+            "La operación se repite o puede nombrarse como una tarea clara.",
+            "Toda variable debe vivir en un método distinto.",
+            "El programa usa menos de diez líneas."
+          ],
+          "correctIndex": 0,
+          "explanation": "Repetición o una responsabilidad con nombre claro señalan una unidad reutilizable. El distractor cercano exagera el alcance: no toda variable exige crear un método.",
+          "reasonPrompt": "Proponga un nombre verbal para una tarea repetida.",
+          "rubric": [
+            "Identifica una tarea coherente.",
+            "Relaciona extracción con reutilización o claridad."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/02-create-methods-with-parameters",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un método `Saludar(string nombre)` se llama con Ana. ¿Qué recibe el parámetro `nombre` durante esa llamada?",
+          "code": "",
+          "options": [
+            "El valor Ana como dato local de la llamada.",
+            "El nombre del método Saludar.",
+            "Todas las cadenas de la aplicación."
+          ],
+          "correctIndex": 0,
+          "explanation": "El argumento entregado se asigna al parámetro para esa invocación. El distractor cercano confunde el identificador del método con el valor que se le pasa.",
+          "reasonPrompt": "Diferencie argumento en la llamada y parámetro en la declaración.",
+          "rubric": [
+            "Identifica Ana como argumento.",
+            "Explica que nombre es un parámetro local."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué ventaja tiene llamar `Saludar` con Ana y Luis en vez de depender de una variable externa?",
+          "code": "",
+          "options": [
+            "El método puede reutilizar su misma lógica con entradas explícitas.",
+            "El parámetro se vuelve visible en todos los métodos.",
+            "Ya no necesita especificar tipos."
+          ],
+          "correctIndex": 0,
+          "explanation": "Los parámetros hacen visibles las entradas y permiten reutilizar el método con valores distintos. El distractor cercano confunde alcance de parámetro con estado global.",
+          "reasonPrompt": "Explique cómo cambiaría la salida al cambiar solo el argumento.",
+          "rubric": [
+            "Relaciona parámetros con reutilización.",
+            "No atribuye alcance global al parámetro."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/03-return-values-from-methods",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "`CalcularImporte(2.50m, 4)` retorna `precio * cantidad`. ¿Qué valor puede guardar quien llama?",
+          "code": "",
+          "options": [
+            "10.00m",
+            "6.50m",
+            "El método no puede devolver decimal."
+          ],
+          "correctIndex": 0,
+          "explanation": "Multiplicar 2.50m por 4 produce el decimal 10.00m que la llamada puede asignar. El distractor cercano suma los valores en vez de aplicar la regla de multiplicación.",
+          "reasonPrompt": "Calcule el resultado e indique dónde se almacena tras la llamada.",
+          "rubric": [
+            "Calcula usando decimal.",
+            "Distingue retorno de impresión."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un método declarado como `decimal` retorna en una rama de if pero no en la otra. ¿Qué debe corregirse?",
+          "code": "",
+          "options": [
+            "Nada; C# usa cero en la rama faltante.",
+            "Toda ruta posible debe devolver un decimal compatible.",
+            "Cambiar Console.WriteLine por return en quien llama."
+          ],
+          "correctIndex": 1,
+          "explanation": "Un método con retorno debe expresar resultado en cada ruta alcanzable. C# no inventa cero para la rama ausente; ese distractor oculta un contrato incompleto.",
+          "reasonPrompt": "Describa dos rutas y el valor que devolvería cada una.",
+          "rubric": [
+            "Identifica todas las rutas de control.",
+            "Garantiza un retorno compatible en cada ruta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/04-manage-variable-scope",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "`total` se declara dentro de `Duplicar`. ¿Puede otro método leerlo directamente?",
+          "code": "",
+          "options": [
+            "Sí, si se llama después.",
+            "No; debe recibir un dato o usar el valor que Duplicar retorna.",
+            "Sí, porque todas las variables locales son estáticas."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una variable local solo se puede nombrar dentro de su método; para compartir un dato con otro método se utiliza un retorno o un parámetro explícito. El orden de las llamadas no amplía el alcance léxico.",
+          "reasonPrompt": "Explique dos formas explícitas de entregar un resultado a otro método.",
+          "rubric": [
+            "Ubica la local dentro de su método.",
+            "Propone parámetro o retorno para compartir datos."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una variable se declara dentro de un bloque `if`. ¿Qué predicción es correcta al usarla después del bloque?",
+          "code": "",
+          "options": [
+            "No está disponible fuera de ese bloque.",
+            "Se vuelve global al cerrar la llave.",
+            "Se copia automáticamente a una variable con el mismo nombre."
+          ],
+          "correctIndex": 0,
+          "explanation": "La declaración dentro del bloque limita su alcance a esas llaves. El distractor cercano invierte la regla: cerrar el bloque termina, no amplía, la visibilidad.",
+          "reasonPrompt": "Marque las llaves que delimitan el alcance de la variable.",
+          "rubric": [
+            "Relaciona declaración con bloque.",
+            "Predice error o indisponibilidad fuera del alcance."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/05-organize-code-with-namespaces",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué permite escribir `using System;` antes de usar `Console.WriteLine`?",
+          "code": "",
+          "options": [
+            "Usar Console sin escribir `System.Console` cada vez.",
+            "Liberar Console al terminar el programa.",
+            "Crear automáticamente un archivo System."
+          ],
+          "correctIndex": 0,
+          "explanation": "La directiva incorpora el espacio de nombres para resolver nombres abreviados. El distractor cercano confunde esta directiva con `using` de recursos y Dispose.",
+          "reasonPrompt": "Escriba el nombre completamente calificado que la directiva abrevia.",
+          "rubric": [
+            "Menciona `System.Console`.",
+            "Distingue namespace de liberación de recursos."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Dos bibliotecas tienen un tipo llamado `Reporte`. ¿Qué función de los espacios de nombres ayuda a razonar sobre ese conflicto?",
+          "code": "",
+          "options": [
+            "Agrupan y califican tipos para distinguir nombres iguales.",
+            "Eliminan todas las clases duplicadas.",
+            "Convierten Reporte en variable local."
+          ],
+          "correctIndex": 0,
+          "explanation": "Los namespaces organizan tipos y permiten especificar a cuál Reporte se refiere el código. El distractor cercano promete eliminar el conflicto sin identificar ningún tipo.",
+          "reasonPrompt": "Explique cómo usaría un nombre calificado para distinguir ambos tipos.",
+          "rubric": [
+            "Relaciona namespace con organización.",
+            "Reconoce que nombres iguales pueden requerir calificación."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/06-exercise-create-billing-calculator",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Con subtotal `10.005m` y tasa didáctica `0.12m`, ¿cuál es el valor decimal calculado por `subtotal * (1m + tasa)` antes de formato?",
+          "code": "",
+          "options": [
+            "11.21m",
+            "11.20560m",
+            "11.20m"
+          ],
+          "correctIndex": 1,
+          "explanation": "El cálculo decimal conserva 11.20560m; mostrar F2 lo presenta redondeado como 11.21. El distractor cercano confunde el formato de presentación con el valor almacenado.",
+          "reasonPrompt": "Separe el cálculo decimal del resultado mostrado con F2.",
+          "rubric": [
+            "Calcula 10.005 × 1.12 correctamente.",
+            "Distingue valor de formato/redondeo de pantalla."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una persona interpreta `taxRate = 0.12m` del ejemplo como norma tributaria vigente. ¿Qué debe corregirse?",
+          "code": "",
+          "options": [
+            "Es una constante didáctica explícita, no una afirmación legal.",
+            "Toda constante decimal representa una norma oficial.",
+            "Debe usarse double para convertirla en legal."
+          ],
+          "correctIndex": 0,
+          "explanation": "La tasa está declarada como supuesto para practicar el cálculo y no afirma una regla real. El distractor cercano confunde una constante del código con una fuente normativa.",
+          "reasonPrompt": "Explique qué documentación pondría para dejar claro el supuesto.",
+          "rubric": [
+            "Identifica el carácter didáctico del valor.",
+            "No presenta el ejemplo como asesoría tributaria."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/07-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Al revisar una función de cálculo, ¿qué recorrido revela mejor su contrato?",
+          "code": "",
+          "options": [
+            "Entradas por parámetros, variables locales y valor retornado.",
+            "Color del editor, nombre del archivo y extensión instalada.",
+            "Solo la línea Console.WriteLine posterior."
+          ],
+          "correctIndex": 0,
+          "explanation": "Seguir entradas, proceso local y retorno muestra cómo fluye el dato y qué queda fuera del método. Ver solo la impresión es cercano, pero pierde el cálculo y su alcance.",
+          "reasonPrompt": "Aplique el recorrido a una multiplicación de 3m por 2m.",
+          "rubric": [
+            "Identifica parámetros y retorno 6m.",
+            "Distingue variables locales de presentación externa."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para un importe monetario pequeño, ¿qué tipo y práctica hacen más clara la intención?",
+          "code": "",
+          "options": [
+            "`decimal` y pruebas con valores calculables a mano.",
+            "`double` y redondear cada paso sin documentarlo.",
+            "`string` y concatenar los dígitos."
+          ],
+          "correctIndex": 0,
+          "explanation": "decimal expresa importes con precisión decimal apropiada y casos pequeños permiten revisar la regla. double es cercano, pero su representación binaria no es la elección didáctica preferida para dinero.",
+          "reasonPrompt": "Explique por qué elegiría decimal para un importe.",
+          "rubric": [
+            "Selecciona decimal para importes.",
+            "Propone un caso de prueba verificable a mano."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metodos/08-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un estudiante afirma: «Redondear dentro de todo cálculo es siempre mejor». ¿Cuál es el diagnóstico más útil?",
+          "code": "",
+          "options": [
+            "Conviene conservar el decimal calculado y formatear al presentar, salvo que una regla requiera redondeo explícito.",
+            "Es cierto: F2 cambia el valor almacenado automáticamente.",
+            "Solo se debe redondear usando int."
+          ],
+          "correctIndex": 0,
+          "explanation": "F2 afecta la representación visual, no el decimal almacenado; separar cálculo y presentación evita perder información sin necesidad. El distractor cercano confunde formato con mutación del valor.",
+          "reasonPrompt": "Explique qué valor conserva el programa y qué ve la persona usuaria.",
+          "rubric": [
+            "Distingue formato de valor almacenado.",
+            "Reconoce que reglas de redondeo deben declararse explícitamente."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para extraer una operación repetida, ¿qué contrato es más claro?",
+          "code": "",
+          "options": [
+            "Nombre descriptivo, parámetros mínimos y retorno si produce un resultado.",
+            "Un método sin nombre que lee cualquier variable externa.",
+            "Un método que calcula, imprime y escribe archivos siempre."
+          ],
+          "correctIndex": 0,
+          "explanation": "Un contrato claro expresa una responsabilidad, sus entradas y su resultado. El distractor cercano depende de estado oculto y dificulta reutilizar o verificar la operación.",
+          "reasonPrompt": "Proponga nombre, parámetros y retorno para una operación conocida.",
+          "rubric": [
+            "Define una sola responsabilidad.",
+            "Hace explícitas entradas y salida."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Va a probar escritura sin arriesgar apuntes existentes. ¿Qué ruta es más adecuada?",
+          "code": "",
+          "options": [
+            "`notes.txt` del material del curso.",
+            "Una combinación de Path.GetTempPath y un nombre único con Guid.",
+            "La primera ruta relativa que funcione."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una ruta temporal única aísla la demostración y reduce colisiones o sobrescrituras de apuntes. Una ruta relativa es cercana, pero su destino depende del directorio actual.",
+          "reasonPrompt": "Explique qué aporta la carpeta temporal y qué aporta Guid.",
+          "rubric": [
+            "Menciona temporal y nombre único.",
+            "Evita sobrescribir archivos de estudio."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Por qué una ruta relativa no debe asumirse como destino seguro de escritura?",
+          "code": "",
+          "options": [
+            "Porque depende del directorio de trabajo actual.",
+            "Porque File siempre la convierte en URL externa.",
+            "Porque las rutas relativas no pueden contener texto."
+          ],
+          "correctIndex": 0,
+          "explanation": "El mismo nombre relativo puede resolver a lugares distintos según desde dónde se ejecute el programa. El distractor cercano inventa una conversión que File no realiza.",
+          "reasonPrompt": "Describa dos contextos donde una ruta relativa podría apuntar distinto.",
+          "rubric": [
+            "Relaciona ruta relativa con directorio actual.",
+            "Propone construir rutas con APIs de Path."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/02-open-close-files-safely-with-using",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Dentro de un bloque `using` ocurre una excepción sin `catch`. ¿Qué sucede al salir del bloque?",
+          "code": "",
+          "options": [
+            "Se llama a Dispose y la excepción se propaga.",
+            "Dispose captura la excepción y continúa la siguiente línea.",
+            "El recurso queda abierto hasta que finalice el proceso."
+          ],
+          "correctIndex": 0,
+          "explanation": "using garantiza disposición al abandonar su alcance, incluso ante excepción, pero no la captura. El distractor cercano confunde liberar el recurso con manejar el flujo de error.",
+          "reasonPrompt": "Distinga explícitamente Dispose de catch en este escenario.",
+          "rubric": [
+            "Indica que Dispose se invoca.",
+            "Afirma que sin catch la excepción se propaga."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Se escribe con `using var writer` y luego se quiere leer el mismo archivo antes de terminar el ámbito. ¿Qué cambio delimita el cierre antes de leer?",
+          "code": "",
+          "options": [
+            "Llamar GC.Collect.",
+            "Usar un bloque `using` para escribir y leer después de salir de ese bloque.",
+            "Quitar using y esperar que el proceso termine."
+          ],
+          "correctIndex": 1,
+          "explanation": "La declaración using dispone al final de su ámbito; un bloque más pequeño hace que el escritor se libere antes de leer. GC.Collect es cercano, pero no es el mecanismo de ciclo de vida determinista.",
+          "reasonPrompt": "Indique en qué llave se libera el escritor en su solución.",
+          "rubric": [
+            "Distingue alcance de declaración y bloque.",
+            "Ubica la lectura después de la disposición."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/03-read-data-from-files",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Debe procesar un registro por línea sin cargar todo el archivo como una cadena. ¿Qué alternativa se ajusta?",
+          "code": "",
+          "options": [
+            "Recorrer `File.ReadLines(path)`.",
+            "Usar `File.ReadAllText(path)` y dividir siempre.",
+            "Suponer que toda línea es válida sin revisarla."
+          ],
+          "correctIndex": 0,
+          "explanation": "ReadLines permite recorrer líneas gradualmente, apropiado cuando se procesa cada registro. ReadAllText es cercano, pero carga todo el contenido antes de dividirlo.",
+          "reasonPrompt": "Compare qué está disponible en memoria en ambas alternativas.",
+          "rubric": [
+            "Relaciona lectura por líneas con procesamiento gradual.",
+            "No afirma que leer valide el contenido."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Al leer una lista, llega una línea vacía. ¿Qué decisión evita tratarla como un registro válido?",
+          "code": "",
+          "options": [
+            "Procesarla como si fuera un dato completo.",
+            "Comprobar `string.IsNullOrWhiteSpace(linea)` antes de procesar.",
+            "Convertirla automáticamente en cero."
+          ],
+          "correctIndex": 1,
+          "explanation": "La comprobación identifica líneas sin contenido significativo antes de interpretar datos. Convertir a cero es cercano como valor por defecto, pero inventa un dato que el archivo no proporcionó.",
+          "reasonPrompt": "Explique la diferencia entre obtener texto y validarlo como dato.",
+          "rubric": [
+            "Incluye validación previa al procesamiento.",
+            "No atribuye significado automático a una línea vacía."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/04-write-data-to-files",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un archivo temporal contiene «uno». Se necesita conservarlo y agregar «dos» al final. ¿Qué operación expresa la intención?",
+          "code": "",
+          "options": [
+            "`File.WriteAllText`, porque reemplaza el contenido.",
+            "`File.AppendAllText`, porque añade sin borrar lo anterior.",
+            "`File.ReadAllText`, porque cambia el archivo al leer."
+          ],
+          "correctIndex": 1,
+          "explanation": "AppendAllText conserva el contenido existente y añade al final. WriteAllText es el distractor cercano, pero reemplaza y perdería «uno».",
+          "reasonPrompt": "Prediga el contenido final y explique por qué no se reemplaza.",
+          "rubric": [
+            "Distingue agregar de reemplazar.",
+            "Predice «uno» seguido de «dos»."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una demostración crea un temporal y falla durante la lectura. ¿Dónde debe intentarse su eliminación?",
+          "code": "",
+          "options": [
+            "Después de la lectura, fuera de cualquier control.",
+            "En `finally`, comprobando antes `File.Exists`.",
+            "Solo dentro de `catch`, porque éxito no requiere limpieza."
+          ],
+          "correctIndex": 1,
+          "explanation": "finally se ejecuta en las rutas de éxito y fallo, por lo que sirve para limpiar el temporal. catch es cercano, pero dejaría restos cuando no ocurre una excepción.",
+          "reasonPrompt": "Compare qué rutas cubren finally y catch.",
+          "rubric": [
+            "Menciona limpieza en éxito y error.",
+            "Incluye comprobación de existencia antes de eliminar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/05-exercise-log-file-viewer",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un visor de muestra contiene INFO inicio, WARN espacio bajo, INFO fin y filtra las líneas que empiezan por WARN seguido de espacio. ¿Qué imprime?",
+          "code": "",
+          "options": [
+            "Las tres líneas.",
+            "Solo `WARN espacio bajo`.",
+            "Nada, porque WARN no es una ruta."
+          ],
+          "correctIndex": 1,
+          "explanation": "Solo la segunda línea comienza exactamente con el prefijo WARN seguido de espacio. Imprimir todas es el distractor cercano, pero ignora la condición de filtrado.",
+          "reasonPrompt": "Evalúe el prefijo de cada línea frente a la condición.",
+          "rubric": [
+            "Identifica la única línea que coincide.",
+            "Explica el efecto de StartsWith."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Por qué el visor didáctico genera un archivo temporal propio en vez de leer `notes.txt`?",
+          "code": "",
+          "options": [
+            "Para que la muestra sea determinista y no dependa de ni altere apuntes existentes.",
+            "Porque File.ReadLines siempre borra notes.txt.",
+            "Porque Guid cifra el contenido del registro."
+          ],
+          "correctIndex": 0,
+          "explanation": "Generar datos propios controla la entrada y protege el material existente. El distractor cercano inventa un efecto destructivo de ReadLines que no ocurre.",
+          "reasonPrompt": "Explique cómo la muestra propia mejora seguridad y repetibilidad.",
+          "rubric": [
+            "Menciona datos controlados o deterministas.",
+            "Evita dependencia o modificación de apuntes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/06-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Cuál es el orden más seguro para un experimento de archivo temporal que se escribe y luego se lee?",
+          "code": "",
+          "options": [
+            "Eliminar, crear ruta, leer, escribir.",
+            "Crear ruta única, escribir, leer y eliminar en finally.",
+            "Leer apuntes, sobrescribirlos y eliminar la carpeta."
+          ],
+          "correctIndex": 1,
+          "explanation": "La ruta debe existir como plan antes de crear datos; luego se usa y se limpia en finally. El distractor cercano invierte operaciones y no garantiza una limpieza que cubra errores.",
+          "reasonPrompt": "Explique el propósito de cada etapa del ciclo de vida.",
+          "rubric": [
+            "Ordena creación, uso y limpieza.",
+            "Incluye finally como cobertura de errores."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "En la limpieza, `File.Exists(path)` devuelve falso. ¿Qué acción es apropiada?",
+          "code": "",
+          "options": [
+            "Intentar borrar de todos modos y asumir que funcionará.",
+            "No eliminar; continuar porque no hay archivo en esa ruta.",
+            "Crear el archivo nuevamente para poder borrarlo."
+          ],
+          "correctIndex": 1,
+          "explanation": "Si no existe, no hay temporal que limpiar y la comprobación permite continuar con seguridad. Borrarlo de todos modos es cercano, pero ignora la condición que se acaba de verificar.",
+          "reasonPrompt": "Explique qué hecho establece File.Exists antes de llamar a Delete.",
+          "rubric": [
+            "Interpreta correctamente el falso de Exists.",
+            "Evita crear o borrar innecesariamente."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archivos/07-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una persona afirma: «Dispose y Delete hacen lo mismo». ¿Cuál es la corrección?",
+          "code": "",
+          "options": [
+            "Dispose libera el recurso abierto; Delete elimina el archivo del sistema de archivos.",
+            "Delete libera solo memoria y Dispose borra la ruta.",
+            "Ambos capturan automáticamente todas las excepciones."
+          ],
+          "correctIndex": 0,
+          "explanation": "Disponer cierra/libera el objeto que usa el archivo, mientras Delete quita la entrada del archivo. El distractor cercano intercambia dos responsabilidades distintas.",
+          "reasonPrompt": "Describa un escenario donde necesite ambas operaciones y su orden.",
+          "rubric": [
+            "Distingue recurso abierto de archivo persistente.",
+            "No atribuye manejo de excepciones a Dispose."
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "Diseña una práctica de escritura. ¿Qué conjunto de decisiones protege mejor el entorno?",
+          "code": "",
+          "options": [
+            "Ruta de apuntes conocida, WriteAllText y sin limpieza.",
+            "Ruta temporal única, using para recurso y finally para limpiar.",
+            "Ruta relativa desconocida y confiar en que el proceso termine."
+          ],
+          "correctIndex": 1,
+          "explanation": "Una ruta temporal única aísla el experimento, using libera recursos y finally limpia el archivo en éxito o error. Confiar en terminar el proceso es cercano, pero no delimita ni limpia explícitamente.",
+          "reasonPrompt": "Justifique cada una de las tres decisiones del conjunto elegido.",
+          "rubric": [
+            "Incluye unicidad de ruta y protección de apuntes.",
+            "Distingue using para disposición y finally para limpieza."
+          ]
+        }
+      ]
+    }
+  ]
+}
