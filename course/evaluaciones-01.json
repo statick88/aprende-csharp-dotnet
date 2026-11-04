@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "units": [
+    {
+      "id": "primer-codigo/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una estudiante cambió un mensaje y quiere saber si esa instrucción se alcanzó. ¿Qué decisión le da evidencia directa?",
+          "code": "Console.WriteLine(\"Inicio\");",
+          "options": ["Ejecutar y comprobar que aparece Inicio en la consola.", "Leer el archivo sin ejecutar porque C# siempre sigue el orden escrito.", "Cerrar la consola para que guarde el resultado."],
+          "correctIndex": 0,
+          "explanation": "Ejecutar y observar la salida prueba que se alcanzó la instrucción. Leer el código ayuda a predecir, pero no confirma que se compiló y ejecutó esa versión.",
+          "reasonPrompt": "Justifique qué evidencia conecta la instrucción con la salida observada.",
+          "rubric": ["Mencioné ejecutar el programa y observar la consola.", "Distinguí una predicción del código de una comprobación real."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Alguien afirma: «un programa de consola muestra todas las líneas al mismo tiempo». Para diagnosticarlo, ¿qué predicción es correcta?",
+          "code": "Console.WriteLine(\"A\");\nConsole.WriteLine(\"B\");",
+          "options": ["La salida será B y después A.", "La salida será A y después B, porque las instrucciones se ejecutan en orden.", "Solo aparecerá B porque reemplaza la primera línea."],
+          "correctIndex": 1,
+          "explanation": "Las instrucciones de nivel superior se ejecutan de arriba hacia abajo, por lo que A precede a B. El distractor de reemplazo confunde líneas de consola con una sola variable.",
+          "reasonPrompt": "Explique cómo el orden de instrucciones determina el orden visible.",
+          "rubric": ["Indiqué el orden A luego B.", "Relacioné cada WriteLine con una línea de salida."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/02-display-console-output",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga la única línea producida por este fragmento.",
+          "code": "Console.Write(\"Curso: \");\nConsole.WriteLine(\"C#\");",
+          "options": ["Curso: seguido de C# en dos líneas.", "Curso: C# en una línea.", "C# Curso: en una línea."],
+          "correctIndex": 1,
+          "explanation": "Write no agrega salto de línea y WriteLine completa la misma línea con C#. La primera opción sería correcta solo si la primera llamada fuera WriteLine.",
+          "reasonPrompt": "Explique cuál llamada agrega el salto de línea y cuándo.",
+          "rubric": ["Diferencié Write de WriteLine.", "Predije una sola línea en el orden correcto."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Necesita mostrar dos rótulos dentro de una sola cadena. ¿Qué cambio representa un salto de línea?",
+          "code": "Console.WriteLine(\"Nombre: Ana?Curso: C#\");",
+          "options": ["Reemplazar ? por /n.", "Reemplazar ? por una comilla simple.", "Reemplazar ? por \\n."],
+          "correctIndex": 2,
+          "explanation": "La secuencia de escape \\n representa un salto de línea dentro de una cadena. /n son dos caracteres ordinarios; una comilla simple no inicia una secuencia de escape en string.",
+          "reasonPrompt": "Explique por qué \\n se interpreta distinto de /n.",
+          "rubric": ["Identifiqué la barra invertida en la secuencia.", "Expliqué que el resultado son dos líneas."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/03-accept-user-input",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "En una ejecución sin entrada estándar, ¿qué valor se usa para evitar que nombre sea null?",
+          "code": "string nombre = Console.ReadLine() ?? \"visitante\";",
+          "options": ["visitante", "Una cadena vacía automáticamente", "El texto Console.ReadLine"],
+          "correctIndex": 0,
+          "explanation": "El operador ?? elige visitante cuando ReadLine devuelve null. No convierte null automáticamente en cadena vacía; esa sería otra decisión explícita.",
+          "reasonPrompt": "Explique qué condición activa el valor alternativo.",
+          "rubric": ["Mencioné que ReadLine puede devolver null.", "Expliqué el papel de ??."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una persona escribe María y presiona Enter. ¿Qué orden debe tener una interacción clara?",
+          "code": "Console.Write(\"Nombre: \");\nstring nombre = Console.ReadLine() ?? \"visitante\";",
+          "options": ["Leer, imprimir el prompt y saludar.", "Imprimir el prompt, leer y luego saludar con nombre.", "Saludar primero y leer solo si falla."],
+          "correctIndex": 1,
+          "explanation": "El prompt informa qué ingresar antes de leer, y el saludo usa el valor ya recibido. Leer antes del prompt deja a la persona sin instrucción.",
+          "reasonPrompt": "Justifique cómo el orden ayuda a la persona usuaria.",
+          "rubric": ["Ordené prompt, lectura y respuesta.", "Expliqué que el saludo usa el dato leído."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/04-manipulate-strings",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué corrección inserta el valor de ciudad en vez de imprimir llaves literales?",
+          "code": "string ciudad = \"Quito\";\nConsole.WriteLine(\"Ciudad: {ciudad}\");",
+          "options": ["Agregar $ antes de la comilla inicial.", "Cambiar ciudad a char.", "Usar comillas simples para toda la salida."],
+          "correctIndex": 0,
+          "explanation": "El prefijo $ habilita interpolación y evalúa ciudad entre llaves. Cambiar el tipo no habilita sustitución; char tampoco puede contener Quito completo.",
+          "reasonPrompt": "Explique qué significado tienen las llaves con y sin $.",
+          "rubric": ["Identifiqué el prefijo $.", "Distinguí texto literal de interpolación."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Debe formar un mensaje legible con nombre y curso. ¿Cuál opción evita repetir una lectura y usa ambos valores?",
+          "code": "string nombre = \"Ana\";\nstring curso = \"C#\";",
+          "options": ["Console.WriteLine(nombre + curso);", "Console.WriteLine($\"{nombre} estudia {curso}.\");", "Console.WriteLine(\"nombre estudia curso\");"],
+          "correctIndex": 1,
+          "explanation": "La interpolación inserta ambos valores y conserva separadores legibles. Concatenar sin espacio produce AnaC#; la tercera opción imprime los nombres literales.",
+          "reasonPrompt": "Justifique cómo cada variable llega al mensaje final.",
+          "rubric": ["Incluí los dos valores reales.", "Consideré espacios y puntuación legibles."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/05-exercise-welcome-message",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "El programa debe saludar incluso si la entrada se cierra. ¿Cuál declaración conserva esa ruta segura?",
+          "code": "Console.Write(\"¿Cómo se llama? \");",
+          "options": ["string nombre = Console.ReadLine();", "string nombre = \"visitante\";", "string nombre = Console.ReadLine() ?? \"visitante\";"],
+          "correctIndex": 2,
+          "explanation": "La tercera alternativa conserva lo escrito y define visitante ante null. La segunda ignora cualquier respuesta válida, que es el distractor más cercano.",
+          "reasonPrompt": "Explique las dos rutas de la expresión elegida.",
+          "rubric": ["Describí entrada válida y EOF.", "Expliqué por qué no se pierde el nombre escrito."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Tras leer Luis, ¿qué salida confirma el dato y la unidad sin tratar a Luis como texto literal?",
+          "code": "string nombre = \"Luis\";",
+          "options": ["Console.WriteLine($\"Bienvenido a la unidad, {nombre}.\");", "Console.WriteLine(\"Bienvenido a la unidad, nombre.\");", "Console.WriteLine(nombre);"],
+          "correctIndex": 0,
+          "explanation": "La primera opción inserta el valor y comunica el contexto. La segunda imprime la palabra nombre, no el contenido de la variable.",
+          "reasonPrompt": "Explique qué parte es fija y cuál proviene de la variable.",
+          "rubric": ["Identifiqué la interpolación.", "Verifiqué que Luis aparecería en la salida."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/06-challenge-user-interaction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Se consultan nombre y meta. ¿Qué diseño permite resumir ambos datos después?",
+          "code": "// Se harán dos llamadas a Console.ReadLine()",
+          "options": ["Guardar ambas respuestas en una variable llamada dato.", "Usar variables distintas, nombre y meta.", "Mostrar el resumen antes de hacer las lecturas."],
+          "correctIndex": 1,
+          "explanation": "Variables separadas preservan cada respuesta para el resumen. Reutilizar dato sobrescribe el nombre al leer la meta.",
+          "reasonPrompt": "Explique qué valor se perdería al reutilizar una sola variable.",
+          "rubric": ["Nombré los dos datos por separado.", "Expliqué el efecto de una reasignación."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una compañera pone el resumen antes de la segunda pregunta. ¿Qué corrección da datos completos?",
+          "code": "Console.WriteLine($\"{nombre}, meta: {meta}\");\n// luego se lee meta",
+          "options": ["Mover la lectura de meta antes del resumen.", "Quitar la variable meta.", "Cambiar WriteLine por Write."],
+          "correctIndex": 0,
+          "explanation": "El resumen debe ejecutarse después de obtener ambos valores. Cambiar el método de salida no inicializa meta ni corrige el flujo.",
+          "reasonPrompt": "Justifique la dependencia entre lectura y resumen.",
+          "rubric": ["Ordené todas las lecturas antes de mostrar el resumen.", "Relacioné cada variable con su pregunta."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/07-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga el saludo si ReadLine devuelve null.",
+          "code": "string n = Console.ReadLine() ?? \"visitante\";\nConsole.WriteLine($\"Hola, {n}.\");",
+          "options": ["Hola, null.", "Hola, visitante.", "El programa repite la pregunta indefinidamente."],
+          "correctIndex": 1,
+          "explanation": "?? sustituye null por visitante antes de interpolar. El primer distractor olvida que el valor alternativo ya se asignó.",
+          "reasonPrompt": "Explique el valor de n antes de WriteLine.",
+          "rubric": ["Seguí la asignación antes de la salida.", "Identifiqué el valor alternativo exacto."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué prueba pequeña detecta mejor que un cambio alteró el orden de una conversación de consola?",
+          "code": "// prompt, lectura, confirmación",
+          "options": ["Comparar solo que el proyecto compile.", "Cambiar el tema del editor.", "Ejecutar con una entrada conocida y comparar prompt y confirmación en orden."],
+          "correctIndex": 2,
+          "explanation": "Una entrada conocida permite contrastar toda la secuencia observable. Compilar no prueba que los mensajes estén en el orden esperado.",
+          "reasonPrompt": "Explique qué observaría en la ejecución.",
+          "rubric": ["Propuse una entrada concreta.", "Comprobé orden y contenido de la salida."]
+        }
+      ]
+    },
+    {
+      "id": "primer-codigo/08-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un estudiante dice: «la consola recuerda nombre al ejecutar de nuevo». ¿Qué decisión corrige su programa si necesita volver a saludar?",
+          "code": "string nombre = Console.ReadLine() ?? \"visitante\";",
+          "options": ["Leer o asignar nombre nuevamente en cada ejecución.", "Confiar en que la variable anterior sigue en memoria.", "Cambiar nombre por una constante."],
+          "correctIndex": 0,
+          "explanation": "Una nueva ejecución crea sus variables de nuevo; debe obtener o asignar el dato otra vez. Una constante fija un valor, pero no recuerda la entrada anterior.",
+          "reasonPrompt": "Explique qué reinicia al comenzar otra ejecución.",
+          "rubric": ["Mencioné que la variable no persiste entre ejecuciones.", "Propuse leer o asignar el dato otra vez."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para una interacción de cafetería, elija la secuencia que evita saludar con un dato inexistente.",
+          "code": "// nombre se usará en el mensaje final",
+          "options": ["Confirmar, pedir nombre, leer nombre.", "Pedir nombre, leerlo con alternativa y confirmar usando la variable.", "Leer nombre, cerrar el programa y luego mostrarlo."],
+          "correctIndex": 1,
+          "explanation": "La segunda secuencia prepara a la persona, guarda el dato seguro y después lo usa. La primera intenta confirmar antes de tener el valor.",
+          "reasonPrompt": "Justifique el orden con la dependencia de datos.",
+          "rubric": ["Incluí prompt, lectura y confirmación.", "Expliqué el valor alternativo ante falta de entrada."]
+        }
+      ]
+    },
+    {
+      "id": "variables/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una factura necesita cambiar la cantidad sin editar cada salida. ¿Qué decisión modela mejor ese dato?",
+          "code": "Console.WriteLine(3);",
+          "options": ["Usar el literal 3 en todas las líneas.", "Guardar 3 en una variable int con nombre cantidad.", "Guardar 3 entre comillas como string."],
+          "correctIndex": 1,
+          "explanation": "Una variable int con nombre permite reasignar y comunica el significado. Repetir el literal obliga a cambiar varios lugares y no representa un dato modificable.",
+          "reasonPrompt": "Explique la diferencia entre el valor literal y la variable.",
+          "rubric": ["Identifiqué cantidad como entero modificable.", "Expliqué por qué el nombre mejora el código."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Diagnostique la afirmación: «\"42\" y 42 se comportan igual porque se ven igual». ¿Cuál predicción la refuta?",
+          "code": "// \"42\" es string; 42 es int",
+          "options": ["Ambos aceptan las mismas operaciones numéricas.", "Solo 42 puede sumarse directamente como número entero.", "Ambos son bool porque tienen dos caracteres."],
+          "correctIndex": 1,
+          "explanation": "42 es int y puede participar en operaciones enteras; \"42\" es texto. El distractor cercano confunde apariencia visual con tipo.",
+          "reasonPrompt": "Explique qué tipo tiene cada literal y una consecuencia.",
+          "rubric": ["Clasifiqué string e int correctamente.", "Relacioné el tipo con operaciones permitidas."]
+        }
+      ]
+    },
+    {
+      "id": "variables/02-literal-values",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué declaración representa correctamente un precio monetario de 19.95?",
+          "code": "// precio debe ser decimal",
+          "options": ["decimal precio = 19.95m;", "decimal precio = '19.95';", "decimal precio = \"19.95\";"],
+          "correctIndex": 0,
+          "explanation": "El sufijo m crea un literal decimal compatible. Comillas simples son para un solo char y dobles crean string, no decimal.",
+          "reasonPrompt": "Justifique el delimitador y el sufijo elegidos.",
+          "rubric": ["Usé decimal y el sufijo m.", "Distinguí string y char de decimal."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una calificación usa una letra única. ¿Cuál opción compila con el tipo apropiado?",
+          "code": "// guardar A como un carácter",
+          "options": ["char nivel = \"A\";", "string nivel = 'A';", "char nivel = 'A';"],
+          "correctIndex": 2,
+          "explanation": "char usa comillas simples para un carácter. La primera parece cercana, pero comillas dobles producen string y no caben en char.",
+          "reasonPrompt": "Explique por qué el delimitador cambia el tipo.",
+          "rubric": ["Elegí comillas simples para char.", "Reconocí que A es un solo carácter."]
+        }
+      ]
+    },
+    {
+      "id": "variables/03-declare-assign-variables",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga el valor que se muestra después de esta actualización.",
+          "code": "int puntos = 10;\npuntos = 12;\nConsole.WriteLine(puntos);",
+          "options": ["10", "12", "1012"],
+          "correctIndex": 1,
+          "explanation": "La reasignación reemplaza el valor anterior de puntos por 12. 1012 supondría concatenación de texto, que no ocurre con int.",
+          "reasonPrompt": "Explique qué valor deja de contener la variable.",
+          "rubric": ["Seguí la reasignación en orden.", "Identifiqué que puntos sigue siendo int."]
+        },
+        {
+          "id": "q2",
+          "prompt": "El contador debe recibir otro entero. ¿Qué cambio es válido?",
+          "code": "int asistentes = 20;",
+          "options": ["asistentes = \"veinte\";", "asistentes = 21;", "asistentes = true;"],
+          "correctIndex": 1,
+          "explanation": "21 es un int compatible con asistentes. El texto parece expresar el mismo concepto, pero su tipo string no es asignable a int.",
+          "reasonPrompt": "Justifique la compatibilidad de tipos.",
+          "rubric": ["Identifiqué el tipo declarado.", "Expliqué por qué texto y bool no son enteros."]
+        }
+      ]
+    },
+    {
+      "id": "variables/04-use-var-keyword",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Cuál uso de var permite al compilador inferir el tipo sin ambigüedad?",
+          "code": "// declarar una ciudad",
+          "options": ["var ciudad;", "var ciudad = \"Cuenca\";", "var = \"Cuenca\";"],
+          "correctIndex": 1,
+          "explanation": "El inicializador string permite inferir el tipo de ciudad. var ciudad; no ofrece un valor desde el cual inferirlo.",
+          "reasonPrompt": "Explique de dónde obtiene el compilador el tipo.",
+          "rubric": ["Mencioné el inicializador.", "Identifiqué que el tipo inferido es string."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Revise esta afirmación: «var hace que una variable pueda recibir cualquier tipo después». ¿Qué prueba la corrige?",
+          "code": "var visitantes = 4;",
+          "options": ["visitantes = 5; es válido porque sigue siendo int.", "visitantes = \"cinco\"; es válido porque var no tiene tipo.", "visitantes = true; es obligatorio para completar la inferencia."],
+          "correctIndex": 0,
+          "explanation": "var infiere int desde 4 y ese tipo queda fijo; 5 es compatible. El distractor de string confunde inferencia con tipado dinámico.",
+          "reasonPrompt": "Explique qué tipo quedó fijado y por qué.",
+          "rubric": ["Identifiqué int como tipo inferido.", "Expliqué que var no elimina el tipo."]
+        }
+      ]
+    },
+    {
+      "id": "variables/05-exercise-literals-variables",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Modele una tienda: 3 unidades, precio 2.50 y disponibilidad. ¿Qué tipos conservan el significado?",
+          "code": "// producto, unidades, precio, disponible",
+          "options": ["string, decimal, int, string", "string, int, decimal, bool", "char, int, double, int"],
+          "correctIndex": 1,
+          "explanation": "Nombre es string, cantidad completa int, dinero decimal y estado bool. El primer distractor intercambia cantidad y precio, perdiendo su significado.",
+          "reasonPrompt": "Justifique cada tipo según el dato representado.",
+          "rubric": ["Asigné int a unidades y decimal a precio.", "Asigné bool al estado disponible."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué salida presenta precio como valor sin convertirlo antes a texto manualmente?",
+          "code": "string producto = \"Cuaderno\";\ndecimal precio = 2.50m;",
+          "options": ["Console.WriteLine($\"{producto}: ${precio}\");", "Console.WriteLine(producto = precio);", "Console.WriteLine('producto precio');"],
+          "correctIndex": 0,
+          "explanation": "La interpolación forma texto para mostrar y conserva las variables tipadas. Asignar precio a producto es incompatible, pues string y decimal difieren.",
+          "reasonPrompt": "Explique qué ocurre con el valor decimal al interpolarlo.",
+          "rubric": ["Usé las variables sin cambiar sus tipos.", "Identifiqué interpolación para la presentación."]
+        }
+      ]
+    },
+    {
+      "id": "variables/06-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga el resultado de la reasignación para detectar una lectura apresurada.",
+          "code": "int x = 2;\nx = 5;\nConsole.WriteLine(x);",
+          "options": ["2", "5", "25"],
+          "correctIndex": 1,
+          "explanation": "La segunda asignación reemplaza 2 por 5 antes de imprimir. 25 confunde reasignación con concatenación.",
+          "reasonPrompt": "Describa el estado de x después de cada línea.",
+          "rubric": ["Anoté 2 y luego 5.", "No confundí asignación con concatenación."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Necesita guardar si un libro está prestado. ¿Cuál declaración permite una decisión posterior con if?",
+          "code": "// estado de préstamo",
+          "options": ["bool prestado = false;", "int prestado = \"false\";", "decimal prestado = 0m;"],
+          "correctIndex": 0,
+          "explanation": "bool representa directamente verdadero o falso y puede usarse como condición. 0m podría codificar un estado, pero no expresa la regla booleana sin comparación adicional.",
+          "reasonPrompt": "Explique por qué el dominio del dato tiene dos estados.",
+          "rubric": ["Elegí bool para verdadero/falso.", "Relacioné el valor con una condición posterior."]
+        }
+      ]
+    },
+    {
+      "id": "variables/07-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una persona propone guardar un precio como int «porque luego se puede imprimir». ¿Qué decisión evita perder centavos?",
+          "code": "// precio de 8.50",
+          "options": ["int precio = 8;", "decimal precio = 8.50m;", "bool precio = true;"],
+          "correctIndex": 1,
+          "explanation": "decimal conserva la parte fraccionaria y el sufijo m declara el literal correcto. int truncaría o requeriría otra representación antes de guardar 8.50.",
+          "reasonPrompt": "Explique qué información perdería int.",
+          "rubric": ["Mencioné los centavos o fracción.", "Usé decimal con m."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para preparar cálculos, ¿qué afirmación diagnostica correctamente un tipo mal elegido?",
+          "code": "string cantidad = \"3\";",
+          "options": ["Cantidad ya es un entero porque contiene un dígito.", "Cantidad es texto; se debe convertir o declarar int antes de sumar como número.", "Cantidad es decimal por estar entre comillas."],
+          "correctIndex": 1,
+          "explanation": "Las comillas hacen que cantidad sea string, aunque sus caracteres parezcan numéricos. El distractor cercano confunde contenido con tipo.",
+          "reasonPrompt": "Explique cómo determina C# el tipo en este caso.",
+          "rubric": ["Identifiqué las comillas como string.", "Propuse int o una conversión explícita para calcular."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una receta divide 7 porciones entre 2 personas y debe conservar media porción. ¿Qué decisión es correcta?",
+          "code": "// 7 / 2",
+          "options": ["Usar int porque ambas cantidades son completas.", "Usar decimal con literales 7m y 2m.", "Mostrar la fórmula como string."],
+          "correctIndex": 1,
+          "explanation": "decimal conserva 3.5; int / int daría 3 al descartar la fracción. Mostrar texto no realiza el cálculo.",
+          "reasonPrompt": "Justifique qué resultado se perdería con división entera.",
+          "rubric": ["Predije 3.5 con decimal.", "Expliqué el truncamiento de int."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para diagnosticar una fórmula nueva, ¿qué práctica da una señal confiable antes de usar datos reales?",
+          "code": "// total = precio * cantidad",
+          "options": ["Probar valores pequeños cuyo resultado se pueda calcular a mano.", "Usar números aleatorios y confiar en que no falle.", "Formatear el resultado antes de calcular."],
+          "correctIndex": 0,
+          "explanation": "Un caso conocido permite detectar tipo, fórmula o prioridad incorrectos. Los valores aleatorios no dan una referencia clara para comparar.",
+          "reasonPrompt": "Proponga un caso pequeño y su resultado esperado.",
+          "rubric": ["Elegí valores verificables manualmente.", "Indiqué el resultado esperado antes de ejecutar."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/02-numeric-data-types",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga las dos salidas para explicar una diferencia de tipo.",
+          "code": "Console.WriteLine(9 / 2);\nConsole.WriteLine(9m / 2m);",
+          "options": ["4 y 4.5", "4.5 y 4.5", "4 y 4"],
+          "correctIndex": 0,
+          "explanation": "La primera división es entera y descarta .5; los operandos decimales de la segunda conservan la fracción. El distractor de dos 4.5 ignora los tipos de la primera línea.",
+          "reasonPrompt": "Explique cómo los sufijos m cambian la operación.",
+          "rubric": ["Diferencié int de decimal.", "Predije ambas salidas en orden."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Cuál tipo elegiría para contar estudiantes, no para guardar su promedio?",
+          "code": "// conteo de asistentes",
+          "options": ["decimal", "int", "string"],
+          "correctIndex": 1,
+          "explanation": "Un conteo de personas completas se modela naturalmente con int. decimal es el distractor cercano porque admite números, pero comunica una precisión fraccionaria innecesaria.",
+          "reasonPrompt": "Justifique por qué el dominio no admite fracciones.",
+          "rubric": ["Relacioné conteo con valores completos.", "Distinguí conteo de medida o dinero."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/03-perform-math-operations",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga ambos resultados y detecte el efecto de los paréntesis.",
+          "code": "int a = 2 + 3 * 4;\nint b = (2 + 3) * 4;",
+          "options": ["a=20, b=14", "a=14, b=20", "a=14, b=14"],
+          "correctIndex": 1,
+          "explanation": "Multiplicación tiene prioridad en a, mientras los paréntesis fuerzan primero 2+3 en b. La opción de 14 ambos ignora el agrupamiento explícito.",
+          "reasonPrompt": "Describa el primer operador evaluado en cada expresión.",
+          "rubric": ["Calculé 14 y 20 correctamente.", "Expliqué la prioridad y los paréntesis."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un acumulado inicia en 10 y recibe cinco puntos. ¿Qué instrucción actualiza el valor sin reescribir toda la suma?",
+          "code": "int puntos = 10;",
+          "options": ["puntos =+ 5;", "puntos += 5;", "puntos == 15;"],
+          "correctIndex": 1,
+          "explanation": "+= suma al valor actual y asigna el resultado. == compara y no actualiza; =+ 5 asignaría 5 con signo positivo, no sumaría.",
+          "reasonPrompt": "Explique el valor de puntos antes y después.",
+          "rubric": ["Identifiqué += como asignación compuesta.", "Predije 15 como resultado."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/04-convert-data-types",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "El texto recibido es \"28\" y debe sumarse como edad. ¿Qué acción hace explícita la conversión?",
+          "code": "string texto = \"28\";",
+          "options": ["int edad = int.Parse(texto);", "int edad = texto;", "string edad = 28;"],
+          "correctIndex": 0,
+          "explanation": "int.Parse transforma una cadena con formato entero válido en int. Asignar texto directamente a int es incompatible, aunque los caracteres sean dígitos.",
+          "reasonPrompt": "Explique qué requisito tiene Parse para esta entrada.",
+          "rubric": ["Mencioné que el texto debe ser numérico válido.", "Distinguí cadena de entero."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué resultado debe anticipar antes de convertir 19.99m a int?",
+          "code": "decimal precio = 19.99m;\nint entero = (int)precio;",
+          "options": ["20, porque se redondea automáticamente.", "19.99, porque int conserva decimales.", "19, porque la conversión descarta la fracción."],
+          "correctIndex": 2,
+          "explanation": "El cast a int trunca hacia cero, por eso queda 19. No redondea a 20; para redondear se requeriría una decisión explícita.",
+          "reasonPrompt": "Explique qué información cambia al convertir.",
+          "rubric": ["Predije 19.", "Diferencié truncamiento de redondeo."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/05-exercise-calculator",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Con cuenta 40.00m y tasa 0.10m, ¿qué total debe producir una calculadora de propinas?",
+          "code": "decimal propina = cuenta * tasa;\ndecimal total = cuenta + propina;",
+          "options": ["$40.10", "$44.00", "$4.00"],
+          "correctIndex": 1,
+          "explanation": "La propina es 4.00 y el total suma cuenta más propina: 44.00. $4.00 es el distractor cercano porque es solo la propina, no el total.",
+          "reasonPrompt": "Muestre las dos operaciones que llevan al total.",
+          "rubric": ["Calculé propina 4.00.", "Sumé la propina a la cuenta."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué afirmación sobre $\"{total:F2}\" evita un error de diseño?",
+          "code": "decimal total = 44m;",
+          "options": ["F2 cambia total a string y debe usarse antes de sumar.", "F2 agrega precisión matemática al decimal.", "F2 solo presenta dos decimales; el cálculo debe hacerse antes."],
+          "correctIndex": 2,
+          "explanation": "F2 es formato de salida y no modifica el valor numérico almacenado. El distractor de precisión confunde presentación con cálculo.",
+          "reasonPrompt": "Explique en qué etapa usaría F2.",
+          "rubric": ["Separé cálculo de presentación.", "Mencioné dos decimales visibles."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/06-challenge-temperature-conversion",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué expresión convierte 32 °F a 0 °C sin división entera?",
+          "code": "decimal fahrenheit = 32m;",
+          "options": ["(fahrenheit - 32m) * 5m / 9m", "fahrenheit - 32m * 5m / 9m", "(fahrenheit - 32) * 5 / 9"],
+          "correctIndex": 0,
+          "explanation": "Los paréntesis restan 32 antes de escalar y los operandos decimales evitan truncamiento. La segunda opción cambia la fórmula por prioridad de multiplicación.",
+          "reasonPrompt": "Explique por qué el caso 32 °F es una buena comprobación.",
+          "rubric": ["Usé paréntesis alrededor de la resta.", "Expliqué el uso de literales decimal."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un compañero obtiene 20 °C para 68 °F. ¿Qué paso de depuración corresponde?",
+          "code": "(68m - 32m) * 5m / 9m",
+          "options": ["Cambiar decimal por int para simplificar.", "Verificar con el resultado conocido 20 °C y revisar paréntesis y tipos.", "Formatear con F2 antes de revisar la fórmula."],
+          "correctIndex": 1,
+          "explanation": "68 °F equivale a 20 °C, así que es un caso de control útil para revisar fórmula y tipos. El formato no corrige una operación equivocada.",
+          "reasonPrompt": "Indique qué resultado intermedio revisaría primero.",
+          "rubric": ["Usé un punto conocido como prueba.", "Revisé fórmula antes de formato."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/07-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Para clasificar un número como par, ¿qué resultado predice 7 % 2?",
+          "code": "int resto = 7 % 2;",
+          "options": ["0", "1", "3.5"],
+          "correctIndex": 1,
+          "explanation": "% devuelve el resto de la división; 7 entre 2 deja 1. 3.5 es el cociente decimal, no el resto.",
+          "reasonPrompt": "Explique la relación entre resto cero y número par.",
+          "rubric": ["Predije resto 1.", "Relacioné % con el resto."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una salida se ve como \"2.50\". ¿Qué decisión permite seguir calculando con el valor sin analizar texto?",
+          "code": "decimal precio = 2.50m;",
+          "options": ["Mantener precio como decimal y usar F2 solo al mostrar.", "Convertir precio a string antes de multiplicar.", "Guardar F2 dentro de la variable decimal."],
+          "correctIndex": 0,
+          "explanation": "El decimal debe conservarse para operaciones; F2 se aplica al construir salida. Convertir antes a string impide aritmética directa.",
+          "reasonPrompt": "Explique cuándo el valor pasa a ser texto.",
+          "rubric": ["Conservé decimal para calcular.", "Apliqué formato solo al presentar."]
+        }
+      ]
+    },
+    {
+      "id": "operaciones/08-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una compañera redondea una tarifa antes de multiplicarla y el total no coincide. ¿Qué decisión diagnóstica es mejor?",
+          "code": "decimal tarifa = 2.75m;\nint horas = 3;",
+          "options": ["Calcular con decimal y formatear o redondear solo según una regla explícita al final.", "Convertir tarifa a int antes de cualquier operación.", "Usar string para que el punto decimal sea visible."],
+          "correctIndex": 0,
+          "explanation": "Mantener decimal conserva precisión durante el cálculo; la presentación o redondeo es una decisión posterior. Convertir a int perdería .75 antes de multiplicar.",
+          "reasonPrompt": "Explique qué pérdida evitaría y cuándo presentaría el resultado.",
+          "rubric": ["Mantuve decimal durante el cálculo.", "Diferencié precisión de formato."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para una regla posterior «aplicar descuento si total >= 50», ¿qué resultado conviene conservar después de calcular?",
+          "code": "decimal total = precio * cantidad;",
+          "options": ["El texto ya formateado del total.", "El decimal total, para compararlo numéricamente.", "Solo el operador * usado."],
+          "correctIndex": 1,
+          "explanation": "Conservar decimal permite comparar con 50m de forma numérica. El texto formateado es para mostrar y no es la base adecuada para la condición.",
+          "reasonPrompt": "Explique cómo el tipo del total afecta la comparación.",
+          "rubric": ["Conservé un valor numérico.", "Relacioné el resultado con una condición booleana."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/01-introduction",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una beca se concede desde 10 puntos. ¿Qué regla convierte esa decisión en un bool?",
+          "code": "int puntos = 12;",
+          "options": ["bool aprueba = puntos >= 10;", "int aprueba = puntos >= 10;", "string aprueba = \"puntos >= 10\";"],
+          "correctIndex": 0,
+          "explanation": "La comparación produce true o false, compatible con bool. Guardarla como texto solo describe la regla, no la evalúa.",
+          "reasonPrompt": "Explique el resultado cuando puntos vale 12.",
+          "rubric": ["Identifiqué una comparación booleana.", "Predije true para 12 >= 10."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Diagnostique: «if decide según el mensaje que quiero mostrar». ¿Qué diseño lo corrige?",
+          "code": "// decidir acceso",
+          "options": ["Escribir primero el mensaje y usarlo como condición.", "Definir una condición objetiva y elegir el mensaje según true o false.", "Usar siempre else para evitar condiciones."],
+          "correctIndex": 1,
+          "explanation": "if evalúa una expresión booleana; los mensajes son consecuencias de esa regla. El primer distractor invierte la dependencia entre criterio y salida.",
+          "reasonPrompt": "Explique qué dato objetivo usaría en una regla.",
+          "rubric": ["Separé condición de mensaje.", "Mencioné true/false como resultado de la regla."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/02-evaluate-conditions-with-boolean-expressions",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Prediga gana para 17 puntos cuando la meta es 15.",
+          "code": "int puntos = 17;\nbool gana = puntos >= 15;",
+          "options": ["true", "false", "17"],
+          "correctIndex": 0,
+          "explanation": "17 es mayor o igual que 15, por eso la comparación devuelve true. 17 es el operando, no el resultado booleano.",
+          "reasonPrompt": "Explique cómo evalúa >= en este caso.",
+          "rubric": ["Comparé ambos valores correctamente.", "Identifiqué bool como resultado."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Un error usa = dentro de una condición de igualdad. ¿Qué operador debe elegir para comparar código con 5?",
+          "code": "int codigo = 5;",
+          "options": ["codigo = 5", "codigo == 5", "codigo != 5"],
+          "correctIndex": 1,
+          "explanation": "== compara y produce bool; = asigna. != también compara, pero pregunta si son distintos, que es la regla opuesta.",
+          "reasonPrompt": "Justifique la diferencia entre asignar y comparar.",
+          "rubric": ["Elegí == para igualdad.", "Expliqué que = modifica una variable."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/03-control-flow-with-if-else",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué salida produce nota 82 con esta cadena?",
+          "code": "if (nota >= 90) Console.WriteLine(\"Excelente\");\nelse if (nota >= 70) Console.WriteLine(\"Aprobado\");\nelse Console.WriteLine(\"Revise\");",
+          "options": ["Excelente", "Aprobado", "Revise"],
+          "correctIndex": 1,
+          "explanation": "82 no llega a 90, pero sí cumple >=70, así que se ejecuta la segunda rama. else solo atiende lo que no cumplió ninguna anterior.",
+          "reasonPrompt": "Explique qué condición falla y cuál se cumple.",
+          "rubric": ["Evalué las condiciones en orden.", "Identifiqué una sola rama ejecutada."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una regla de 70 se coloca antes de la de 90. ¿Qué corrección evita que una nota 95 quede solo como aprobada?",
+          "code": "// dos condiciones de nota",
+          "options": ["Poner nota >= 90 antes de nota >= 70.", "Eliminar else.", "Cambiar ambas condiciones a !=."],
+          "correctIndex": 0,
+          "explanation": "La condición más específica debe evaluarse primero porque 95 también cumple >=70. Eliminar else no cambia que la primera condición amplia capture el caso.",
+          "reasonPrompt": "Explique por qué los rangos se superponen.",
+          "rubric": ["Ordené el caso restrictivo primero.", "Mencioné que 95 también es >=70."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/04-combine-conditions-with-logical-operators",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Para ingresar se exige tener 18 años y entrada. Con edad 20 y tieneEntrada false, ¿qué ocurre?",
+          "code": "edad >= 18 && tieneEntrada",
+          "options": ["true, porque la edad basta.", "false, porque && exige ambos requisitos.", "true, porque false se invierte automáticamente."],
+          "correctIndex": 1,
+          "explanation": "&& solo es true si ambos lados son true; falta la entrada. El distractor cercano trata && como ||, donde bastaría una condición.",
+          "reasonPrompt": "Explique el valor de cada lado de &&.",
+          "rubric": ["Evalué edad y entrada por separado.", "Expliqué la regla de ambos requisitos."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Una alerta se activa por saldo bajo o tarjeta vencida. ¿Qué operador expresa que basta cualquiera?",
+          "code": "bool saldoBajo = false;\nbool tarjetaVencida = true;",
+          "options": ["&&", "!", "||"],
+          "correctIndex": 2,
+          "explanation": "|| devuelve true cuando al menos una condición es true. && exigiría que ambos problemas ocurrieran simultáneamente.",
+          "reasonPrompt": "Justifique el resultado con los valores dados.",
+          "rubric": ["Elegí || para alternativa inclusiva.", "Predije true con tarjetaVencida true."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/05-exercise-dice-game",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Con dados 2, 2 y 2, ¿qué regla debe revisarse primero para aplicar la bonificación correcta?",
+          "code": "// hay una regla para tres iguales y otra para cualquier par",
+          "options": ["La de cualquier par, porque también se cumple.", "La de tres iguales, antes de la de pares.", "Ninguna; tres iguales no contiene un par."],
+          "correctIndex": 1,
+          "explanation": "Tres iguales también satisface comparaciones por pares, por eso el premio más específico debe ir primero. Empezar por pares impediría llegar a la bonificación mayor.",
+          "reasonPrompt": "Explique qué condición se superpone con la otra.",
+          "rubric": ["Identifiqué tres iguales como caso específico.", "Expliqué el orden de las ramas."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para detectar cualquier par entre tres dados, ¿qué expresión corresponde?",
+          "code": "int d1 = 6, d2 = 6, d3 = 5;",
+          "options": ["d1 == d2 || d1 == d3 || d2 == d3", "d1 == d2 && d1 == d3", "d1 != d2 || d2 != d3"],
+          "correctIndex": 0,
+          "explanation": "|| acepta que cualquiera de las tres comparaciones de pares sea verdadera. && exigiría los tres iguales, un requisito más fuerte.",
+          "reasonPrompt": "Indique cuál comparación es verdadera para 6, 6, 5.",
+          "rubric": ["Elegí comparaciones de igualdad por pares.", "Usé || para aceptar un solo par."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/06-challenge-subscription-renewal",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "La suscripción vence en 1 día y recibe oferta especial. ¿Qué orden de decisiones protege ese caso?",
+          "code": "// existen reglas para 0, 1, <=5 y otros días",
+          "options": ["Comprobar <=5 antes que ==1.", "Comprobar ==1 antes que <=5.", "Comprobar solo >5."],
+          "correctIndex": 1,
+          "explanation": "1 también cumple <=5, de modo que la oferta específica debe evaluarse primero. Si <=5 va antes, capturaría el caso y ocultaría el descuento especial.",
+          "reasonPrompt": "Explique qué condiciones cumplen cuando diasRestantes es 1.",
+          "rubric": ["Identifiqué el solapamiento de rangos.", "Ordené primero el caso de 1 día."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Al probar límites, ¿qué valor confirma que después del aviso de hasta 5 días aparece la ruta vigente?",
+          "code": "// la oferta general usa diasRestantes <= 5",
+          "options": ["0", "5", "6"],
+          "correctIndex": 2,
+          "explanation": "6 es el primer valor que no cumple <=5 y debe ir a la ruta vigente. 5 aún pertenece al rango de aviso, por eso es el distractor cercano.",
+          "reasonPrompt": "Justifique el cambio de ruta en el límite.",
+          "rubric": ["Probé el primer valor fuera del rango.", "Diferencié 5 de 6."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/07-knowledge-check",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Una regla permite descuento si es estudiante y tiene identificación. ¿Cuál caso debe devolver false?",
+          "code": "esEstudiante && tieneIdentificacion",
+          "options": ["true y true", "true y false", "false y false"],
+          "correctIndex": 1,
+          "explanation": "Con true y false, && falla porque falta identificación. false y false también falla, pero no distingue el caso donde un requisito sí se cumple.",
+          "reasonPrompt": "Explique por qué un requisito faltante basta para rechazar.",
+          "rubric": ["Apliqué la tabla de verdad de &&.", "Identifiqué ambos requisitos necesarios."]
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Qué prueba detecta una rama inalcanzable causada por una condición amplia colocada primero?",
+          "code": "// if (nota >= 70) ... else if (nota >= 90) ...",
+          "options": ["Probar nota 95 y observar qué mensaje aparece.", "Cambiar el nombre de nota.", "Agregar una interpolación al mensaje."],
+          "correctIndex": 0,
+          "explanation": "95 cumple ambas reglas y revela si la amplia captura antes a la específica. Cambios de nombre o formato no ejercitan el flujo.",
+          "reasonPrompt": "Explique qué salida esperaría antes y después de reordenar.",
+          "rubric": ["Elegí un valor que cumple ambos rangos.", "Relacioné la prueba con el orden de ramas."]
+        }
+      ]
+    },
+    {
+      "id": "decisiones/08-summary",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Un compañero afirma: «usar else significa que ya no debo pensar en casos límite». ¿Qué decisión lo refuta al diseñar rangos?",
+          "code": "// descuento para 0, 1, 2..5 y más de 5 días",
+          "options": ["Probar los límites 0, 1, 5 y 6 antes de confiar en else.", "Quitar todas las condiciones y dejar solo else.", "Cambiar los mensajes sin probar valores."],
+          "correctIndex": 0,
+          "explanation": "else cubre lo restante, pero los límites verifican que cada regla anterior tenga el alcance buscado. Quitar condiciones elimina las decisiones requeridas.",
+          "reasonPrompt": "Explique qué frontera comprueba cada valor.",
+          "rubric": ["Incluí valores en y alrededor de límites.", "Expliqué que else no valida reglas previas."]
+        },
+        {
+          "id": "q2",
+          "prompt": "Para autorizar acceso con edad y entrada, ¿qué diseño es más fácil de revisar y ampliar?",
+          "code": "int edad = 20;\nbool tieneEntrada = true;",
+          "options": ["Esconder ambas reglas dentro de un mensaje largo.", "Crear una condición booleana con edad >= 18 && tieneEntrada y usarla en if.", "Convertir edad a string antes de comparar."],
+          "correctIndex": 1,
+          "explanation": "Una condición nombrable separa regla y mensaje, facilitando pruebas de sus casos. Convertir edad a string evita la comparación numérica directa.",
+          "reasonPrompt": "Justifique cómo probaría cada requisito por separado.",
+          "rubric": ["Expresé una condición booleana clara.", "Consideré pruebas con cada requisito verdadero y falso."]
+        }
+      ]
+    }
+  ]
+}
