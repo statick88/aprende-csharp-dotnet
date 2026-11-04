@@ -4,6 +4,9 @@ async (page) => {
   await page.goto(base);
   await page.locator('.module').first().waitFor();
   check(await page.locator('.module').count() === 9, 'Deben aparecer nueve módulos');
+  check(await page.locator('.certification-card').count() === 6, 'Recorrido de seis rutas de certificación');
+  check((await page.locator('.hero-copy').innerText()).includes('Foundational C# with Microsoft'), 'Objetivo principal de certificación');
+  check(await page.locator('.site-footer').count() === 0, 'Bloque del pie de página eliminado');
   check(await page.locator('.lesson-list a').count() === 67, 'Deben aparecer 67 unidades');
   await page.locator('#search').fill('zzzz-no-existe');
   await page.locator('.empty-state').waitFor();
