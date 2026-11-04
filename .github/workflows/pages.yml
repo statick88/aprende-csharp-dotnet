@@ -1,0 +1,62 @@
+name: Publish review course to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths:
+      - 'course/**'
+      - 'site/**'
+      - 'tools/build_course.py'
+      - 'tests/**'
+      - '[1-8]-*/**'
+      - '.github/workflows/pages.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out course source
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Set up Node for isolated frontend tests
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Test content generation and frontend helpers
+        run: |
+          python3 -m unittest discover -s tests -v
+          node --test site/course-utils.test.mjs
+          node --check site/app.mjs
+      - name: Build static review site
+        run: python3 tools/build_course.py
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload public site only
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
