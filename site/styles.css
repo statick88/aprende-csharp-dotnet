@@ -75,6 +75,8 @@ ul { padding-left: 1.25rem; }
 .sidebar-list a { color: var(--muted); text-decoration: none; }
 .sidebar-list a[aria-current="page"] { color: var(--brand-bright); font-weight: 750; }
 .lesson { max-width: 48rem; min-width: 0; }
+main:has(.lesson-layout), main:has(.tools-reference) { max-width: none; }
+.lesson-layout .lesson, .tools-reference { width: 100%; max-width: none; }
 .lesson-sidebar { min-width: 0; }
 .lesson p, .lesson li { overflow-wrap: anywhere; }
 .lesson > h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
