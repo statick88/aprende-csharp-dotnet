@@ -1,0 +1,50 @@
+async (page) => {
+  const base = page.url().split('#')[0];
+  const check = (value, message) => { if (!value) throw new Error(message); };
+  await page.goto(base);
+  await page.locator('.module').first().waitFor();
+  check(await page.locator('.module').count() === 9, 'Deben aparecer nueve módulos');
+  check(await page.locator('.lesson-list a').count() === 67, 'Deben aparecer 67 unidades');
+  await page.locator('#search').fill('zzzz-no-existe');
+  await page.locator('.empty-state').waitFor();
+  check(await page.locator('.lesson-list a').count() === 0, 'Búsqueda sin resultados');
+  await page.locator('#search').fill('');
+  await page.getByRole('link', {name: 'Continuar: abrir y cerrar archivos con using'}).click();
+  await page.locator('.lesson h1').waitFor();
+  check((await page.locator('.lesson h1').innerText()).includes('using'), 'Unidad using');
+  check(await page.locator('.step pre').count() > 0, 'La unidad using necesita un ejemplo');
+  check(await page.locator('details').count() >= 2, 'Preguntas de repaso');
+  await page.locator('summary').first().click();
+  check(await page.locator('details').first().getAttribute('open') !== null, 'Respuesta desplegable');
+  for (const label of ['Descargar proyecto completo (.zip)', 'Leer guía local', 'Ver código fuente local']) {
+    const anchor = page.getByRole('link', {name: label});
+    const resourceUrl = new URL(await anchor.getAttribute('href'), page.url()).href;
+    const response = await page.request.get(resourceUrl);
+    check(response.ok(), 'Recurso accesible: ' + label);
+  }
+  await page.reload();
+  await page.locator('.lesson h1').waitFor();
+  check((await page.locator('.lesson h1').innerText()).includes('using'), 'Recarga de ruta profunda');
+  await page.locator('#search').fill('VARIABLES');
+  await page.getByRole('heading', {name: 'Resultados de búsqueda'}).waitFor();
+  check(await page.locator('.lesson-list a').count() > 0, 'Buscar desde una lección');
+  await page.locator('#search').fill('');
+  await page.locator('.lesson-list a').first().click();
+  await page.locator('.lesson h1').waitFor();
+  const before = page.url();
+  await page.getByRole('link', {name: 'Siguiente lección →'}).click();
+  check(page.url() !== before, 'Navegación siguiente');
+  await page.getByRole('link', {name: '← Lección anterior'}).click();
+  check(page.url() === before, 'Navegación anterior');
+  await page.setViewportSize({width: 375, height: 812});
+  await page.goto(base);
+  await page.locator('.module').first().waitFor();
+  check(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'Inicio sin desborde móvil');
+  await page.getByRole('link', {name: 'Continuar: abrir y cerrar archivos con using'}).click();
+  await page.locator('.lesson h1').waitFor();
+  check(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'Lección sin desborde móvil');
+  await page.setViewportSize({width: 1440, height: 1000});
+  await page.goto(base);
+  await page.locator('.module').first().waitFor();
+  return {passed: true, modules: 9, units: 67, base, checks: ['búsqueda', 'búsqueda desde lector', 'repaso desplegable', 'recursos', 'recarga', 'navegación', 'móvil']};
+}
